@@ -11,7 +11,7 @@ import Recipe from "../Models/Recipe.js";
  //}).finally(()=>
      //mongoose.connection.close()
  //)
-const filter ={'recipe-id': '123'};
+const filter ={'recipe_id': '123'};
 const update ={//new values
   $set: {
      name: 'Pasta1',
@@ -26,12 +26,12 @@ const update ={//new values
     } catch (error) {
       console.error('Error:', error);
       throw error;
+    } finally {
+    mongoose.connection.close()
     }
   };
 
-  const updated = await Update(Recipe,filter,update).then(()=>{
-       mongoose.connection.close();   
-    });
+  const updated = await Update(Recipe,filter,update);
 
     
-    console.log(updated);
+    
