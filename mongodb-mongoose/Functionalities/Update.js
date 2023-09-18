@@ -14,8 +14,8 @@ import Recipe from "../Models/Recipe.js";
 const filter ={'recipe_id': '123'};
 const update ={//new values
   $set: {
-     name: 'Pasta1',
-     serving: '6'
+     name: 'Pesto Pasta',
+     serving: '5'
     },
 };
 
