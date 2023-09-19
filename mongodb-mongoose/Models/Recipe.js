@@ -29,6 +29,10 @@ const recipeSchema= new Schema({
         type: Number,
         default: null
     },
+    likes: {
+        type: Number,
+        default: null
+    },
     photo:Buffer,//imageBinaryData = fs.readFileSync(imagePath)
     chef_note:{
         type:String,
