@@ -32,14 +32,5 @@ const update ={//new values
   };
 
 
-  //const filter ={'recipe_id': '123'};
-  //const update ={//new values
-   // $set: {
-     //  name: 'Pasta1',
-      // serving: '6'
-      //},
-  //};
-  //const updated = await Update(Recipe,filter,update);
 
-    
     
