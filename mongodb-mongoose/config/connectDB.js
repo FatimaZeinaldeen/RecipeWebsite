@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
-const url="mongodb+srv://FatimaZeinaldeen:FatimaZeinaldeen@cluster0.pxrudjw.mongodb.net/RecipeDB";
-
+import dotenv from 'dotenv';
+dotenv.config(); 
 const connectdb = async (dbURL) => {
     try{
         await mongoose.connect(dbURL).then(
@@ -12,4 +12,4 @@ const connectdb = async (dbURL) => {
         console.log(error);
     }
 };
-connectdb(url);
+connectdb(process.env.connectonString);
