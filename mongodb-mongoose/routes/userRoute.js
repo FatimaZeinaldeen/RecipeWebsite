@@ -7,6 +7,7 @@ import {
     userLogout,
     deleteAccount
 } from "../Controllers/userController.js";
+import { addFeedback } from "../Controllers/feedbackController.js";
 import { verifyAdmin } from "../middleware/verifyAdmin.js";
 
 const router=express.Router();
@@ -16,6 +17,7 @@ const router=express.Router();
  router.post("/Logout",userLogout);
  router.put("/profile/:id",verifyAdmin,updateProfile);
  router.delete("/delete-account/:id",verifyAdmin,deleteAccount);
+ router.post("/aboutus/:id",addFeedback);
  //router.get("/profile/:id",getUser);
  export default router;
 
