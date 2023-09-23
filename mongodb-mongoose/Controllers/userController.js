@@ -1,11 +1,31 @@
 import User from "../Models/user.js";
+import bcrypt from "bcrypt";
 
-//addUser
-export const addUser= async (req,res)=>{
+//addUser(register)
+export const registerUser= async (req,res)=>{
     try{
         const user=new User(req.body);
         await user.save(); 
         res.json("successfully added!");
+    }catch{
+        res.json(error.message);
+    }
+}
+
+//login
+export const login=async (req,res)=>{
+    const {email,password}=req.body;
+    try{
+        const user=await User.findOne({email});
+        if(!user) return res.json("no such account with this email");
+        const passwordMatch = await bcrypt.compare(password, user.password);
+        if(passwordMatch){
+            return res.json("Login successfully!");
+            user.role="admin";
+        } 
+        else{
+            return res.json("wrong password");
+        }
     }catch{
         res.json(error.message);
     }
@@ -43,13 +63,27 @@ export const updateProfile= async(req,res)=>{
     }
 }
 
-//deleteUser(Logout)
-export const deleteUser= async (req,res)=>{
+//UserLogout
+export const userLogout= async (req,res)=>{
+    const { id }=req.params;
+    try{
+        const usertoBeRemoved=await User.findByIdAndRemove(id);
+        if(!usertoBeDeleted) return res.json("not found");
+        res.json("User logged out successfully");
+        user.role="user";
+    }catch{
+        res.json(error.message);
+    }
+}
+
+//deleteUserAccount
+export const deleteAccount= async (req,res)=>{
     const { id }=req.params;
     try{
         const usertoBeDeleted=await User.findByIdAndDelete(id);
         if(!usertoBeDeleted) return res.json("not found");
         res.json("User deleted successfully");
+        user.role="user";
     }catch{
         res.json(error.message);
     }

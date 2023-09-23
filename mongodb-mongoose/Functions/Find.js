@@ -6,7 +6,7 @@ import "../connectDB.js";
 
 const find = async (model, field, value) => {
   try {
-    const models = await model.find({ [field]: value });
+    const models = await model.find({ [field]: value});
     return models;
   } catch (error) {
     console.error('Error:', error);

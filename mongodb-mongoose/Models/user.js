@@ -3,6 +3,11 @@ import mongoose from "mongoose";
 const {Schema,model}= mongoose;
 const { ObjectId } = mongoose.Types;
 const userSchema = new Schema ({
+    role:{ 
+        type:String,
+        enum: ["admin","user"],
+        default:"user"
+    },
     fullName: {
         type:String,
         required:true,
