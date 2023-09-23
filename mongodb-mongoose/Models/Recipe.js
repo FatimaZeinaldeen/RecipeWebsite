@@ -6,8 +6,10 @@ const {Schema,model}=mongoose;
 // const IngredientSchema = IngredientModel.Schema;
 
 const recipeSchema= new Schema({
-    recipe_id:String,
-    name:String,
+    name: {
+        type:String,
+        required:true,
+    },
     category: {
         type: String,
         enum:["Lunch","Breakfast","Dinner","Dessert","Snack","Drinks","Vegan","Salad"]
