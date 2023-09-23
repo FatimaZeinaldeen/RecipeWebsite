@@ -1,5 +1,5 @@
 import Recipe from "../Models/Recipe.js"
-
+import review from "../Models/review.js";
 //addRecipe(when posting a recipe by the admin)
 export const addRecipe=async(req,res)=>{
     try{
@@ -7,7 +7,7 @@ export const addRecipe=async(req,res)=>{
         await recipe.save(); 
         res.json("successfully added!");
     }catch{
-        res.json("ERROR");
+        res.json(error.message);
     }
 }
 
@@ -25,21 +25,21 @@ export const getAllRecipes=async (req,res)=>{
 
 //getSpecificRecipe
 export const getRecipe=async (req,res)=>{
-    const { recipe_id }=req.params;
+    const { id }=req.params;
   try{
-    const recipe= await Recipe.findById(recipe_id);
+    const recipe= await Recipe.findById(id);
     return res.json(recipe);
     }catch{
-     return res.json("Recipe not found");
+     return res.json(error.message);
     }
 }
 
 //updateRecipe(by the Admin)
 export const updateRecipe=async(req,res)=>{
-    const { recipe_id }=req.params;
+    const { id }=req.params;
     const {name,category,country,prep_time,serving,photo,chef_note,instructions,ingredients}=req.body;//new values
     try{
-        const recipe= await Recipe.findById(recipe_id);
+        const recipe= await Recipe.findById(id);
         recipe.name=name;
         recipe.category=category;
         recipe.country=country;
@@ -59,14 +59,22 @@ export const updateRecipe=async(req,res)=>{
 
 //deleteRecipe
 export const deleteRecipe= async (req,res)=>{
-    const { recipe_id }=req.params;
+    const { id }=req.params;
     try{
-        const recipetoBeDeleted=await Recipe.findByIdAndDelete(recipe_id);
+        const recipetoBeDeleted=await Recipe.findByIdAndDelete(id);
         if(!recipetoBeDeleted) return res.json("not found");
         res.json("Recipe deleted successfully");
     }catch{
         res.json(error.message);
     }
 }
-
-
+//add a Review
+export const addReview = async (req,res)=>{
+    try{
+        const Review=new review(req.body);
+        await Review.save();
+        res.json("Review added successfully");
+    }catch{
+            res.json(error.message);
+    }
+}
