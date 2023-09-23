@@ -28,9 +28,9 @@ export const getRecipe=async (req,res)=>{
     const { recipe_id }=req.params;
   try{
     const recipe= await Recipe.findById(recipe_id);
-    return res.json(user);
+    return res.json(recipe);
     }catch{
-     return res.json("User not found");
+     return res.json("Recipe not found");
     }
 }
 
@@ -68,4 +68,5 @@ export const deleteRecipe= async (req,res)=>{
         res.json(error.message);
     }
 }
+
 
