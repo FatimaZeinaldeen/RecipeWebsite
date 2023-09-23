@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
-dotenv.config(); 
+dotenv.config();
 const connectdb = async (dbURL) => {
     try{
         await mongoose.connect(dbURL).then(
@@ -12,4 +12,4 @@ const connectdb = async (dbURL) => {
         console.log(error);
     }
 };
-connectdb(process.env.connectonString);
+connectdb(process.env.connectionString);
