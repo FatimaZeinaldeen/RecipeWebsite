@@ -7,27 +7,27 @@ export const addUser= async (req,res)=>{
         await user.save(); 
         res.json("successfully added!");
     }catch{
-        res.json("ERROR");
+        res.json(error.message);
     }
 }
 
 //getUser
 export const getUser=async (req,res)=>{
-    const { user_id }=req.params;
+    const { id }=req.params;
   try{
-    const user= await User.findById(user_id);
+    const user= await User.findById(id);
     return res.json(user);
     }catch{
-     return res.json("User not found");
+     return res.json(error.message);
     }
 }
 
 //updateAdminProfile
 export const updateProfile= async(req,res)=>{
-    const { user_id }=req.params;
+    const { id }=req.params;
     const {fullName,email,password,gender,country,biography,userPhoto}=req.body;//new values
     try{
-        const user= await User.findById(user_id);
+        const user= await User.findById(id);
         user.fullName=fullName;
         user.email=email;
         user.password=password;
@@ -45,9 +45,9 @@ export const updateProfile= async(req,res)=>{
 
 //deleteUser(Logout)
 export const deleteUser= async (req,res)=>{
-    const { user_id }=req.params;
+    const { id }=req.params;
     try{
-        const usertoBeDeleted=await User.findByIdAndDelete(user_id);
+        const usertoBeDeleted=await User.findByIdAndDelete(id);
         if(!usertoBeDeleted) return res.json("not found");
         res.json("User deleted successfully");
     }catch{
