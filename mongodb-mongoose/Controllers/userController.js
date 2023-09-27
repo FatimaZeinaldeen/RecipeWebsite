@@ -20,8 +20,8 @@ export const login=async (req,res)=>{
         if(!user) return res.json("no such account with this email");
         const passwordMatch = await bcrypt.compare(password, user.password);
         if(passwordMatch){
-            return res.json("Login successfully!");
             user.role="admin";
+            return res.json("Login successfully!");
         } 
         else{
             return res.json("wrong password");
@@ -67,10 +67,10 @@ export const updateProfile= async(req,res)=>{
 export const userLogout= async (req,res)=>{
     const { id }=req.params;
     try{
-        const usertoBeRemoved=await User.findByIdAndRemove(id);
-        if(!usertoBeDeleted) return res.json("not found");
-        res.json("User logged out successfully");
+        const usertoLogout=await User.findById(id);
+        if(!usertoLogout) return res.json("not found");
         user.role="user";
+        res.json("User logged out successfully");
     }catch{
         res.json(error.message);
     }

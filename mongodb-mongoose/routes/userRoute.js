@@ -7,18 +7,14 @@ import {
     userLogout,
     deleteAccount
 } from "../Controllers/userController.js";
-import { addFeedback } from "../Controllers/feedbackController.js";
 import { verifyAdmin } from "../middleware/verifyAdmin.js";
 
-const router=express.Router();
+const userRouter=express.Router();
 
- router.post("/register",registerUser);
- router.post("/Login",login);
- router.post("/Logout",userLogout);
- router.put("/profile/:id",verifyAdmin,updateProfile);
- router.delete("/delete-account/:id",verifyAdmin,deleteAccount);
- router.post("/aboutus/:id",addFeedback);
- //router.get("/profile/:id",getUser);
- export default router;
-
-
+ userRouter.post("/register",registerUser);
+ userRouter.post("/Login",login);
+ userRouter.post("/Logout",userLogout);
+ userRouter.get("/profile/:id",verifyAdmin,getUser);
+ userRouter.delete("/delete-account/:id",verifyAdmin,deleteAccount);
+ userRouter.put("/profile/update-profile/:id",verifyAdmin,updateProfile);
+ export default userRouter;

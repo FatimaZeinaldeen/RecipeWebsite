@@ -5,7 +5,7 @@ export const addFeedback= async (req,res)=>{
     try{
         const feedback=new feedback(req.body);
         await feedback.save();
-        res.json("feedback send");
+        res.json("feedback sent");
     }catch{
         res.json(error.message);
     }

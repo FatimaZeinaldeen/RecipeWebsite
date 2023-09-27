@@ -9,12 +9,14 @@ import{
 } from "../Controllers/recipeController.js";
 import { verifyAdmin } from "../middleware/verifyAdmin.js";
 
-const router=express.Router();
+const recipeRouter=express.Router();
 
 
-router.get("/recipes",getAllRecipes);
-router.post("/recipe/:id",addReview);
-router.get("/recipe/:id",getRecipe);
-router.post("/recipe",verifyAdmin,addRecipe);//for Admin
-router.put("/recipe/:id",verifyAdmin,updateRecipe);//for Admin
-router.delete("/recipe/:id",verifyAdmin,deleteRecipe);//for Admin
+recipeRouter.get("/all-recipes",getAllRecipes);
+recipeRouter.get("/get-recipe/:id",getRecipe);
+recipeRouter.post("/add-review/:id",addReview);
+recipeRouter.post("/add-recipe",verifyAdmin,addRecipe);//for Admin
+recipeRouter.put("/update-recipe/:id",verifyAdmin,updateRecipe);//for Admin
+recipeRouter.delete("/delete-recipe/:id",verifyAdmin,deleteRecipe);//for Admin
+
+export default recipeRouter;
