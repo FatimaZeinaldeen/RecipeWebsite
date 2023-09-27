@@ -6,7 +6,7 @@ const userSchema = new Schema ({
     role:{ 
         type:String,
         enum: ["admin","user"],
-        default:"user"
+        default:"user",
     },
     fullName: {
         type:String,
@@ -16,26 +16,29 @@ const userSchema = new Schema ({
         type: String,
         required: true,
         unique: true,
-        match: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
+        match: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
     },
     password: {
         type: String,
         required: true,
-        match: /^.{8,}$/
+        match: /^.{8,}$/,
     },
     gender: {
         type: String,
         required: true,
-        enum: ["F" , "M"]
+        enum: ["F" , "M"],
     },
-    country: String,
+    country:{
+        type: String,
+        required: true,
+    },
     rate: {
         type: Number,
-        default: null
+        default: null,
     },
     biography: {
         type: String,
-        default: null
+        default: null,
     },
     userPhoto: String
     

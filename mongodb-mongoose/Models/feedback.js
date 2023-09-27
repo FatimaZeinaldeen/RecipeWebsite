@@ -4,14 +4,15 @@ const {Schema,model}=mongoose;
 const { ObjectId } = mongoose.Types;
 
 const feedbackSchema = new Schema({
-    feedback: String,
+    feedback:{
+        type: String,
+        required: true
+      },
     userid:{
         type: String,
-        ref: "User"
-    },
-
-    
-    
+        ref: "User",
+        required: true
+    }
 },{
     timestamps: true
 });

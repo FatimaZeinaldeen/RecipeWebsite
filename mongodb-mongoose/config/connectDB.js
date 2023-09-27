@@ -11,4 +11,4 @@ const connectdb = async (dbURL) => {
     console.log(error);
   }
 };
-connectdb(process.env.connectionString);
+export default connectdb;

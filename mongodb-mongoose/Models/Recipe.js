@@ -8,7 +8,7 @@ const {Schema,model}=mongoose;
 const recipeSchema= new Schema({
     name: {
         type:String,
-        required:true,
+        required:true
     },
     category: {
         type: String,
@@ -18,7 +18,10 @@ const recipeSchema= new Schema({
         type: String,
         ref:"User"
     },
-    Country:String,
+    Country:{
+        type:String,
+        required: true
+    },
     prep_time:{
         time:Number,
         unit:{
@@ -26,10 +29,14 @@ const recipeSchema= new Schema({
             enum:["min","hour"]
         }
     },
-    serving:Number,
+    serving:{
+        type:Number
+    },
     rate: {
         type: Number,
-        default: null
+        default: null,
+        min:0,
+        max:5
     },
     likes: {
         type: Number,
@@ -40,11 +47,9 @@ const recipeSchema= new Schema({
         type:String,
         default:null
     },
-    instructions:[String],
-    ingredients:[ingredientSchema]
-},{
-    timestamps: true
-});
+    instructions: [String],
+    ingredients: [ingredientSchema],
+},{timestamps: true});
 
 
 const Recipe=model("Recipe",recipeSchema);

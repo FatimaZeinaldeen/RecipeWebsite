@@ -15,6 +15,6 @@ const userRouter=express.Router();
  userRouter.post("/Login",login);
  userRouter.post("/Logout",userLogout);
  userRouter.get("/profile/:id",verifyAdmin,getUser);
- userRouter.delete("/delete-account/:id",verifyAdmin,deleteAccount);
+ userRouter.delete("/delete-account/:id",deleteAccount);
  userRouter.put("/profile/update-profile/:id",verifyAdmin,updateProfile);
  export default userRouter;

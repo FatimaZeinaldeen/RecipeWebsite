@@ -6,9 +6,9 @@ export const registerUser= async (req,res)=>{
     try{
         const user=new User(req.body);
         await user.save(); 
-        res.json("successfully added!");
-    }catch{
-        res.json(error.message);
+        res.status(201).json({message:"successfully added!"});
+    }catch(error){
+        res.status(500).json({error:error.message});
     }
 }
 
@@ -16,19 +16,22 @@ export const registerUser= async (req,res)=>{
 export const login=async (req,res)=>{
     const {email,password}=req.body;
     try{
-        const user=await User.findOne({email});
-        if(!user) return res.json("no such account with this email");
-        const passwordMatch = await bcrypt.compare(password, user.password);
-        if(passwordMatch){
-            user.role="admin";
-            return res.json("Login successfully!");
-        } 
-        else{
-            return res.json("wrong password");
-        }
-    }catch{
-        res.json(error.message);
-    }
+         const user=await User.findOne({email});
+         if (!user) {
+             return res.status(404).json({ error: "No such account with this email" });
+     }
+         const passwordMatch = await bcrypt.compare(password, user.password);
+         if(passwordMatch){
+             user.role="admin";
+             return res.status(200).json({ message: "Login successful" });
+         } 
+         else{
+             return res.status(401).json({ error: "Wrong password" });
+         }
+     }catch{
+         res.status(500).json({error:error.message});
+     }
+    
 }
 
 //getUser
@@ -36,9 +39,12 @@ export const getUser=async (req,res)=>{
     const { id }=req.params;
   try{
     const user= await User.findById(id);
-    return res.json(user);
+    if (!user) {
+        return res.status(404).json({ error: "User not found" });
+    }
+    return res.status(200).json(user);
     }catch{
-     return res.json(error.message);
+     return res.status(500).json({error:error.message});
     }
 }
 
@@ -48,6 +54,9 @@ export const updateProfile= async(req,res)=>{
     const {fullName,email,password,gender,country,biography,userPhoto}=req.body;//new values
     try{
         const user= await User.findById(id);
+        if (!user) {
+            return res.status(404).json({ error: "User not found" });
+        }
         user.fullName=fullName;
         user.email=email;
         user.password=password;
@@ -57,9 +66,9 @@ export const updateProfile= async(req,res)=>{
         user.userPhoto=userPhoto;
 
         const updated= await user.save();
-        res.json(updated);
+        res.status(200).json(updated);
     }catch{
-        res.json(error.message);
+        res.status(500).json({error:error.message});
     }
 }
 
@@ -68,23 +77,32 @@ export const userLogout= async (req,res)=>{
     const { id }=req.params;
     try{
         const usertoLogout=await User.findById(id);
-        if(!usertoLogout) return res.json("not found");
+        if (!userToLogout) {
+            return res.status(404).json({ error: "User not found" });
+        }
         user.role="user";
-        res.json("User logged out successfully");
+        res.status(200).json({message:"User logged out successfully"});
     }catch{
-        res.json(error.message);
+        res.status(500).json({error:error.message});
     }
 }
 
 //deleteUserAccount
 export const deleteAccount= async (req,res)=>{
     const { id }=req.params;
+    console.log("Received ID:", id);
     try{
-        const usertoBeDeleted=await User.findByIdAndDelete(id);
-        if(!usertoBeDeleted) return res.json("not found");
-        res.json("User deleted successfully");
-        user.role="user";
+        const usertoBeDeleted= await User.findByIdAndDelete(id);
+        console.log(usertoBeDeleted);
+        if (!usertoBeDeleted) {
+            return res.status(404).json({ error: "User not found" });
+        }
+        res.status(200).json({ message: "User deleted successfully" });
+        //usertoBeDeleted.role="user";
     }catch{
-        res.json(error.message);
+        res.status(500).json({ error: "error in the server" });
     }
 }
+
+
+//The 401 status code is used to indicate that the client's request lacks proper authorization, and access to the requested resource is denied due to authentication failure.

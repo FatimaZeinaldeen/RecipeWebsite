@@ -5,9 +5,9 @@ export const addRecipe=async(req,res)=>{
     try{
         const recipe=new Recipe(req.body);
         await recipe.save(); 
-        res.json("successfully added!");
+        res.status(201).json({ message: "Recipe successfully added", recipe });
     }catch{
-        res.json(error.message);
+        res.status(500).json({ error: error.message });
     }
 }
 
@@ -16,10 +16,10 @@ export const getAllRecipes=async (req,res)=>{
   try{
     const recipes= await Recipe.find();
     recipes.forEach((recipe)=>{
-        res.json(recipe);
+        res.status(200).json(recipes);
     });
     }catch{
-     return res.json(error.message);
+     return res.status(500).json({erroe: error.message});
     }
 }
 
@@ -28,9 +28,12 @@ export const getRecipe=async (req,res)=>{
     const { id }=req.params;
   try{
     const recipe= await Recipe.findById(id);
-    return res.json(recipe);
+    if (!recipe) {
+        return res.status(404).json({ error: "Recipe not found" });
+      }
+    return res.status(200).json(recipe);
     }catch{
-     return res.json(error.message);
+     return res.json({error: error.message});
     }
 }
 
@@ -40,6 +43,9 @@ export const updateRecipe=async(req,res)=>{
     const {name,category,country,prep_time,serving,photo,chef_note,instructions,ingredients}=req.body;//new values
     try{
         const recipe= await Recipe.findById(id);
+        if (!recipe) {
+            return res.status(404).json({ error: "Recipe not found" });
+        }
         recipe.name=name;
         recipe.category=category;
         recipe.country=country;
@@ -51,9 +57,9 @@ export const updateRecipe=async(req,res)=>{
         recipe.ingredients=ingredients;
         
         const updated= await recipe.save();
-        res.json(updated);
+        res.status(200).json(updated);
     }catch{
-        res.json(error.message);
+        res.status(500).json({ error: error.message });
     }
 }
 
@@ -62,10 +68,12 @@ export const deleteRecipe= async (req,res)=>{
     const { id }=req.params;
     try{
         const recipetoBeDeleted=await Recipe.findByIdAndDelete(id);
-        if(!recipetoBeDeleted) return res.json("not found");
-        res.json("Recipe deleted successfully");
+        if (!recipeToBeDeleted) {
+            return res.status(404).json({ error: "Recipe not found" });
+        }
+        res.status(200).json({message:"Recipe deleted successfully"});// OR use 204 code <<<res.status(204).end();>>>
     }catch{
-        res.json(error.message);
+        res.status(500).json({ error: error.message });
     }
 }
 //add a Review
@@ -73,8 +81,14 @@ export const addReview = async (req,res)=>{
     try{
         const Review=new review(req.body);
         await Review.save();
-        res.json("Review added successfully");
+        res.status(201).json({message:"Review added successfully"});
     }catch{
-            res.json(error.message);
+        res.status(500).json({ error: error.message });
     }
 }
+
+//200 OK is used when the server successfully processes a request and returns existing data.
+//201 Created is used when the server successfully processes a request and creates a new resource as a result.
+//204 No Content: The request has been successfully processed, and there is no additional content to send in the response body. used for delete operation but with no including messages like successfully deleted for example, and if you need to include a message use 200 
+//500 Internal Server Error: A generic server error occurred, indicating that something went wrong on the server.
+//404 Not Found: The requested resource could not be found on the server.
