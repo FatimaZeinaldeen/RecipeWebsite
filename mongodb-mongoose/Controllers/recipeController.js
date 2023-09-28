@@ -6,7 +6,7 @@ export const addRecipe=async(req,res)=>{
         const recipe=new Recipe(req.body);
         await recipe.save(); 
         res.status(201).json({ message: "Recipe successfully added", recipe });
-    }catch{
+    }catch(error){
         res.status(500).json({ error: error.message });
     }
 }
@@ -18,7 +18,7 @@ export const getAllRecipes=async (req,res)=>{
     recipes.forEach((recipe)=>{
         res.status(200).json(recipes);
     });
-    }catch{
+    }catch(error){
      return res.status(500).json({erroe: error.message});
     }
 }
@@ -32,7 +32,7 @@ export const getRecipe=async (req,res)=>{
         return res.status(404).json({ error: "Recipe not found" });
       }
     return res.status(200).json(recipe);
-    }catch{
+    }catch(error){
      return res.json({error: error.message});
     }
 }
@@ -58,7 +58,7 @@ export const updateRecipe=async(req,res)=>{
         
         const updated= await recipe.save();
         res.status(200).json(updated);
-    }catch{
+    }catch(error){
         res.status(500).json({ error: error.message });
     }
 }
@@ -72,7 +72,7 @@ export const deleteRecipe= async (req,res)=>{
             return res.status(404).json({ error: "Recipe not found" });
         }
         res.status(200).json({message:"Recipe deleted successfully"});// OR use 204 code <<<res.status(204).end();>>>
-    }catch{
+    }catch(error){
         res.status(500).json({ error: error.message });
     }
 }
@@ -82,7 +82,7 @@ export const addReview = async (req,res)=>{
         const Review=new review(req.body);
         await Review.save();
         res.status(201).json({message:"Review added successfully"});
-    }catch{
+    }catch(error){
         res.status(500).json({ error: error.message });
     }
 }
