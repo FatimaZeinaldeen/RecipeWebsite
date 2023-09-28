@@ -4,7 +4,18 @@ import bcrypt from "bcrypt";
 //addUser(register)
 export const registerUser= async (req,res)=>{
     try{
-        const user=new User(req.body);
+        const { role, fullName, email, password, gender, country, rate, biography, userPhoto } = req.body;
+        const user = new User({
+            role,
+            fullName,
+            email,
+            password,
+            gender,
+            country,
+            rate,
+            biography,
+            userPhoto
+        });
         await user.save(); 
         res.status(201).json({message:"successfully added!"});
     }catch(error){
@@ -14,9 +25,11 @@ export const registerUser= async (req,res)=>{
 
 //login
 export const login=async (req,res)=>{
-    const {email,password}=req.body;
+    const {email}=req.body;
+    const {password}=req.body;
     try{
-         const user=await User.findOne({email});
+         const user=await User.findOne(email);
+         console.log(user);
          if (!user) {
              return res.status(404).json({ error: "No such account with this email" });
      }
@@ -26,9 +39,9 @@ export const login=async (req,res)=>{
              return res.status(200).json({ message: "Login successful" });
          } 
          else{
-             return res.status(401).json({ error: "Wrong password" });
+             return res.status(401).json("Wrong password");
          }
-     }catch{
+     }catch(error){
          res.status(500).json({error:error.message});
      }
     

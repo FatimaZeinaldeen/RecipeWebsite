@@ -6,8 +6,12 @@ import userRouter from "./routes/userRoute.js";
 
 const Port=3000;
 const app=express();
-connectdb(process.env.connectionString);
+app.use(express.json());
 
+connectdb(process.env.connectionString);
+app.get("/",(re,res)=>{
+    res.send("Hello World!");
+});
 app.use("/User",userRouter);
 app.use("/Recipe",recipeRouter);
 app.use("/About-Us",aboutRouter);
