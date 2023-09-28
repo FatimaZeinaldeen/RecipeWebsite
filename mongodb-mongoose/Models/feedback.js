@@ -6,12 +6,12 @@ const { ObjectId } = mongoose.Types;
 const feedbackSchema = new Schema({
     feedback:{
         type: String,
-        required: true
+        //required: true
       },
     userid:{
         type: String,
         ref: "User",
-        required: true
+        //required: true
     }
 },{
     timestamps: true
