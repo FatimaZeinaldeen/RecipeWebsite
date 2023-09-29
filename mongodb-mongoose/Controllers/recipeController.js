@@ -43,7 +43,7 @@ export const updateRecipe=async(req,res)=>{
     const { id }=req.params;
     try{
 
-        const updated = await User.findByIdAndUpdate(id, req.body, { new: true });
+        const updated = await Recipe.findByIdAndUpdate(id, req.body, { new: true });
         if (!updated) {
             return res.status(404).json({ error: "Recipe not found" });
         }
