@@ -1,17 +1,16 @@
 import mongoose from "mongoose";
 import User from "./user.js";
 const {Schema,model}=mongoose;
-const { ObjectId } = mongoose.Types;
 
 const feedbackSchema = new Schema({
     newfeedback:{
         type: String,
-        //required: true
+        required: true
       },
     userid:{
         type: String,
-        //ref: "User",
-        //required: true
+        ref: "User",
+        required: true
     }
 },{
     timestamps: true
