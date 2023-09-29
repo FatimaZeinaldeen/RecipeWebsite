@@ -17,7 +17,7 @@ recipeRouter.get("/", (req, res) => {
 recipeRouter.get("/all-recipes", getAllRecipes);
 recipeRouter.get("/get-recipe/:id", getRecipe);
 recipeRouter.post("/add-review/:id", addReview);
-recipeRouter.post("/add-recipe", verifyAdmin, addRecipe); //for Admin
+recipeRouter.post("/add-recipe/:id", verifyAdmin, addRecipe); //for Admin
 recipeRouter.put("/update-recipe/:id", verifyAdmin, updateRecipe); //for Admin
 recipeRouter.delete("/delete-recipe/:id", verifyAdmin, deleteRecipe); //for Admin
 

@@ -2,8 +2,10 @@ import Recipe from "../Models/Recipe.js"
 import review from "../Models/review.js";
 //addRecipe(when posting a recipe by the admin)
 export const addRecipe=async(req,res)=>{
+    const {id}=req.params;
     try{
         const recipe=new Recipe(req.body);
+        recipe.user=id;
         await recipe.save(); 
         res.status(201).json({ message: "Recipe successfully added", recipe });
     }catch(error){
