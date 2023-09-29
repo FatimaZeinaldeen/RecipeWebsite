@@ -40,10 +40,10 @@ export const getRecipe=async (req,res)=>{
 
 //updateRecipe(by the Admin)
 export const updateRecipe=async(req,res)=>{
-    const { id }=req.params;
+    const { recipeid }=req.params;
     try{
 
-        const updated = await Recipe.findByIdAndUpdate(id, req.body, { new: true });
+        const updated = await Recipe.findByIdAndUpdate(recipeid, req.body, { new: true });
         if (!updated) {
             return res.status(404).json({ error: "Recipe not found" });
         }
@@ -56,9 +56,9 @@ export const updateRecipe=async(req,res)=>{
 
 //deleteRecipe
 export const deleteRecipe= async (req,res)=>{
-    const { id }=req.params;
+    const { recipeid }=req.params;
     try{
-        const recipetoBeDeleted=await Recipe.findByIdAndDelete(id);
+        const recipetoBeDeleted=await Recipe.findByIdAndDelete(recipeid);
         if (!recipetoBeDeleted) {
             return res.status(404).json({ error: "Recipe not found" });
         }
@@ -85,3 +85,38 @@ export const addReview = async (req,res)=>{
 //204 No Content: The request has been successfully processed, and there is no additional content to send in the response body. used for delete operation but with no including messages like successfully deleted for example, and if you need to include a message use 200 
 //500 Internal Server Error: A generic server error occurred, indicating that something went wrong on the server.
 //404 Not Found: The requested resource could not be found on the server.
+
+
+// {
+//     "name":"recipe3",
+//     "category":"Snack",
+//     "Country":"Leb",
+//     "prep_time":{
+//         "time":3,
+//         "unit":"hour"
+//     },
+//     "serving":3,
+//     "chef_note":"note",
+//     "instructions":[
+//         "ins1",
+//         "ins2",
+//         "ins3"
+//     ],
+//     "ingredients":[
+//         {
+//             "name":"ing1",
+//             "measurement":3,
+//             "unit":"cup/s"
+//         },
+//         {
+//             "name":"ing2",
+//             "measurement":4,
+//             "unit":"tsp"
+//         },
+//         {
+//             "name":"ing3",
+//             "measurement":1,
+//             "unit":"cup/s"
+//         }
+//     ]
+// }
