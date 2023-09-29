@@ -87,36 +87,3 @@ export const addReview = async (req,res)=>{
 //404 Not Found: The requested resource could not be found on the server.
 
 
-// {
-//     "name":"recipe3",
-//     "category":"Snack",
-//     "Country":"Leb",
-//     "prep_time":{
-//         "time":3,
-//         "unit":"hour"
-//     },
-//     "serving":3,
-//     "chef_note":"note",
-//     "instructions":[
-//         "ins1",
-//         "ins2",
-//         "ins3"
-//     ],
-//     "ingredients":[
-//         {
-//             "name":"ing1",
-//             "measurement":3,
-//             "unit":"cup/s"
-//         },
-//         {
-//             "name":"ing2",
-//             "measurement":4,
-//             "unit":"tsp"
-//         },
-//         {
-//             "name":"ing3",
-//             "measurement":1,
-//             "unit":"cup/s"
-//         }
-//     ]
-// }
