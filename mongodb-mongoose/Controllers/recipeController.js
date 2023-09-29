@@ -12,16 +12,15 @@ export const addRecipe=async(req,res)=>{
 }
 
 //getAllRecipes
-export const getAllRecipes=async (req,res)=>{
-  try{
-    const recipes= await Recipe.find();
-    recipes.forEach((recipe)=>{
-        res.status(200).json(recipes);
-    });
-    }catch(error){
-     return res.status(500).json({erroe: error.message});
+export const getAllRecipes = async (req, res) => {
+    try {
+      const recipes = await Recipe.find();
+      const recipeArray = recipes.map((recipe) => recipe.toObject());
+      res.status(200).json(recipeArray);
+    } catch (error) {
+      return res.status(500).json({ error: error.message });
     }
-}
+  };
 
 //getSpecificRecipe
 export const getRecipe=async (req,res)=>{
@@ -40,23 +39,13 @@ export const getRecipe=async (req,res)=>{
 //updateRecipe(by the Admin)
 export const updateRecipe=async(req,res)=>{
     const { id }=req.params;
-    const {name,category,country,prep_time,serving,photo,chef_note,instructions,ingredients}=req.body;//new values
     try{
-        const recipe= await Recipe.findById(id);
-        if (!recipe) {
+
+        const updated = await User.findByIdAndUpdate(id, req.body, { new: true });
+        if (!updated) {
             return res.status(404).json({ error: "Recipe not found" });
         }
-        recipe.name=name;
-        recipe.category=category;
-        recipe.country=country;
-        recipe.prep_time=prep_time;
-        recipe.serving=serving;
-        recipe.photo=photo;
-        recipe.chef_note=chef_note;
-        recipe.instructions=instructions;
-        recipe.ingredients=ingredients;
         
-        const updated= await recipe.save();
         res.status(200).json(updated);
     }catch(error){
         res.status(500).json({ error: error.message });
@@ -68,7 +57,7 @@ export const deleteRecipe= async (req,res)=>{
     const { id }=req.params;
     try{
         const recipetoBeDeleted=await Recipe.findByIdAndDelete(id);
-        if (!recipeToBeDeleted) {
+        if (!recipetoBeDeleted) {
             return res.status(404).json({ error: "Recipe not found" });
         }
         res.status(200).json({message:"Recipe deleted successfully"});// OR use 204 code <<<res.status(204).end();>>>
@@ -79,7 +68,9 @@ export const deleteRecipe= async (req,res)=>{
 //add a Review
 export const addReview = async (req,res)=>{
     try{
+        const { id }=req.params;
         const Review=new review(req.body);
+        Review.userid=id;
         await Review.save();
         res.status(201).json({message:"Review added successfully"});
     }catch(error){
