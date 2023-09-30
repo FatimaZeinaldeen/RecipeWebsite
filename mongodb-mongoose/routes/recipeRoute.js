@@ -6,7 +6,9 @@ import {
   updateRecipe,
   deleteRecipe,
   addReview,
-  getRecipeByIngredients
+  getRecipeByIngredients,
+  searchByCategory,
+  searchByCountry
 } from "../Controllers/recipeController.js";
 import { verifyAdmin } from "../middleware/verifyAdmin.js";
 
@@ -19,8 +21,10 @@ recipeRouter.get("/all-recipes", getAllRecipes);
 recipeRouter.get("/get-recipe/:id", getRecipe);
 recipeRouter.get("/getrecipebyIngredient", getRecipeByIngredients);
 recipeRouter.post("/add-review/:id", addReview);
+recipeRouter.get("/search-category",searchByCategory);
+recipeRouter.get("/search-country",searchByCountry);
 recipeRouter.post("/add-recipe/:id", verifyAdmin, addRecipe); //for Admin
-recipeRouter.put("/update-recipe/:id/:recipeid", verifyAdmin, updateRecipe); //for Admin
-recipeRouter.delete("/delete-recipe/:id/:recipeid",verifyAdmin, deleteRecipe); //for Admin
+recipeRouter.put("/update-recipe/:id", verifyAdmin, updateRecipe); //for Admin
+recipeRouter.delete("/delete-recipe/:id", verifyAdmin, deleteRecipe); //for Admin
 
 export default recipeRouter;
