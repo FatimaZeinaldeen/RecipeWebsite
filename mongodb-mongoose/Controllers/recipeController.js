@@ -111,13 +111,6 @@ export const searchByCountry= async(req,res)=>{
     }
 }
 
-
-//200 OK is used when the server successfully processes a request and returns existing data.
-//201 Created is used when the server successfully processes a request and creates a new resource as a result.
-//204 No Content: The request has been successfully processed, and there is no additional content to send in the response body. used for delete operation but with no including messages like successfully deleted for example, and if you need to include a message use 200 
-//500 Internal Server Error: A generic server error occurred, indicating that something went wrong on the server.
-//404 Not Found: The requested resource could not be found on the server.
-
 //get recipe by ingredients 
 export const getRecipeByIngredients=async (req,res)=>{
     try{
@@ -136,3 +129,12 @@ export const getRecipeByIngredients=async (req,res)=>{
         res.status(500).json({ error: error.message });
     }
 }
+
+
+//200 OK is used when the server successfully processes a request and returns existing data.
+//201 Created is used when the server successfully processes a request and creates a new resource as a result.
+//204 No Content: The request has been successfully processed, and there is no additional content to send in the response body. used for delete operation but with no including messages like successfully deleted for example, and if you need to include a message use 200 
+//500 Internal Server Error: A generic server error occurred, indicating that something went wrong on the server.
+//404 Not Found: The requested resource could not be found on the server.
+
+
