@@ -6,6 +6,7 @@ import {
   updateRecipe,
   deleteRecipe,
   addReview,
+  getRecipeByIngredients
 } from "../Controllers/recipeController.js";
 import { verifyAdmin } from "../middleware/verifyAdmin.js";
 
@@ -16,6 +17,7 @@ recipeRouter.get("/", (req, res) => {
 });
 recipeRouter.get("/all-recipes", getAllRecipes);
 recipeRouter.get("/get-recipe/:id", getRecipe);
+recipeRouter.get("/getrecipebyIngredient", getRecipeByIngredients);
 recipeRouter.post("/add-review/:id", addReview);
 recipeRouter.post("/add-recipe/:id", verifyAdmin, addRecipe); //for Admin
 recipeRouter.put("/update-recipe/:id/:recipeid", verifyAdmin, updateRecipe); //for Admin

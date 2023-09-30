@@ -86,4 +86,21 @@ export const addReview = async (req,res)=>{
 //500 Internal Server Error: A generic server error occurred, indicating that something went wrong on the server.
 //404 Not Found: The requested resource could not be found on the server.
 
-
+//get recipe by ingredients 
+export const getRecipeByIngredients=async (req,res)=>{
+    try{
+        const {ingredients}=req.body;
+        const array = ingredients.split(",").map((ingredient)=>ingredient.trim());
+        const recipes=[];
+        for (const ingredient of array ){
+            const recipe= await Recipe.find({"ingredients.name": ingredient });
+            recipes.push(...recipe);
+        }
+        if(recipes.length==0){
+            res.status(204).json({message:"no recipes found"})
+        }
+        res.status(200).json(recipes);
+    }catch(error){
+        res.status(500).json({ error: error.message });
+    }
+}
