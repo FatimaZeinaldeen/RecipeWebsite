@@ -81,11 +81,6 @@ export const addReview = async (req,res)=>{
 }
 
 
-//searchByCountry
-export const searchByCountry= async(req,res)=>{
-    
-}
-
 
 //200 OK is used when the server successfully processes a request and returns existing data.
 //201 Created is used when the server successfully processes a request and creates a new resource as a result.
