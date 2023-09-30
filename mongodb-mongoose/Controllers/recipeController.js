@@ -80,6 +80,13 @@ export const addReview = async (req,res)=>{
     }
 }
 
+
+//searchByCountry
+export const searchByCountry= async(req,res)=>{
+    
+}
+
+
 //200 OK is used when the server successfully processes a request and returns existing data.
 //201 Created is used when the server successfully processes a request and creates a new resource as a result.
 //204 No Content: The request has been successfully processed, and there is no additional content to send in the response body. used for delete operation but with no including messages like successfully deleted for example, and if you need to include a message use 200 
