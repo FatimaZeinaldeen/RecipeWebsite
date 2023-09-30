@@ -81,6 +81,36 @@ export const addReview = async (req,res)=>{
 }
 
 
+//searchByCategory
+export const searchByCategory= async(req,res)=>{
+    const{category}=req.body;
+    try{
+        const recipes= await Recipe.find({"category":category});
+        const recipeArray = recipes.map((recipe) => recipe.toObject());
+        if(recipeArray.length==0){
+            return res.json("No recipes from this category");
+        }
+        res.status(200).json(recipeArray);
+    }catch(error){
+        res.status(500).json({error:error.message});
+    }
+}
+
+//searchByCountry
+export const searchByCountry= async(req,res)=>{
+    const{Country}=req.body;
+    try{
+        const recipes= await Recipe.find({"Country":Country});
+        const recipeArray = recipes.map((recipe) => recipe.toObject());
+        if(recipeArray.length==0){
+            return res.json("No recipes from this country");
+        }
+        res.status(200).json(recipeArray);
+    }catch(error){
+        res.status(500).json({error:error.message});
+    }
+}
+
 
 //200 OK is used when the server successfully processes a request and returns existing data.
 //201 Created is used when the server successfully processes a request and creates a new resource as a result.
