@@ -1,11 +1,25 @@
 import User from "../Models/user.js";
 import bcrypt from "bcrypt";
+import cloudinary from "cloudinary";
+import multer from "multer";
+
+const storage = multer.memoryStorage();
+const upload = multer({ storage });
 
 //addUser(register)
 export const registerUser = async (req, res) => {
   try {
-    const user = new User(req.body);
-    await user.save();
+    if (req.file) {
+      const result = await cloudinary.uploader.upload(req.file.buffer);
+      const user = new User({
+        ...req.body,
+        userPhoto: result.secure_url,
+      });
+      await user.save();
+    } else {
+      const user = new User(req.body);
+      await user.save();
+    }
     res.status(201).json({ message: "successfully added!" });
   } catch (error) {
     res.status(500).json({ error: error.message });
@@ -31,7 +45,8 @@ export const login = async (req, res) => {
           $set: {
             role: "admin",
           },
-        },{new:true}
+        },
+        { new: true }
       );
       return res.status(200).json({ message: "Login successful" });
     } else {
@@ -58,20 +73,30 @@ export const getUser = async (req, res) => {
 
 //updateAdminProfile
 export const updateProfile = async (req, res) => {
-    const { id } = req.params;
-  
-    try {
-      const updatedUser = await User.findByIdAndUpdate(id, req.body, { new: true });
-  
-      if (!updatedUser) {
-        return res.status(404).json({ error: "User not found" });
-      }
-  
-      res.status(200).json(updatedUser);
-    } catch (error) {
-      res.status(500).json({ error: error.message });
+  const { id } = req.params;
+
+  try {
+    if (req.file) {
+      const result = await cloudinary.uploader.upload(req.file.buffer);
+      const user = await User.findByIdAndUpdate(
+        id,
+        { ...req.body, userPhoto: userPhotoUrl },
+        { new: true }
+      );
+    } else {
+      const updatedUser = await User.findByIdAndUpdate(id, req.body, {
+        new: true,
+      });
     }
-  };
+    if (!updatedUser) {
+      return res.status(404).json({ error: "User not found" });
+    }
+
+    res.status(200).json(updatedUser);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
 
 //UserLogout
 export const userLogout = async (req, res) => {
@@ -82,13 +107,14 @@ export const userLogout = async (req, res) => {
       return res.status(404).json({ error: "User not found" });
     }
     await User.updateOne(
-        { _id: id  },
-        {
-          $set: {
-            role: "user",
-          },
-        },{new:true}
-      );
+      { _id: id },
+      {
+        $set: {
+          role: "user",
+        },
+      },
+      { new: true }
+    );
     res.status(200).json({ message: "User logged out successfully" });
   } catch (error) {
     res.status(500).json({ error: error.message });

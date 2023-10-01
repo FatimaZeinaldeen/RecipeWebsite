@@ -1,5 +1,6 @@
 import express from "express";
 import connectdb from "./config/connectDB.js";
+import "./config/configCloudinary.js";
 import aboutRouter from "./routes/aboutRoute.js";
 import recipeRouter from "./routes/recipeRoute.js";
 import userRouter from "./routes/userRoute.js";
