@@ -10,7 +10,7 @@ const Port = process.env.PORT || 3000;
 const app = express();
 app.use(express.json());
 
-connectdb(process.env.connectionString);
+connectdb(process.env.MONGODB_URI);
 app.get("/", (req, res) => {
   res.send("Hello World!");
 });
