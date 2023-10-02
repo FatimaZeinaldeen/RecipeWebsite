@@ -6,7 +6,7 @@ function Navbar() {
     <nav className={styles.navbar}>
       <ul className={styles.navList}>
         <li className={styles.navItem}>
-          <a href="#" className={styles.navLink}>Home</a>
+          <a href="/" className={styles.navLink}>Home</a>
         </li>
         {/* Add more list items here */}
       </ul>
