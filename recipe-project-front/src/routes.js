@@ -1,26 +1,25 @@
 import React from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-import homepage from './pages/homepage';
-import about from './pages/about';
-import login from './pages/login';
+import Homepage from './pages/homepage';
+import About from './pages/about';
+import Login from './pages/login';
 import Layout from './pages/layout';
-import nopage from './pages/nopage';
-import recipeInfo from './pages/recipeInfo';
-import register from './pages/register';
-export const routes = () => {
+import NoPage from './pages/nopage';
+import RecipeInfo from './pages/recipeInfo';
+import Register from './pages/register';
 
+const appRoutes = () => {
   return (
     <Router>
-        <layout>
-        <Route exact path="/" component={homepage} />
-        <Route path="/about" component={about} />
-        <Route path="/login" component={login} />
-        <Route path="/register" component={register} />
-        <Route path="/recipe/:id" component={recipeInfo} />
-        <Route  component={nopage} />
-      </layout>
-      </Router>
+      <Layout>
+        <Route exact path="/" component={Homepage} />
+        <Route path="/about" component={About} />
+        <Route path="/login" component={Login} />
+        <Route path="/register" component={Register} />
+        <Route path="/recipe/:id" component={RecipeInfo} />
+        <Route component={NoPage} />
+      </Layout>
+    </Router>
   );
-}
-
-
+};
+export default appRoutes;
