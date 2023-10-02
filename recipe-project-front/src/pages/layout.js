@@ -1,9 +1,22 @@
-import React from 'react'
+import React from 'react';
+import Navbar from './Navbar'; // Import your Navbar component
+import Footer from './Footer';
+import { Outlet } from 'react-router-dom' ;
 
-function layout() {
+const Layout = () => {
   return (
-    <div>layout</div>
-  )
+    <div>
+      <header>
+        <Navbar />
+      </header>
+      <main>
+      <Outlet /> {/* Render the content of routed components */}
+      </main>
+      <footer>
+        {/* Footer content goes here */}
+      </footer>
+    </div>
+  );
 }
 
-export default layout
+export default Layout;
