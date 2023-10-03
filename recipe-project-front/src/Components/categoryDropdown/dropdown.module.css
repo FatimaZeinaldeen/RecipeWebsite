@@ -1,0 +1,35 @@
+:root {
+    --mainColor: #31525B;
+    --mainColor75:rgb(49,82,91,75%);
+    --secondaryColor:#FFA101;
+  }
+.dropdown {
+    width:6%;
+    height: 30px;
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid var(--secondaryColor);
+    appearance: none ;
+    border-radius: 5px;
+    background-image:  url(../../../assets/Icons/arrow-down.svg) ;
+    background-repeat: no-repeat;
+    background-position: 65px center;
+    background-color: #F5F5F5;
+    color:var(--mainColor75);    
+}
+.dropdownClicked{
+    background-color: #F5F5F5;
+    color:var(--mainColor75);  
+    border-color:1px solid var(--secondaryColor);
+}
+.options{
+    background-color: #F5F5F5!important;
+    color:var(--mainColor75)!important;  
+    border-color:1px solid var(--secondaryColor)!important;
+}
+.options:hover {
+    background-color: var(--secondaryColor)!important;
+    color: white;
+}
