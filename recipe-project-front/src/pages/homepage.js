@@ -1,9 +1,12 @@
 import React from 'react'
-
-function homepage() {
+import Category from '../Components/categoryDropdown'
+function Home() {
+  console.log("we are in the homepage");
   return (
-    <div>homepage</div>
+    <div>
+        <Category/>
+    </div>
   )
 }
 
-export default homepage
+export default Home
