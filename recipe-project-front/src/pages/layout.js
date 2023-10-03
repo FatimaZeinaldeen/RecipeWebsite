@@ -12,7 +12,6 @@ const Layout = () => {
       <main>
       <Outlet /> {/* Render the content of routed components */}
       </main>
-    
     </React.Fragment>
   );
 }

@@ -1,20 +1,42 @@
 import React from "react";
-
+import styles from "./dropdown.module.css";
 const Category = () => {
-  //enum:["Lunch","Breakfast","Dinner","Dessert","Snack","Drinks","Vegan","Salad"]
   return (
     <div>
-        <p>select a cetgory:</p>
       <form>
-        <select placeholder="Category">
-          <option value="Lunch">Lunch</option>
-          <option value="Breakfast">Breakfast</option>
-          <option value="Dinner">Dinner</option>
-          <option value="Dessert">Dessert</option>
-          <option value="Snack">Snack</option>
-          <option value="Drinks">Drinks</option>
-          <option value="Vegan">Vegan</option>
-          <option value="Salad">Salad</option>
+        <select
+          id="select"
+          name="Category"
+          title="Category"
+          className={styles.dropdown}
+        >
+          <option className={styles.options} value="Category" selected>
+            Category
+          </option>
+          <option className={styles.options} value="Lunch">
+            Lunch
+          </option>
+          <option className={styles.options} value="Breakfast">
+            Breakfast
+          </option>
+          <option className={styles.options} value="Dinner">
+            Dinner
+          </option>
+          <option className={styles.options} value="Dessert">
+            Dessert
+          </option>
+          <option className={styles.options} value="Snack">
+            Snack
+          </option>
+          <option className={styles.options} value="Drinks">
+            Drinks
+          </option>
+          <option className={styles.options} value="Vegan">
+            Vegan
+          </option>
+          <option className={styles.options} value="Salad">
+            Salad
+          </option>
         </select>
       </form>
     </div>
