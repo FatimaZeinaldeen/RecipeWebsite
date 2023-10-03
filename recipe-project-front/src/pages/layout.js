@@ -5,7 +5,7 @@ import { Outlet } from 'react-router-dom' ;
 
 const Layout = () => {
   return (
-    <React.Fragment>
+    <div>
       <header>
      <Navbar />
       </header>
@@ -13,7 +13,7 @@ const Layout = () => {
       <Outlet /> {/* Render the content of routed components */}
       </main>
     
-    </React.Fragment>
+    </div>
   );
 }
 

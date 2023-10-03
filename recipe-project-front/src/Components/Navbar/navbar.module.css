@@ -2,34 +2,68 @@
 /* Styles for the navbar container */
 .navbar {
     display : flex;
-    justify-content: space-between;
+    justify-content: space-between; /* Move the links to the right */
+
     align-items: center ;
-    background-color: #333;
-    color: #fff;
+    background-color: #31525B;
+    color: hsl(0, 0%, 100%);
     padding: 10px 0;
   }
   
   /* Styles for the navigation list */
   .nav-list {
     list-style: none;
-    padding: 0;
-    margin: 0;
+    padding: 10px;
+    margin: 20px;
     display: flex;
   }
-  
-  /* Styles for individual list items */
-  .nav-item {
-    margin-right: 20px;
+ 
+  .headerLeft {
+    display: flex;
+    align-items: center;
+    order: 0; /* Change the order to 1 to move it to the beginning */
+    justify-content: space-between;
   }
+  
+  /* Styles for the website name */
+  .websiteName {
+    font-size: 24px;
+    font-weight: bold;
+    color: #fff;
+    margin-left: 20px;
+    text-decoration: none;
+  }
+  .headermiddle{
+    display: flex;
+    align-items: center;
+    order: 0; /* Change the order to 1 to move it to the beginning */
+    justify-content: space-between;
+
+  }
+  /* Styles for links in the navbar */
+  .navItem a {
+    text-decoration: none;
+    margin-right: 40px;
+    color: #ffffff;  
+  }
+  .navItem a:hover {
+    color: #FFA101; /* Change the color when hovering over any link to yellow */
+  }
+  
+  /* Add active effect (when clicking) */
+  .navItem a:active {
+    color: #FFA101; /* Change the color when clicking on any link to orange */
+  }
+  
   
   /* Styles for links in the navbar */
   .nav-links {
     list-style: none;
-    display: flex;
+    display: inline-block;
     margin: 0;
-    padding: 0;
-    text-decoration: none;
-    color: #fff;
+    padding: 8px;
+    text-decoration-color: #ffffff;
+    color: #ffffff;
   }
   
   /* Media query for responsive design */
@@ -43,4 +77,4 @@
       margin-bottom: 10px;
     }
   }
-  
+
