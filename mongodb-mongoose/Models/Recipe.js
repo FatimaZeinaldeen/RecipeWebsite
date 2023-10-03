@@ -42,7 +42,7 @@ const recipeSchema= new Schema({
         type: Number,
         default: null
     },
-    photo:Buffer,//imageBinaryData = fs.readFileSync(imagePath)
+    photo:String,
     chef_note:{
         type:String,
         default:null

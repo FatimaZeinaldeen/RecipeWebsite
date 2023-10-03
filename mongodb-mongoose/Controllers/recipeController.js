@@ -1,12 +1,28 @@
 import Recipe from "../Models/Recipe.js";
 import review from "../Models/review.js";
+import cloudinary from "cloudinary";
+import multer from "multer";
+
+const storage = multer.memoryStorage();
+const upload = multer({ storage });
+
 //addRecipe(when posting a recipe by the admin)
 export const addRecipe = async (req, res) => {
   const { id } = req.params;
   try {
-    const recipe = new Recipe(req.body);
-    recipe.user = id;
-    await recipe.save();
+    if (req.file) {
+      const result = await cloudinary.uploader.upload(req.file.buffer);
+      const recipe = new Recipe({
+        ...req.body,
+        user: id,
+        recipePhoto: result.secure_url,
+      });
+      await recipe.save();
+    } else {
+      const recipe = new Recipe(req.body);
+      recipe.user = id;
+      await recipe.save();
+    }
     res.status(201).json({ message: "Recipe successfully added", recipe });
   } catch (error) {
     res.status(500).json({ error: error.message });
@@ -42,9 +58,22 @@ export const getRecipe = async (req, res) => {
 export const updateRecipe = async (req, res) => {
   const { recipeid } = req.params;
   try {
-    const updated = await Recipe.findByIdAndUpdate(recipeid, req.body, {
-      new: true,
-    });
+    if (req.file) {
+      const result = await cloudinary.uploader.upload(req.file.buffer);
+      const updated = await Recipe.findByIdAndUpdate(
+        recipeid,
+        {
+          ...req.body,
+          recipePhoto: result.secure_url, // Update the recipe photo URL
+        },
+        { new: true }
+      );
+    } else {
+      const updated = await Recipe.findByIdAndUpdate(recipeid, req.body, {
+        new: true,
+      });
+    }
+
     if (!updated) {
       return res.status(404).json({ error: "Recipe not found" });
     }
@@ -122,7 +151,7 @@ export const getRecipeByIngredients = async (req, res) => {
       recipes.push(...recipe);
     }
 
-    const filtered=filterRecipes(recipes);
+    const filtered = filterRecipes(recipes);
 
     if (filtered.length == 0) {
       return res.status(200).json({ message: "No recipes found" });
@@ -139,15 +168,15 @@ export const getRecipeByIngredients = async (req, res) => {
 //500 Internal Server Error: A generic server error occurred, indicating that something went wrong on the server.
 //404 Not Found: The requested resource could not be found on the server.
 function filterRecipes(recipes) {
-    const uniqueRecipeIds = new Set();
-    const uniqueRecipes = [];
-  
-    for (const recipe of recipes) {
-      if (!uniqueRecipeIds.has(recipe._id.toString())) {
-        uniqueRecipeIds.add(recipe._id.toString()); 
-        uniqueRecipes.push(recipe);
-      }
+  const uniqueRecipeIds = new Set();
+  const uniqueRecipes = [];
+
+  for (const recipe of recipes) {
+    if (!uniqueRecipeIds.has(recipe._id.toString())) {
+      uniqueRecipeIds.add(recipe._id.toString());
+      uniqueRecipes.push(recipe);
     }
-  
-    return uniqueRecipes;
   }
+
+  return uniqueRecipes;
+}
