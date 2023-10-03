@@ -1,0 +1,33 @@
+.feedback-item {
+    display: flex;
+    margin-bottom: 20px;
+  }
+  
+  .user-profile img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+  }
+  
+  .user-info {
+    flex-grow: 1;
+  }
+  
+  .user-name {
+    font-weight: bold;
+  }
+  
+  .feedback-content {
+    margin-top: 5px;
+  }
+  
+  /* AboutUs page styles */
+  h1 {
+    font-size: 24px;
+  }
+  
+  p {
+    font-size: 16px;
+    line-height: 1.5;
+  }
