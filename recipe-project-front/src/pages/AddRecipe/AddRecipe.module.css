@@ -1,0 +1,12 @@
+.h1{
+    color:var(--secondaryColor);
+    font-family:var(--headerFont1);
+}
+.h2{
+    color:var(--secondaryColor);
+    font-family:var(--headerFont2);
+}
+.h3{
+    color:var(--secondaryColor);
+    font-family:var(--headerFont3);
+}
