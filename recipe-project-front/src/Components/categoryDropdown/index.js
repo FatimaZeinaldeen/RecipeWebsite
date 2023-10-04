@@ -1,6 +1,12 @@
 import React from "react";
+import { useState } from "react";
 import styles from "./dropdown.module.css";
 const Category = () => {
+  const [isClicked, setIsClicked] = useState(false);
+
+  const handleDropdownClick = () => {
+    setIsClicked(true);    
+  };
   return (
     <div>
       <form>
@@ -8,9 +14,10 @@ const Category = () => {
           id="select"
           name="Category"
           title="Category"
-          className={styles.dropdown}
+          className={`${styles.dropdown} ${isClicked ? styles.clicked : ""}`}
+          onClick={handleDropdownClick}
         >
-          <option className={styles.options} value="Category" selected>
+          <option className={styles.options} id="category" value="Category" selected hidden >
             Category
           </option>
           <option className={styles.options} value="Lunch">
