@@ -6,7 +6,7 @@
     --textFont: Andada Pro;
   }
 .dropdown  {
-    width:6%;
+    width:10%;
     height: 30px;
     padding: 5px;
     display: flex;
@@ -17,10 +17,12 @@
     border-radius: 5px;
     background-image:  url(../../assets/Icons/arrow-down.svg) ;
     background-repeat: no-repeat;
-    background-position: 65px center;
+    background-position: 95% center;
     background-color: #F5F5F5;
     color:var(--mainColor75); 
-    font: var(--textFont);
+    padding-left: 10px;
+    padding-right: 25px;
+    font:var(--textFont);
 }
 .clicked:focus-visible{
     outline: none;
