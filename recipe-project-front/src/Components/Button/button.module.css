@@ -1,0 +1,7 @@
+.button{
+    background-color: var(--secondaryColor);
+    color:white;
+    width:fit-content;
+    padding:5px;
+    
+}

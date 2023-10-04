@@ -1,12 +1,82 @@
+.Container{
+    margin: 100px 60px 60px 60px;
+    border: 2px solid var(--secondaryColor);
+    box-shadow: 2px 2px 10px var(--secondaryColor);
+    border-radius: 20px;
+}
 .h1{
     color:var(--secondaryColor);
-    font-family:var(--headerFont1);
-}
-.h2{
-    color:var(--secondaryColor);
-    font-family:var(--headerFont2);
-}
-.h3{
-    color:var(--secondaryColor);
     font-family:var(--headerFont3);
+    text-align: start;
+    margin-left:3%;
+}
+.mainForm{
+    display:flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin-left:3%;
+}
+.subForms{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.Labels{
+    color:var(--mainColor);
+    font-family: var(--textFont);
+    margin-right: 10px;
+}
+.Textbox{
+    background-color: var(--graycolor);
+    border: 1px solid var(--secondaryColor);
+    border-radius: 5px;
+    height:20px;
+    margin-right:10px;
+    padding:5px;
+}
+.numTextbox{
+    background-color: var(--graycolor);
+    border: 1px solid var(--secondaryColor);
+    border-radius: 5px;
+    height:20px;
+    margin-right:10px;
+    width:40px;
+    padding:5px;
+}
+.numTextbox:focus{
+    outline: none;
+    outline-color: var(--secondaryColor);
+    caret-color: var(--secondaryColor);
+}
+.Textbox:focus{
+    outline: none;
+    outline-color: var(--secondaryColor);
+    caret-color: var(--secondaryColor);
+}
+.IndexedLabel{
+    color:var(--secondaryColor);
+}
+.Dropdowns{
+    height: 30px;
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid var(--secondaryColor);
+    appearance: none ;
+    border-radius: 5px;
+    background-image:  url(../../assets/Icons/arrow-down.svg) ;
+    background-repeat: no-repeat;
+    background-position: 95% center;
+    background-color: #F5F5F5;
+    color:var(--mainColor75); 
+    padding-left: 10px;
+    padding-right: 25px;
+    font:var(--textFont);
+    margin-right: 10px;
+}
+.Dropdowns:focus-visible{
+    outline: none;
+    outline-color: var(--secondaryColor);
 }
