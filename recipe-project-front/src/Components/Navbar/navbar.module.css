@@ -13,7 +13,7 @@
     position: fixed;
     width: 100%;
     margin-bottom: 0px;
-    height: 30px;
+    height: 50px;
     top: 0%;
     transition: background-color 0.4s ease-in-out;
   }
@@ -61,8 +61,16 @@
   .navbar.scrolled .navItem a{
     color :#31525B;
   }
+  .loginIcon:hover{
+    color:#FFA101;
+  }
   .navItem a:hover {
     color: #FFA101; /* Change the color when hovering over any link to yellow */
+  }
+  .navItem{
+    display:flex;
+    justify-content: center;
+    align-items: center;
   }
   
   /* Add active effect (when clicking) */
@@ -88,7 +96,12 @@
     text-decoration-color: #ffffff;
     color: #ffffff;
   }
-  
+  .loginLink{
+    display:flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
   /* Media query for responsive design */
   @media (max-width: 768px) {
     .nav-list {

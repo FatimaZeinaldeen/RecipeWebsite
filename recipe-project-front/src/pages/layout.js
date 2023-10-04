@@ -9,7 +9,7 @@ const Layout = () => {
       <header>
      <Navbar />
       </header>
-      <main Style="margin-top:60px;">
+      <main Style="margin-top:80px;">
       <Outlet /> {/* Render the content of routed components */}
       </main>
       <footer>
