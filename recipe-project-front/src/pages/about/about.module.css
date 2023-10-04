@@ -1,6 +1,38 @@
-.aboutUs{
-   color: #31525B;
+.h2aboutUs{
+   color: var(--mainColor);
    text-align: left;
    font-size: 33px;
-   padding: 20px 5px 10px 20px; /*t r b l*/
+   font-family: var(--titleFont);
+   padding: 30px 5px 5px 50px; /*t r b l*/
+}
+.paragAboutus{
+    margin-left: 5%;
+    margin-right: 5%;
+    text-align: left;
+    font-family: var(--textFont);
+    font-size: 20px;
+    font-weight: bold;
+    color: var(--mainColor);
+}
+.h2peoplesthought{
+    color: var(--mainColor);
+   text-align: left;
+   font-size: 33px;
+   font-family: var(--titleFont);
+   padding: 20px 5px 5px 50px;
+}
+.Pabovefeedback{
+    font-family:var(--headerFont1);
+    text-align: left;
+    font-size: 30px;
+    color: var(--secondaryColor);
+    font-weight:500;
+    margin-left: 10%;
+    margin-bottom: 10px;
+}
+.Punderfeedback{
+    font-family: var(--headerFont1);
+    text-align: center;
+    font-size: 25px;
+    color: var(--mainColor75);
 }

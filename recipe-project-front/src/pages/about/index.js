@@ -19,11 +19,13 @@ function About() {
   };
   return (
     <div>
-        <h2 className={styles.aboutUs}>About Us:</h2>
-        <p>"Embark with culinary journey with our recipe website, where mouthwatering creations, gourmet secrets, and epicurean inspiration converge to transform your home cooking into a gourmet masterpiece"</p>
-        <h2>People's thoughts:</h2>
+        <h2 className={styles.h2aboutUs}>About Us:</h2>
+        <p className={styles.paragAboutus} >"Embark with culinary journey with our recipe website, where mouthwatering creations, gourmet secrets, and epicurean inspiration converge to transform your home cooking into a gourmet masterpiece"</p>
+        <h2 className={styles.h2peoplesthought} >People's thoughts:</h2>
         <FeedbackDisplay feedbackData={feedbackData} />
+        <p className={styles.Pabovefeedback}>Tell Us What You Think!</p>
         <FeedbackForm onFeedbackSubmit={handleFeedbackSubmit} />
+        <p className={styles.Punderfeedback}>Your feedback is the compass that guides us toward improvement.</p>
 
     </div>
   )
