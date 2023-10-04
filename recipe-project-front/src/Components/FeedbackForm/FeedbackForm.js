@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import "./FeedbackDisplay.module.css";
+import "./FeedbackForm.module.css";
 
 function FeedbackForm({ onFeedbackSubmit }) {
   const [feedback, setFeedback] = useState(''); //setFeedback is the setter function that allows you to update the feedback state. SO when the user types something into an input field, you can call setFeedback(newValue) to update the feedback state with the new value

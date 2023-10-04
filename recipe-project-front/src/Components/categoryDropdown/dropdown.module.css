@@ -13,7 +13,7 @@
     border: 1px solid var(--secondaryColor);
     appearance: none ;
     border-radius: 5px;
-    background-image:  url(../../../assets/Icons/arrow-down.svg) ;
+    background-image:  url(../../assets/Icons/arrow-down.svg) ;
     background-repeat: no-repeat;
     background-position: 65px center;
     background-color: #F5F5F5;

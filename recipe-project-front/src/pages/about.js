@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import FeedbackForm from '../Components/FeedbackForm'; 
-import FeedbackDisplay from '../Components/FeedbackDisplay';
+import FeedbackForm from '../Components/FeedbackForm/FeedbackForm.js'; 
+import FeedbackDisplay from '../Components/FeedbackDisplay/FeedbackDisplay.js';
 
-function about() {
+function About() {
   const [feedbackData, setFeedbackData] = useState([]);
 
   const handleFeedbackSubmit = (newFeedback) => {
@@ -27,4 +27,4 @@ function about() {
   )
 }
 
-export default about
+export default About
