@@ -3,13 +3,24 @@
 .navbar {
     display : flex;
     justify-content: space-between; /* Move the links to the right */
-
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
     align-items: center ;
+    box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.3); /* Add a box shadow */
     background-color: #31525B;
     color: hsl(0, 0%, 100%);
-    padding: 10px 0;
+    padding: 5px 0;
+    position: fixed;
+    width: 100%;
+    margin-bottom: 0px;
+    height: 30px;
+    top: 0%;
+    transition: background-color 0.4s ease-in-out;
   }
-  
+  .navbar.scrolled{
+    background-color: #FFA101;
+    opacity: 0.98;
+  }
   /* Styles for the navigation list */
   .nav-list {
     list-style: none;
@@ -27,7 +38,7 @@
   
   /* Styles for the website name */
   .websiteName {
-    font-size: 24px;
+    font-size: 30px;
     font-weight: bold;
     color: #fff;
     margin-left: 20px;
@@ -45,6 +56,10 @@
     text-decoration: none;
     margin-right: 40px;
     color: #ffffff;  
+    transition: color 0.4s ease-in-out;
+  }
+  .navbar.scrolled .navItem a{
+    color :#31525B;
   }
   .navItem a:hover {
     color: #FFA101; /* Change the color when hovering over any link to yellow */
@@ -54,7 +69,15 @@
   .navItem a:active {
     color: #FFA101; /* Change the color when clicking on any link to orange */
   }
-  
+  .navLink a:visited {
+  color: #FFA101;
+}
+/* Define the activeLink class for active links */
+.activeLink {
+  color: #FFA101; /* Set the color to orange for active links */
+}
+
+
   
   /* Styles for links in the navbar */
   .nav-links {
