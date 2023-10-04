@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import FeedbackForm from '../Components/FeedbackForm/FeedbackForm.js'; 
-import FeedbackDisplay from '../Components/FeedbackDisplay/FeedbackDisplay.js';
+import FeedbackForm from '../../Components/FeedbackForm/FeedbackForm.js'; 
+import FeedbackDisplay from '../../Components/FeedbackDisplay/FeedbackDisplay.js';
+import styles from './about.module.css';
 
 function About() {
   const [feedbackData, setFeedbackData] = useState([]);
@@ -18,11 +19,12 @@ function About() {
   };
   return (
     <div>
-        <h2>About Us:</h2>
+        <h2 className={styles.aboutUs}>About Us:</h2>
         <p>"Embark with culinary journey with our recipe website, where mouthwatering creations, gourmet secrets, and epicurean inspiration converge to transform your home cooking into a gourmet masterpiece"</p>
         <h2>People's thoughts:</h2>
-        <FeedbackForm onFeedbackSubmit={handleFeedbackSubmit} />
         <FeedbackDisplay feedbackData={feedbackData} />
+        <FeedbackForm onFeedbackSubmit={handleFeedbackSubmit} />
+
     </div>
   )
 }
