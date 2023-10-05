@@ -21,6 +21,7 @@
     background-color: #F5F5F5;
     color:var(--mainColor75); 
     font: var(--textFont);
+    margin-bottom: 10px;
 }
 .clicked:focus-visible{
     outline: none;

@@ -2,22 +2,28 @@ import React from "react";
 import styles from "./AddRecipe.module.css";
 import Countries from "../../Components/CountryDropDown";
 import Category from "../../Components/categoryDropdown";
+import Button from "../../Components/Button";
+import { Link } from "react-router-dom";
+import Textbox from "../../Components/Textbox";
+import NumBox from "../../Components/NumBox";
+import Label from "../../Components/Label";
+import Dropdown from "../../Components/Dropdown"
 const AddRecipe = () => {
+  const prepTime=["min","hour"];
+  const measurments=["cup/s", "tsp", "tbsp", "L", "mL", "gr", "Kg"];
   return (
     <div className={styles.Container}>
       <h1 className={styles.h1}>Let’s make a culinary masterpiece</h1>
       <form method="POST" className={styles.mainForm}>
+        <div className={styles.leftForm}>
         <div className={styles.subForms}>
-          <p className={styles.Labels}>Recipe Name:</p>
-          <input type="text" className={styles.Textbox} />
+          <Label text="Recipe Name:" />
+          <Textbox/>
         </div>
         <div className={styles.subForms}>
-          <p className={styles.Labels}>Preparation time:</p>
-          <input type="text" className={styles.numTextbox} />
-          <select className={styles.Dropdowns}>
-            <option value="min">min</option>
-            <option value="hour">hour</option>
-          </select>
+        <Label text="Preparation Time:" />
+          <NumBox/>
+          <Dropdown elements={prepTime}/>
         </div>
         <div className={styles.subForms}>
           <Countries />
@@ -26,39 +32,38 @@ const AddRecipe = () => {
           <Category />
         </div>
         <div className={styles.subForms}>
-          <p className={styles.Labels}>Servings:</p>
-          <input type="text" className={styles.numTextbox} />
+        <Label text="Serving:" />
+          <NumBox/>
           <p className={styles.IndexedLabel}>/Recipe</p>
         </div>
         <div className={styles.subForms}>
-          <p className={styles.Labels}>Ingredients:</p>
-          <input type="text" className={styles.Textbox} />
-          <p className={styles.Labels}>Measurement:</p>
-          <input type="text" className={styles.numTextbox} />
-          <select className={styles.Dropdowns}>
-            <option value="cup/s">cup/s</option>
-            <option value="tsp">tsp</option>
-            <option value="tbsp">tsbp</option>
-            <option value="L">L</option>
-            <option value="mL">mL</option>
-            <option value="gr">gr</option>
-            <option value="Kg">Kg</option>
-          </select>
-          <button>Add</button>
+        <Label text="Ingredient:" />
+          <Textbox/>
+          <Label text="Measurement:" />
+          <NumBox/>
+          <Dropdown elements={measurments}/>
+          <Button text="Add"/>
           <div>{/* to display ingredients */}</div>
         </div>
         <div className={styles.subForms}>
-          <p className={styles.Labels}>Instructions:</p>
-          <input type="text" className={styles.Textbox} />
-          <button>Add</button>
-          <div>{/* list of instructions */}</div>
+        <Label text="Chef's Notes:" />
+          <Textbox/>
         </div>
         <div className={styles.subForms}>
-          <p className={styles.Labels}>Chef's Notes:</p>
-          <input type="text" className={styles.Textbox} />
+        <Button text="Share your Recipe!"/>
+        <Link to="/" className={styles.CancelButton}>
+          Cancel
+        </Link>
         </div>
-        <button>Share your Recipe!</button>
-        <button>Cancel</button>
+        </div>
+        <div className={styles.rightForm}>
+        <div className={styles.subForms}>
+        <Label text="Instructions:" />
+          <Textbox/>
+          <Button text="Add"/>
+          <div>{/* list of instructions */}</div>
+        </div>
+        </div>
       </form>
     </div>
   );

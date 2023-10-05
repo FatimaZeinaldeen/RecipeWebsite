@@ -1,0 +1,23 @@
+.Dropdowns{
+    height: 30px;
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid var(--secondaryColor);
+    appearance: none ;
+    border-radius: 5px;
+    background-image:  url(../../assets/Icons/arrow-down.svg) ;
+    background-repeat: no-repeat;
+    background-position: 95% center;
+    background-color: #F5F5F5;
+    color:var(--mainColor75); 
+    padding-left: 10px;
+    padding-right: 25px;
+    font:var(--textFont);
+    margin-right: 10px;
+}
+.Dropdowns:focus-visible{
+    outline: none;
+    outline-color: var(--secondaryColor);
+}
