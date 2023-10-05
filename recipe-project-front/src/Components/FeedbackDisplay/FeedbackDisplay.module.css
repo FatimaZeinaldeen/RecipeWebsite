@@ -1,7 +1,7 @@
 .allfeedbacks{
   background-color: var(--graycolor);
-  width: 80%;
-  height: 500px;
+  width: 92%;
+  height: 600px;
   overflow: auto;
   margin-left: auto;
   margin-right: auto;
@@ -23,7 +23,7 @@
       border-radius: 40px;
       background-color: gray;
       overflow: hidden;
-      box-shadow: 2px 2px 3px var(--mainColor);
+      box-shadow: 1px 1px 5px var(--secondaryColor);
   }
   .userprofile svg {
     width: 100%;
