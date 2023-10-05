@@ -4,8 +4,7 @@ const {Schema,model}=mongoose;
 
 const feedbackSchema = new Schema({
     username:{
-        type:String,
-        required:true
+        type:String
     },
     userPhoto:{type:String},
     newfeedback:{

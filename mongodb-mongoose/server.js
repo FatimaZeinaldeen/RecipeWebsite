@@ -1,4 +1,5 @@
 import express from "express";
+import cors from "cors";
 import connectdb from "./config/connectDB.js";
 import "./config/configCloudinary.js";
 import aboutRouter from "./routes/aboutRoute.js";
@@ -9,6 +10,11 @@ dotenv.config();
 
 const Port = process.env.PORT || 3000;
 const app = express();
+app.use(cors({
+  origin: "http://localhost:3001",
+  methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+}));
+
 app.use(express.json());
 
 connectdb(process.env.MONGODB_URI);
