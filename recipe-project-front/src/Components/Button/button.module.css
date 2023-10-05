@@ -1,7 +1,17 @@
 .button{
     background-color: var(--secondaryColor);
     color:white;
-    width:fit-content;
-    padding:5px;
-    
+    border:1px solid var(--secondaryColor);
+    border-radius: 20px;
+    width:max-content;
+    padding:10px;
+    font-family: var(--textFont);
+    font-weight: 550;
+    font-size: medium;
+}
+.button:hover{
+    background-color: #ffa101d1;
+}
+.button:active{
+    background-color: #ffa101c1;
 }

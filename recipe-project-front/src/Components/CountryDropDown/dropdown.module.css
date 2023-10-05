@@ -23,6 +23,7 @@
     padding-left: 10px;
     padding-right: 25px;
     font:var(--textFont);
+    margin-bottom: 10px;
 }
 .clicked:focus-visible{
     outline: none;

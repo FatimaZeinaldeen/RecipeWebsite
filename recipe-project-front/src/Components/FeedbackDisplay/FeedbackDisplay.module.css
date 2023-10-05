@@ -1,33 +1,70 @@
-.feedback-item {
+.allfeedbacks{
+  background-color: var(--graycolor);
+  width: 92%;
+  height: 600px;
+  overflow: auto;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 25px;
+  margin-bottom:5%;
+  margin-top: 4%;
+  box-shadow: 1px 1px 3px var(--mainColor);
+  border-radius: 5px;
+}
+
+.feedbackitem {
     display: flex;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
+    
+  }
+  .userprofile{
+      width: 65px;
+      height: 65px;
+      border-radius: 40px;
+      background-color: gray;
+      overflow: hidden;
+      box-shadow: 1px 1px 5px var(--secondaryColor);
+  }
+  .userprofile img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
   
-  .user-profile img {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
+  .userinfo {
+    /* flex-grow: 1; */
+    background-color: var(--textArea);
+    border-radius: 28px;
+    margin-left: 35px;
+    min-width: 12%;
+    max-width: 70%;
+    width: auto;
+    white-space: pre-wrap;
+    min-height: 80px;
+    height: auto;
+    
+  }
+  .userinfo:hover{
+    box-shadow: 3px 3px 5px 0px rgba(0, 0, 0, 0.5);
+  }
+  
+  .username {
+    font-size: 17px;
+    font-family: var(--titleFont);
+    font-weight: bold;
+    text-align: left;
+    color: var(--mainColor);
+    margin-left: 30px;
+    margin-bottom: -2px;
+  }
+  
+  .feedbackcontent {
+    font-family: var(--textFont);
+    font-size: 14px;
+    color: var(--mainColor);
+    text-align: left;
+    word-wrap: break-word;
+    margin-left: 30px;
     margin-right: 10px;
   }
   
-  .user-info {
-    flex-grow: 1;
-  }
-  
-  .user-name {
-    font-weight: bold;
-  }
-  
-  .feedback-content {
-    margin-top: 5px;
-  }
-  
-  /* AboutUs page styles */
-  h1 {
-    font-size: 24px;
-  }
-  
-  p {
-    font-size: 16px;
-    line-height: 1.5;
-  }

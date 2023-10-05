@@ -1,17 +1,29 @@
 import React from 'react';
-import "./FeedbackDisplay.module.css";
-
-function FeedbackDisplay({ feedbackData }) {
+import styles from "./FeedbackDisplay.module.css";
+import userPhoto from "../../assets/photos/feedback&reviewsuserPhoto.jpg"
+function FeedbackDisplay({ feedbackData, feedbackData1 }) {
   return (
-    <div>
+    <div className={styles.allfeedbacks}>
       {feedbackData.map((feedback) => (
-        <div key={feedback.id} className="feedback-item">
-          <div className="user-profile">
-            <img src={feedback.userPhoto} alt={`${feedback.userName}'s profile`} />
+        <div key={feedback.id} className={styles.feedbackitem}>
+          <div className={styles.userprofile}>
+           <img alt='userphoto' src={userPhoto}></img>
           </div>
-          <div className="user-info">
-            <p className="user-name">{feedback.userName}</p>
-            <p className="feedback-content">{feedback.feedbackContent}</p>
+          <div className={styles.userinfo}>
+            <p className={styles.username}>{feedback.username}</p>
+            <p className={styles.feedbackcontent}>{feedback.newfeedback}</p>
+          </div>
+        </div>
+      ))}
+
+      {feedbackData1.map((feedback) => (
+        <div key={feedback.id} className={styles.feedbackitem}>
+          <div className={styles.userprofile}>
+           <img alt='userphoto' src={userPhoto}></img>
+          </div>
+          <div className={styles.userinfo}>
+            <p className={styles.username}>{feedback.userName}</p>
+            <p className={styles.feedbackcontent}>{feedback.feedbackContent}</p>
           </div>
         </div>
       ))}

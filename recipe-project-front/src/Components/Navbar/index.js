@@ -59,8 +59,8 @@ function Navbar() {
               Home
             </Link>
             <Link
-              to="/about"
-              className={`${styles.navLink} ${isActive("/about")}`}
+              to="/About-Us/getAllfeedbacks"
+              className={`${styles.navLink} ${isActive("/About-Us/getAllfeedbacks")}`}
             >
               About
             </Link>

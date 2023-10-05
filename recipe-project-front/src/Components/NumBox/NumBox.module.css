@@ -1,0 +1,15 @@
+.Numbox{
+    background-color: var(--graycolor);
+    border: 1px solid var(--secondaryColor);
+    border-radius: 5px;
+    height:20px;
+    margin-right:10px;
+    padding:5px;
+    width: 40px;
+    color:var(--mainColor);
+}
+.Numbox:focus{
+    outline: none;
+    outline-color: var(--secondaryColor);
+    caret-color: var(--secondaryColor);
+}
