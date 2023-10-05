@@ -1,4 +1,5 @@
 import feedback from "../Models/feedback.js";
+import User from "../Models/user.js"
 
 
 export const addFeedback= async (req,res)=>{
@@ -8,7 +9,12 @@ export const addFeedback= async (req,res)=>{
         
         console.log(newfeedback);
         console.log(id);
+        const user= await User.find({id:id});
+        const username=user.fullName;
+        const userphoto=user.userPhoto;
         const feedback1=new feedback({
+            username:username,
+            userPhoto:userphoto,
             newfeedback:newfeedback,
             userid:id,
         });
@@ -17,4 +23,13 @@ export const addFeedback= async (req,res)=>{
     }catch(error){
         res.status(500).json({ error: error.message });
     }
-}
+};
+export const getAllfeedbacks = async (req, res) => {
+    try {
+      const feedbacks = await feedback.find();
+      const feedbacksArray = feedbacks.map((feedback) => feedback.toObject());
+      res.status(200).json(feedbacksArray);
+    } catch (error) {
+      return res.status(500).json({ error: error.message });
+    }
+  };

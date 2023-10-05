@@ -3,6 +3,11 @@ import User from "./user.js";
 const {Schema,model}=mongoose;
 
 const feedbackSchema = new Schema({
+    username:{
+        type:String,
+        required:true
+    },
+    userPhoto:{type:String},
     newfeedback:{
         type: String,
         required: true
