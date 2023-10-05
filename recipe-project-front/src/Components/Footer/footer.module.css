@@ -10,7 +10,7 @@
   padding: 10px 0;
   width: 100%;
   margin-top: 10px;
-  height: 25px;
+  height: 27px;
   bottom: 0;
   transition: background-color 0.4s ease-in-out;
 }
@@ -27,7 +27,8 @@
   justify-content: space-between;
 }
 .websiteName {
-  font-size: 24px;
+  font-size: 23px;
+  font-family: var(--headerFont3);
   font-weight: bold;
   color: #fff;
   margin-left: 20px;

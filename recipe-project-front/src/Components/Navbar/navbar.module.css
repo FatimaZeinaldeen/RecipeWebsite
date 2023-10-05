@@ -38,10 +38,12 @@
   
   /* Styles for the website name */
   .websiteName {
-    font-size: 30px;
+    font-size: 40px;
+    font-family: var(--headerFont3);
     font-weight: bold;
     color: #fff;
-    margin-left: 20px;
+    margin-left: 620px;
+    margin-top: 20px;
     text-decoration: none;
   }
   .headermiddle{
@@ -97,6 +99,7 @@
     color: #ffffff;
   }
   .loginLink{
+    color: #FFA101;
     display:flex;
     flex-direction: row;
     justify-content: center;
