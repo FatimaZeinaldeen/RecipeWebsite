@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import styles from "./dropdown.module.css";
-function Countries() {
+function Countries(props) {
   const [isClicked, setIsClicked] = useState(false);
   const handleDropdownClick = () => {
     setIsClicked(true);
@@ -17,6 +17,11 @@ function Countries() {
         country.split("/")[1].split(".")[0].split("-")[1]
     )
   })
+  const handleCountryChange = (e) => {
+    // Get the selected value and pass it to the parent component
+    const selectedCountry = e.target.value;
+    props.onSelect(selectedCountry);
+  };
   return (
     <div>
       <form>
@@ -26,6 +31,7 @@ function Countries() {
           title="Country"
           className={`${styles.dropdown} ${isClicked ? styles.clicked : ""}`}
           onClick={handleDropdownClick}
+          onChange={handleCountryChange}
         >
           <option className={styles.options} value="Category" hidden>
             Country

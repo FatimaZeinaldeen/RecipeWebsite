@@ -1,11 +1,14 @@
-import React from 'react'
-import styles from "./Textbox.module.css"
-function Textbox() {
+import React from "react";
+import styles from "./Textbox.module.css";
+function Textbox({ value, onChange }) {
   return (
-    <div>
-        <input type="text" className={styles.Textbox} />
-    </div>
-  )
+    <input
+      type="text"
+      value={value}
+      onChange={onChange}
+      className={styles.Textbox}
+    />
+  );
 }
 
-export default Textbox
+export default Textbox;

@@ -1,11 +1,15 @@
 import React from "react";
 import { useState } from "react";
 import styles from "./dropdown.module.css";
-const Category = () => {
+const Category = (props) => {
   const [isClicked, setIsClicked] = useState(false);
 
   const handleDropdownClick = () => {
     setIsClicked(true);    
+  };
+  const handleCategoryChange = (e) => {
+    const selectedCategory = e.target.value;
+    props.onSelect(selectedCategory);
   };
   return (
     <div>
@@ -16,6 +20,7 @@ const Category = () => {
           title="Category"
           className={`${styles.dropdown} ${isClicked ? styles.clicked : ""}`}
           onClick={handleDropdownClick}
+          onChange={handleCategoryChange}
         >
           <option className={styles.options} id="category" value="Category" selected hidden >
             Category
