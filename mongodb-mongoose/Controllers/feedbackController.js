@@ -9,11 +9,11 @@ export const addFeedback= async (req,res)=>{
         
         console.log(newfeedback);
         console.log(id);
-        const user= await User.find({id:id});
-        const username=user.fullName;
-        const userphoto=user.userPhoto;
+        const user= await User.find({_id:id});
+        const userName=user[0].fullName;
+        const userphoto=user[0].userPhoto;
         const feedback1=new feedback({
-            username:username,
+            username:userName,
             userPhoto:userphoto,
             newfeedback:newfeedback,
             userid:id,
