@@ -20,7 +20,7 @@ function About() {
   return (
     <div>
         <h2 className={styles.h2aboutUs}>About Us:</h2>
-        <p className={styles.paragAboutus} >"Embark with culinary journey with our recipe website, where mouthwatering creations, gourmet secrets, and epicurean inspiration converge to transform your home cooking into a gourmet masterpiece"</p>
+        <p className={styles.paragAboutus} >"Embark on an extraordinary culinary journey where each dish becomes a symphony of flavors, an ode to creativity, and a celebration of your inner chef. Our recipe website is your portal to a world of mouthwatering creations, gourmet secrets, and epicurean inspiration, all designed to transform your home cooking into a gourmet masterpiece that will tantalize your taste buds and leave a lasting impression on every guest"</p>
         <h2 className={styles.h2peoplesthought} >People's thoughts:</h2>
         <FeedbackDisplay feedbackData={feedbackData} />
         <p className={styles.Pabovefeedback}>Tell Us What You Think!</p>
