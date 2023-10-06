@@ -1,0 +1,7 @@
+/* Add this CSS to your stylesheet */
+.button-disabled {
+    background-color: #ccc; /* Change to your desired disabled button background color */
+    color: #666; /* Change to your desired disabled button text color */
+    cursor: not-allowed;
+  }
+  

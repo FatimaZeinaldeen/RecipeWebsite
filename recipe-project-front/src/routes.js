@@ -6,7 +6,7 @@ import Login from "./pages/login";
 import Layout from "./pages/layout";
 import NoPage from "./pages/nopage";
 import RecipeInfo from "./pages/recipeInfo";
-import Register from "./pages/register";
+import Register from "./pages/Register";
 import AddRecipe from "./pages/AddRecipe";
 const appRoutes = () => {
   return (
@@ -16,7 +16,7 @@ const appRoutes = () => {
           <Route exact path="/" element={<Home />} />
           <Route path="/About-Us/getAllfeedbacks" element={<About />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
+          <Route path="/Register" element={<Register />} />
           <Route path="/recipe/:id" element={<RecipeInfo />} />
           <Route path="Recipe/add-recipe/:id" element={<AddRecipe />} />
           <Route element={<NoPage />} />
