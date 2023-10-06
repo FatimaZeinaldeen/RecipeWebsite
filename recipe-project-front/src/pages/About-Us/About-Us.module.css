@@ -1,5 +1,6 @@
+
 .h2aboutUs{
-   color: var(--mainColor);
+   color: var(--MainColor);
    text-align: left;
    font-size: 33px;
    font-family: var(--titleFont);
@@ -13,11 +14,11 @@
     font-family: var(--textFont);
     font-size: 20px;
     font-weight: bold;
-    color: var(--mainColor);
+    color: var(--MainColor);
     line-height: 2;
 }
 .h2peoplesthought{
-    color: var(--mainColor);
+    color: var(--MainColor);
    text-align: left;
    font-size: 33px;
    font-family: var(--titleFont);
@@ -37,6 +38,6 @@
     font-family: var(--headerFont1);
     text-align: center;
     font-size: 25px;
-    color: var(--mainColor75);
+    color: var(--MainColor75);
     margin-bottom: 5%;
 }

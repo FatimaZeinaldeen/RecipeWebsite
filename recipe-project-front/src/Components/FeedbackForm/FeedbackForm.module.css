@@ -18,6 +18,7 @@
     margin-left:5px;
     position: relative;
     outline: none;
+    resize: none;
   }
   
   .buttonfeedback {
