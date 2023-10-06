@@ -17,66 +17,72 @@
     align-items: flex-start;
     margin-left:3%;
 }
+.form{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin-left:3%;
+    border-bottom: 1px solid var(--secondaryColor);
+}
+.leftForm{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+.rightForm{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin-left: 40px;
+    /* border-left:2px solid var(--secondaryColor); */
+}
 .subForms{
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.Labels{
-    color:var(--mainColor);
-    font-family: var(--textFont);
-    margin-right: 10px;
+.buttonsForm{
+    display: flex;
+    width:100%;
+    justify-content: space-around;
+    align-items: center;
 }
-.Textbox{
-    background-color: var(--graycolor);
-    border: 1px solid var(--secondaryColor);
-    border-radius: 5px;
-    height:20px;
-    margin-right:10px;
-    padding:5px;
-}
-.numTextbox{
-    background-color: var(--graycolor);
-    border: 1px solid var(--secondaryColor);
-    border-radius: 5px;
-    height:20px;
-    margin-right:10px;
-    width:40px;
-    padding:5px;
-}
-.numTextbox:focus{
-    outline: none;
-    outline-color: var(--secondaryColor);
-    caret-color: var(--secondaryColor);
-}
-.Textbox:focus{
-    outline: none;
-    outline-color: var(--secondaryColor);
-    caret-color: var(--secondaryColor);
+.centerButtons{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
 }
 .IndexedLabel{
     color:var(--secondaryColor);
 }
-.Dropdowns{
-    height: 30px;
-    padding: 5px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.Textarea{
+    width:500px;
+    margin:0%;
+    height:270px;
     border: 1px solid var(--secondaryColor);
-    appearance: none ;
-    border-radius: 5px;
-    background-image:  url(../../assets/Icons/arrow-down.svg) ;
-    background-repeat: no-repeat;
-    background-position: 95% center;
-    background-color: #F5F5F5;
-    color:var(--mainColor75); 
-    padding-left: 10px;
-    padding-right: 25px;
-    font:var(--textFont);
-    margin-right: 10px;
+    background-color: var(--graycolor);
+    font-family: var(--textFont);
+    color: var(--mainColor);
+    text-align: left;
+    border-radius: 15px;
+    max-height: 260px;
+    overflow:hidden;
 }
-.Dropdowns:focus-visible{
-    outline: none;
-    outline-color: var(--secondaryColor);
+.CancelButton{
+    border: 1px solid var(--secondaryColor);
+    background-color: var(--graycolor);
+    color:var(--mainColor);
+    text-decoration: none;
+    display: block;
+    width:100px;
+    height:20px;
+    padding:9px;
+    border-radius: 20px;
+    margin:20px;
+}
+.CancelButton:hover{
+    text-decoration: underline;
 }

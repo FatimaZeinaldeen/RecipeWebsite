@@ -1,0 +1,5 @@
+.Label{
+    color:var(--mainColor);
+    font-family: var(--textFont);
+    margin-right: 10px;
+}
