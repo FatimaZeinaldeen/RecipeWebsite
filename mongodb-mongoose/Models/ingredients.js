@@ -13,7 +13,7 @@ export const ingredientSchema = new Schema({
     unit: {
       type: String,
       required: true,
-      enum: ["cup/s", "tsp", "tbsp", "L", "mL", "gr", "Kg"]
+      enum: ["cup/s", "tsp", "tbsp", "L", "mL", "gr", "Kg","eggs","slices","pieces"]
     }
   });
   const IngredientModel=model("Ingredient",ingredientSchema);
