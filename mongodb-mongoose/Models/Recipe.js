@@ -34,7 +34,7 @@ const recipeSchema= new Schema({
     },
     likes: {
         type: Number,
-        default: null
+        default: 0
     },
     photo:String,
     chef_note:{
