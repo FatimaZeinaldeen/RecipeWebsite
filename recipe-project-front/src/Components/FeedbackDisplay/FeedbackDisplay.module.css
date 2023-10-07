@@ -8,7 +8,7 @@
   padding: 25px;
   margin-bottom:5%;
   margin-top: 4%;
-  box-shadow: 1px 1px 3px var(--mainColor);
+  box-shadow: 1px 1px 3px var(--MainColor);
   border-radius: 5px;
 }
 
@@ -53,7 +53,7 @@
     font-family: var(--titleFont);
     font-weight: bold;
     text-align: left;
-    color: var(--mainColor);
+    color: var(--MainColor);
     margin-left: 30px;
     margin-bottom: -2px;
   }
@@ -61,7 +61,7 @@
   .feedbackcontent {
     font-family: var(--textFont);
     font-size: 14px;
-    color: var(--mainColor);
+    color: var(--MainColor);
     text-align: left;
     word-wrap: break-word;
     margin-left: 30px;

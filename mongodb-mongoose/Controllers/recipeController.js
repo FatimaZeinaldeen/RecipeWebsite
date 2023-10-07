@@ -20,10 +20,12 @@ export const addRecipe = async (req, res) => {
       await recipe.save();
     } else {
       const recipe = new Recipe(req.body);
+      console.log(recipe);
       recipe.user = id;
       await recipe.save();
+      res.status(201).json({ message: "Recipe successfully added", recipe });
     }
-    res.status(201).json({ message: "Recipe successfully added", recipe });
+    
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
