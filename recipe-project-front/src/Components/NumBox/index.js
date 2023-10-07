@@ -5,7 +5,7 @@ function NumBox(props) {
   return (
     <input
       type="number"
-      min={1}
+      min={0}
       value={props.value}
       onChange={props.onChange}
       className={styles.Numbox}
