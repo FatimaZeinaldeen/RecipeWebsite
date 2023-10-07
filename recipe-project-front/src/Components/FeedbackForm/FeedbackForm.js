@@ -11,7 +11,7 @@ function FeedbackForm({ onFeedbackSubmit }) {
 
   const handleSubmit = (event) => {
     event.preventDefault(); // By default, when a form is submitted, the browser will try to reload the page or navigate to a new URL, So calling event.preventDefault() stops this default behavior from happening
-    if(feedback!=''){
+    if(feedback!==''){
       onFeedbackSubmit(feedback);
     }
     setFeedback('');

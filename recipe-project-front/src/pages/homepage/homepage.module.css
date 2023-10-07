@@ -1,0 +1,177 @@
+.divrecipes,
+.divtoprecipes{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 50px;
+}
+.backgroundP{
+    position: relative;
+    text-align: center;
+}
+.backgroundP img{
+    background-image: url(../../assets/photos/bg.png);
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    margin-top: -20px;
+    margin-left: -10px;
+    filter: blur(0.1px);
+    height: 665px;
+}
+
+.p1{
+    position: absolute;
+    top: 17%; 
+    left: 5%;
+    font-size: 70px;
+    font-family: var(--headerFont1);
+    color: #153040;
+    text-shadow: 1px 1px 7px var(--MainColor);
+}
+.p2{
+    position: absolute;
+    top: 40%; 
+    left: 5%;
+    font-size: 30px;
+    font-family: var(--headerFont2);
+    color: var(--MainColor);
+    text-shadow: 1px 1px 4px var(--MainColor);
+    text-align: left;
+    width: 45%;
+}
+.scroll svg{
+    position: absolute;
+    top:82%;
+    left: 20%;
+}
+.scroll p{
+    position: absolute;
+    top: 86%;
+    left: 13%;
+    font-size: 25px;
+    font-family: var(--headerFont2);
+    color: var(--secondaryColor);
+    text-shadow: 1px 1px 2px var(--secondaryColor);
+}
+.searchContainer{
+    margin-top: 50px;
+    margin-bottom: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.txtareasearch{
+    padding: 15px;  
+    background-color: #F5F5F5;
+    border: 1px solid #ffa20180;
+    border-radius: 13px;
+    outline: none;
+    color: var(--MainColor);
+    position: relative;
+    font-family: var(--textFont);
+}
+.txtareasearch:hover{
+    box-shadow: 0.5px 0.5px 8px #ffa20180;
+}
+.btnsearch{
+    position: absolute;
+    right:35.5%;
+    background-color: transparent;
+    border: none;
+}
+.toprecipes{
+    font-size: 50px;
+    font-family: var(--titleFont);
+    color: var(--MainColor);
+    text-align: center;
+    margin-bottom: 20px;
+}
+.sharedRecipes{
+    font-size: 40px;
+    font-family: var(--titleFont);
+    color: var(--MainColor);
+    text-align: left;
+    margin-bottom: 20px;
+    margin-left: 5%;
+}
+@import url('https://fonts.googleapis.com/css2?family=Andada+Pro&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+:root {
+    --MainColor: #153040;
+    --mainColor75:rgb(49,82,91,75%);
+    --secondaryColor:#FFA101;
+    --textFont: Andada Pro;
+  }
+  .filters{
+    margin-top: 5%;
+    margin-bottom: 3%;
+  }
+  .Category{
+    float: left;
+    margin-left:10%;
+    margin-right: 6%;
+    width: 10.5%;
+  }
+  .Country{
+    float: left;
+    width: 10.5%;
+    margin-right: 6%;
+  }
+  .txtareaing{
+    padding: 15px;
+    background-color: #F5F5F5;
+    border: 1px solid var(--secondaryColor);
+    border-radius: 5px;
+    outline: none;
+    color: var(--MainColor);
+    font-family: var(--textFont);
+    resize: none;
+    width: 30%;
+    margin-right: 0%;
+    float: left;
+}
+.searchfilter{  
+  width:10%;
+  height: 40px;    
+  border-radius: 25px;
+  background-color: var(--secondaryColor);
+  box-shadow: 1px 1px 2px var(--secondaryColor);
+  font-size: 20px;
+  font-family: var(--textFont);
+  font-weight: bold;
+  color: white;
+  border-color: transparent;
+  cursor: pointer;
+}
+.dropdown  {
+    width:150px;
+    height: 50px;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid var(--secondaryColor);
+    appearance: none ;
+    border-radius: 5px;
+    background-image:  url(../../assets/Icons/arrow-down.svg) ;
+    background-repeat: no-repeat;
+    background-position: 95% center;
+    background-color: #F5F5F5;
+    color:var(--MainColor75); 
+    font: var(--textFont);
+    font-size: 25px;
+}
+.clicked:focus-visible{
+    outline: none;
+    outline-color: var(--secondaryColor);
+    transition: 0.15s ease-in-out;
+}
+.clicked{
+    border: 1px solid var(--secondaryColor)!important;
+    background-color: #F5F5F5 !important;
+    color:var(--MainColor75) !important; 
+}
+.options{
+    color:var(--MainColor75);
+    background-color: #F5F5F5;
+}

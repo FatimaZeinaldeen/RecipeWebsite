@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from "./FeedbackDisplay.module.css";
-import userPhoto from "../../assets/photos/feedback&reviewsuserPhoto.jpg"
+import userPhoto from "../../assets/photos/feedback&reviewsuserPhoto.jpg";
 function FeedbackDisplay({ feedbackData, feedbackData1 }) {
   return (
     <div className={styles.allfeedbacks}>

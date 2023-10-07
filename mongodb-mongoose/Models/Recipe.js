@@ -32,12 +32,6 @@ const recipeSchema= new Schema({
     serving:{
         type:Number
     },
-    rate: {
-        type: Number,
-        default: null,
-        min:0,
-        max:5
-    },
     likes: {
         type: Number,
         default: null
