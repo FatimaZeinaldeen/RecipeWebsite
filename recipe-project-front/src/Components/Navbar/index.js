@@ -64,7 +64,7 @@ function Navbar() {
             >
               About
             </Link>
-            <Link to="/login" className={styles.loginLink}>
+            <Link to="/loginpage " className={styles.loginLink}>
               <div className={styles.loginIcon}>{LoginIcon} </div>
               <div>Login</div>
             </Link>

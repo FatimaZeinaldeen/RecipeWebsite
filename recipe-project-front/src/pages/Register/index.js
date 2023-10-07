@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Button from "../../Components/Button";
 import Countries from "../../Components/CountryDropDown";
-import Textbox from "../../Components/Textbox";
+import Textboxx from "../../Components/Textbox2";
 import styles from "./register.module.css"; // Import your CSS module styles
 // Define the SVG constants
 const emailSvg = (
@@ -82,30 +82,35 @@ function Register() {
         <div className={styles.underline}></div>
       </div>
       <div className={styles.inputs}>
-        <div className={styles.input}>
-          {userSvg}
-          <Textbox type="text" placeholder="First Name" value={firstName} onChange={handleFirstNameChange} />
+      <div className={styles.fname}>
+          <div className={styles['input-group']}>
+            {userSvg}
+            <Textboxx type="text" placeholder="First Name" value={firstName} onChange={handleFirstNameChange} />
+          </div></div>
+          <div ClassName={styles.lname}>
+          <div className={styles['input-group']}>
+            <Textboxx type="text" placeholder="Last Name" value={lastName} onChange={handleLastNameChange} />
+          </div>
         </div>
-        <div className={styles.input}>
-          <Textbox type="text" placeholder="Last Name" value={lastName} onChange={handleLastNameChange} />
+        <div className={styles['input-group']}>
+          {emailSvg}
+          <Textboxx type="email" placeholder="Email" value={email} onChange={handleEmailChange} />
         </div>
-        <div className={styles.input}>
+        <div className={styles['input-group']}>
+        < div className={styles.password}>
+          {passwordSvg}
+          <Textboxx type="password" placeholder="Password" value={password} onChange={handlePasswordChange} />
+        </div></div>
+        <div className={styles['input-group']}>
+       < div className={styles.passwordcheck}>
+          {password2Svg}
+          <Textboxx type="password" placeholder="Confirm Password" value={confirmPassword} onChange={handleConfirmPasswordChange} />
+          {!passwordMatch && <p>Passwords do not match</p>}
+        </div></div>
+      </div>
+      <div className={styles['input-group']}>
           <Countries />
         </div>
-        <div className={styles.input}>
-          {emailSvg}
-          <Textbox type="email" placeholder="Email" value={email} onChange={handleEmailChange} />
-        </div>
-        <div className={styles.input}>
-          {passwordSvg}
-          <Textbox type="password" placeholder="Password" value={password} onChange={handlePasswordChange} />
-        </div>
-        <div className={styles.input}>
-          {password2Svg}
-          <Textbox type="password" placeholder="Confirm Password" value={confirmPassword} onChange={handleConfirmPasswordChange} />
-          {!passwordMatch && <p>Passwords do not match</p>}
-        </div>
-      </div>
       <div className={styles['gender-selection']}>
         <label>
           <input type="radio" name="gender" value="male" checked={gender === 'male'} onChange={handleGenderChange} />
@@ -122,7 +127,7 @@ function Register() {
         </Link>
       </div>
       <div className={styles['login-link']}>
-        Already have an account? <Link to="/login">Log in</Link>
+        Already have an account? <Link to="/loginpage">Log in</Link>
       </div>
     </div>
   );
