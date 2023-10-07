@@ -37,7 +37,6 @@
     justify-content: flex-start;
     align-items: flex-start;
     margin-left: 40px;
-    /* border-left:2px solid var(--secondaryColor); */
 }
 .subForms{
     display: flex;
@@ -61,15 +60,15 @@
 .Textarea{
     width:500px;
     margin:0%;
-    height:270px;
+    height:fit-content;
     border: 1px solid var(--secondaryColor);
     background-color: var(--graycolor);
     font-family: var(--textFont);
     color: var(--mainColor);
     text-align: left;
-    border-radius: 15px;
-    max-height: 260px;
-    overflow:hidden;
+    border-radius: 10px;
+    padding-bottom: 10px;
+    text-wrap: wrap;
 }
 .CancelButton{
     border: 1px solid var(--secondaryColor);
@@ -85,4 +84,16 @@
 }
 .CancelButton:hover{
     text-decoration: underline;
+}
+.Ingredients{
+    display: flex;
+    max-width: 600px;
+    height:max-content;
+    flex-wrap: wrap;
+}
+.error{
+    font-family: var(--textFont);
+    color: red;
+    text-align: left;
+    margin-left: 70px;
 }
