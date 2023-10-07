@@ -111,6 +111,9 @@ const AddRecipe = () => {
   const addInstruction = () => {
     if (instruction.trim() !== "") {
       setInstructionsList([...instructionsList, instruction]);
+      if(instructionsList.length !== 0){
+        document.getElementById("Instructions").hidden=false;
+      }
       setInstruction("");
     }
   };
@@ -207,7 +210,7 @@ const AddRecipe = () => {
               />
               <Button text="Add" onClick={addIngredient} />
             </div>
-            <div className={styles.Ingredients}>
+            <div className={styles.Ingredients} id="Instructions" hidden>
               {ingredientlist.map((ing) => {
                 return (
                   <Ingredient
