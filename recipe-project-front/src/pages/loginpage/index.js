@@ -1,15 +1,9 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Button from "../../Components/Button";
-import Countries from "../../Components/CountryDropDown";
 import Textboxx from "../../Components/Textbox2";
 import styles from "./login.module.css"; 
-// Define the SVG constants
-const emailSvg = (
-  <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24">
-    <path fill="#ffa101" d="M22 5.5H9c-1.1 0-2 .9-2 2v9a2 2 0 0 0 2 2h13c1.11 0 2-.89 2-2v-9a2 2 0 0 0-2-2m0 11H9V9.17l6.5 3.33L22 9.17v7.33m-6.5-5.69L9 7.5h13l-6.5 3.31"/>
-  </svg>
-);
+import b3 from "../../assets/photos/b3.png";
 
 const userSvg = (
   <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24">
@@ -17,11 +11,6 @@ const userSvg = (
   </svg>
 );
 
-const passwordSvg = (
-  <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24">
-    <path fill="#ffa101" d="M12 17a2 2 0 0 1-2-2c0-1.11.89-2 2-2a2 2 0 0 1 2 2a2 2 0 0 1-2 2m6 3V10H6v10h12m0-12a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V10c0-1.11.89-2 2-2h1V6a5 5 0 0 1 5-5a5 5 0 0 1 5 5v2h1m-6-5a3 3 0 0 0-3 3v2h6V6a3 3 0 0 0-3-3Z"/>
-  </svg>
-);
 
 
 function Login() {
@@ -55,33 +44,36 @@ function Login() {
   
   return (
     <div className={styles.container}>
-      <div className={styles.header}>
-        <div className={styles.text}>Welcome Back!</div>
-        <div className={styles.underline}></div>
-      </div>
-      <div className={styles.inputs}>
-  
-        <div className={styles.input}>
-          {emailSvg}
-          <Textboxx type="email" placeholder="Email" value={email} onChange={handleEmailChange} />
+        <img alt="backgroudPic" src={b3} className={styles.bgPic}></img>
+        <div className={styles.header}>
+           <div className={styles.text}>Welcome Back!</div>
+           <div className={styles.underline}></div>
         </div>
-        <div className={styles.input}>
-          {passwordSvg}
-          <Textboxx type="password" placeholder="Password" value={password} onChange={handlePasswordChange} />
+        <div className={styles.inputs}>
+           <div className={styles.inputemail}>
+           <svg xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" viewBox="0 0 24 24">
+              <path fill="#ffa101" d="M22 5.5H9c-1.1 0-2 .9-2 2v9a2 2 0 0 0 2 2h13c1.11 0 2-.89 2-2v-9a2 2 0 0 0-2-2m0 11H9V9.17l6.5 3.33L22 9.17v7.33m-6.5-5.69L9 7.5h13l-6.5 3.31"/>
+           </svg>
+             <Textboxx type="email" placeholder="Email" value={email} onChange={handleEmailChange} />
+           </div>
+           <div className={styles.inputpassword}>
+             <svg xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" viewBox="0 0 24 24">
+               <path fill="#ffa101" d="M12 17a2 2 0 0 1-2-2c0-1.11.89-2 2-2a2 2 0 0 1 2 2a2 2 0 0 1-2 2m6 3V10H6v10h12m0-12a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V10c0-1.11.89-2 2-2h1V6a5 5 0 0 1 5-5a5 5 0 0 1 5 5v2h1m-6-5a3 3 0 0 0-3 3v2h6V6a3 3 0 0 0-3-3Z"/>
+            </svg>
+             <Textboxx type="password" placeholder="Password" value={password} onChange={handlePasswordChange} />
+             <div className={styles.forgotpass}>
+              <p className={styles.Linkforgotpass}><Link to="/">Forgot password?</Link></p>
+            </div>
+           </div>
+           <div className={styles.login}>
+             <Link to="/nopage">
+               <Button text="Login" disabled={!isFormValid()} />
+             </Link>
+            </div>
+            <div className={styles['Sign up']}>
+              Don't have an account? <Link to="/register">Sign up</Link>
+            </div>
         </div>
-        
-      <div className={styles['submit-container']}>
-        <Link to="/nopage">
-          <Button text="Login" disabled={!isFormValid()} />
-        </Link>
-      </div>
-      <div className={styles['forgot']}>
-        Forgot password? <Link to="/">click here</Link>
-      </div>
-      <div className={styles['Sign up']}>
-        Don't have an account? <Link to="/register">Sign up</Link>
-      </div>
-    </div>
     </div>
   );
 }

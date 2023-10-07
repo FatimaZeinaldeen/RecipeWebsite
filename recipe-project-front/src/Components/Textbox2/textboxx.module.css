@@ -2,10 +2,12 @@
     background-color: var(--graycolor);
     border: 1px solid var(--secondaryColor);
     border-radius: 5px;
-    height:20px;
+    width: 35%;
+    height:30px;
     margin-right:10px;
     padding:5px;
     color:var(--mainColor);
+    margin-bottom: 15px;
 }
 .Textboxx:focus{
     outline: none;

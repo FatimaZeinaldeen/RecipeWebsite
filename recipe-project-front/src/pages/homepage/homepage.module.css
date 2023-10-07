@@ -24,17 +24,17 @@
     position: absolute;
     top: 17%; 
     left: 5%;
-    font-size: 40px;
-    font-family: var(--headerFont3);
+    font-size: 50px;
+    font-family: var(--mango);
     color: #153040;
-    text-shadow: 1px 1px 7px var(--MainColor);
-    font-weight: bold;
+    text-shadow: 1px 1px 4px var(--MainColor);
+    font-weight: lighter;
 }
 .p2{
     position: absolute;
     top: 38%; 
     left: 5%;
-    font-size:23px;
+    font-size:20px;
     font-family: var(--headerFont2);
     color: var(--MainColor);
     text-shadow: 1px 1px 4px var(--MainColor);

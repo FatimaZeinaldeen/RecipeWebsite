@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types'; // Import PropTypes to define prop types
-import styles from '../Textbox/Textbox.module.css';
+import styles from '../Textbox2/textboxx.module.css';
 
 function Textboxx({ placeholder }) {
   return (
     <div>
-      <input type="text" className={styles.Textbox} placeholder={placeholder} />
+      <input type="text" className={styles.Textboxx} placeholder={placeholder} />
     </div>
   );
 }

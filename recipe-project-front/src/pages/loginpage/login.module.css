@@ -1,0 +1,51 @@
+.container img{
+    background-image: url(../../assets/photos/b3.png);
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    margin-top: -20px;
+    height: 650px;
+}
+.bgPic{
+    position: relative;
+    text-align: center;
+}
+.header{    
+    position: absolute;
+    font-family: var(--headerFont3);
+    color: var(--secondaryColor);
+    top: 17%;
+    left: 40%;
+    font-size: 40px;
+}
+.inputs{
+    position: absolute;
+    align-items: center;
+    top: 35%;
+    left: 16%;
+    width: 70%;
+}
+.inputemail, .inputpassword{
+    margin-bottom: 3%;
+}
+
+.inputemail svg{
+    position: absolute;
+    left: 27%;
+}
+.inputpassword svg{
+    position: absolute;
+    left: 27.5%;
+}
+.forgotpass{
+    width: 40%;
+    margin-left: 31%;
+    color: var(--secondaryColor);
+}
+.forgotpass p{
+    width: fit-content;
+}
+.Linkforgotpass{
+    color: var(--secondaryColor);
+}
+
