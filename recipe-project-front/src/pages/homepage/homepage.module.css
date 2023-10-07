@@ -24,16 +24,17 @@
     position: absolute;
     top: 17%; 
     left: 5%;
-    font-size: 70px;
-    font-family: var(--headerFont1);
+    font-size: 40px;
+    font-family: var(--headerFont3);
     color: #153040;
     text-shadow: 1px 1px 7px var(--MainColor);
+    font-weight: bold;
 }
 .p2{
     position: absolute;
-    top: 40%; 
+    top: 38%; 
     left: 5%;
-    font-size: 30px;
+    font-size:23px;
     font-family: var(--headerFont2);
     color: var(--MainColor);
     text-shadow: 1px 1px 4px var(--MainColor);
@@ -48,8 +49,9 @@
 .scroll p{
     position: absolute;
     top: 86%;
-    left: 13%;
-    font-size: 25px;
+    left: 17%;
+    
+    font-size: 13px;
     font-family: var(--headerFont2);
     color: var(--secondaryColor);
     text-shadow: 1px 1px 2px var(--secondaryColor);

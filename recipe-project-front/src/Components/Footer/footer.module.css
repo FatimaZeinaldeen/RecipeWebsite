@@ -9,15 +9,15 @@
   color: hsl(0, 0%, 100%);
   padding: 10px 0;
   width: 100%;
-<<<<<<< HEAD
+
   margin-top: 10px;
   height: 27px;
   bottom: 0;
-=======
+
   margin-top: 20px;
   height: 25px;
   bottom: 0px;
->>>>>>> 62fe62ea3782d29a3806fe69d30691c29d530ddc
+
   transition: background-color 0.4s ease-in-out;
 }
 .footlist {

@@ -51,7 +51,7 @@ function Home() {
               <p className={Style.p1}>Bringing the World to Your Table</p>
               <p className={Style.p2}>Explore a World of Culinary Delights with Food Lovers. Share Your Culinary Adventures on Our  Platform... </p>
               <div className={Style.scroll}>
-                  <svg xmlns="http://www.w3.org/2000/svg" width="2.5em" height="2.5em" viewBox="0 0 16 16"><path fill="#FFA101" fill-rule="evenodd" d="M10 14a2 2 0 1 1-4 0a2 2 0 0 1 4 0Zm1.78-8.841a.75.75 0 0 0-1.06 0l-1.97 1.97V.75a.75.75 0 0 0-1.5 0v6.379l-1.97-1.97a.75.75 0 0 0-1.06 1.06l3.25 3.25L8 10l.53-.53l3.25-3.25a.75.75 0 0 0 0-1.061Z" clip-rule="evenodd"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em" viewBox="0 0 16 16"><path fill="#ffa101" fill-rule="evenodd" d="M14.207 1.707L13.5 1l-6 6l-6-6l-.707.707l6.353 6.354h.708l6.353-6.354zm0 6L13.5 7l-6 6l-6-6l-.707.707l6.353 6.354h.708l6.353-6.354z" clip-rule="evenodd"/></svg>
                   <p>BE YOUR OWN CHEF</p>
               </div>
           </div>
