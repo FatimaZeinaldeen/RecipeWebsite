@@ -112,36 +112,6 @@ export const addReview = async (req, res) => {
   }
 };
 
-//searchByCategory
-export const searchByCategory = async (req, res) => {
-  const { category } = req.body;
-  try {
-    const recipes = await Recipe.find({ category: category });
-    const recipeArray = recipes.map((recipe) => recipe.toObject());
-    if (recipeArray.length == 0) {
-      return res.status(200).json("No recipes from this category");
-    }
-    res.status(200).json(recipeArray);
-  } catch (error) {
-    res.status(500).json({ error: error.message });
-  }
-};
-
-//searchByCountry
-export const searchByCountry = async (req, res) => {
-  const { Country } = req.body;
-  try {
-    const recipes = await Recipe.find({ Country: Country });
-    const recipeArray = recipes.map((recipe) => recipe.toObject());
-    if (recipeArray.length == 0) {
-      return res.status(200).json("No recipes from this country");
-    }
-    res.status(200).json(recipeArray);
-  } catch (error) {
-    res.status(500).json({ error: error.message });
-  }
-};
-
 //get recipe by ingredients
 export const getRecipeByIngredients = async (req, res) => {
   try {
