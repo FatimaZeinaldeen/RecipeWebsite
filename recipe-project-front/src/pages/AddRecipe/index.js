@@ -49,7 +49,7 @@ const AddRecipe = () => {
   const validate = () => {
     setErrorArray([]);
     if (unit === "") {
-      setTime("min");
+      setUnit("min");
     }
     if (
       name !== "" &&
