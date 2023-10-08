@@ -5,7 +5,6 @@ import Category from "../../Components/categoryDropdown";
 import Button from "../../Components/Button";
 import { Link } from "react-router-dom";
 import Textbox from "../../Components/Textbox";
-import Textboxx from "../../Components/Textbox2";
 import NumBox from "../../Components/NumBox";
 import Label from "../../Components/Label";
 import Dropdown from "../../Components/Dropdown";
@@ -13,7 +12,10 @@ import { useState } from "react";
 import Ingredient from "../../Components/Ingredient";
 import axios from "axios";
 import { useParams } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
+
 const AddRecipe = () => {
+  const navigate = useNavigate();
   const prepTime = ["min", "hour"];
   const measurments = [
     "cup/s",
@@ -47,7 +49,7 @@ const AddRecipe = () => {
   const validate = () => {
     setErrorArray([]);
     if (unit === "") {
-      setTime("min");
+      setUnit("min");
     }
     if (
       name !== "" &&
@@ -95,7 +97,7 @@ const AddRecipe = () => {
   //post a recipe
   const postRecipe = async () => {
     try {
-      const data = {
+        const data = {
         name: name,
         category: category,
         user: id,
@@ -120,7 +122,8 @@ const AddRecipe = () => {
           },
         }
       );
-      console.log("Recipe data posted successfully:", response.data);
+      const recipeId=response.data._id;
+      navigate(`/recipe/${recipeId}`);
     } catch (error) {
       console.error("Error posting recipe data:", error);
     }
@@ -186,9 +189,12 @@ const AddRecipe = () => {
               <div className={styles.subForms}>
                 <div className={styles.centerButtons}>
                   <Label text="Chef's Notes:" />
-                  <Textboxx
-                    placeholder="*Optional"
+                  <input
+                    type="text"
+                    value={notes}
                     onChange={(e) => setNotes(e.target.value)}
+                    className={styles.Textbox}
+                    placeholder="*Optional"
                   />
                 </div>
               </div>

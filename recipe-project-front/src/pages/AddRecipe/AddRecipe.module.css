@@ -6,7 +6,7 @@
     padding: 70px 0px 150px 0px;
 }
 .Container{
-    margin: 0px 100px 0px 200px;
+    margin: 0px 100px 0px 220px;
     border: 2px solid var(--secondaryColor);
     box-shadow: 2px 2px 10px var(--secondaryColor);
     border-radius: 20px;
@@ -121,4 +121,18 @@
     color: red;
     text-align: left;
     margin-left: 70px;
+}
+.Textbox{
+    background-color: var(--graycolor);
+    border: 1px solid var(--secondaryColor);
+    border-radius: 5px;
+    height:20px;
+    margin-right:10px;
+    padding:5px;
+    color:var(--mainColor);
+}
+.Textbox:focus{
+    outline: none;
+    outline-color: var(--secondaryColor);
+    caret-color: var(--secondaryColor);
 }
