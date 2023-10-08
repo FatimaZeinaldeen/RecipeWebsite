@@ -7,24 +7,91 @@ import axios from 'axios';
 
 function Home() {
 
-  // const [likes, setLikes] = useState({}); 
-  // const initialLikes = {};
-  // const handleLike = (recipeId) => {
-  //   setLikes((prevLikes) => ({
-  //     ...prevLikes,
-  //     [recipeId]: (prevLikes[recipeId] || 0) + 1,
-  //   }));
-
-  //   axios.post(`http://your-api-endpoint/like-recipe/${recipeId}`);
-  // };
+  
+  
 
   const [recipes, setRecipes] = useState([]);
+  const [filteredRecipes, setFilteredRecipes] = useState([]);
+  const [selectedCategory, setSelectedCategory] = useState("");
+  const [selectedCountry, setSelectedCountry] = useState("");
+  const [searchQueryName, setSearchQueryName] = useState("");
+  const [ingredientQuery, setIngredientQuery] = useState('');
+
+
  useEffect(() => {
     axios.get("http://localhost:3000/Recipe/all-recipes").then((response) => {
       setRecipes(response.data);
+      setFilteredRecipes(response.data);
     });
   }, []);
 
+  const handleLike = async (recipeId) => {   
+      try {
+        await axios.post(`http://localhost:3000/Recipe/like-recipe/${recipeId}`);
+        const updatedRecipes = recipes.map((recipe) => {
+          if (recipe._id === recipeId) {
+            const updatedRecipe = { ...recipe, likes: recipe.likes + 1};
+            return updatedRecipe;
+          }
+          return recipe;
+        });
+        setFilteredRecipes(updatedRecipes);
+        setRecipes(updatedRecipes);
+      } catch (error) {
+        console.error('Error liking recipe:', error);
+      }
+    }
+    
+  const handleUnlike= async (recipeId) => {
+    try {
+      await axios.post(`http://localhost:3000/Recipe/unlike-recipe/${recipeId}`);
+      const updatedRecipes = recipes.map((recipe) => {
+        if (recipe._id === recipeId) {
+          const updatedRecipe = { ...recipe, likes: recipe.likes - 1};
+          return updatedRecipe;
+        }
+        return recipe;
+      });
+      setFilteredRecipes(updatedRecipes);
+      setRecipes(updatedRecipes);
+    } catch (error) {
+      console.error('Error liking recipe:', error);
+    }
+  }
+  const handleCategoryChange = (selectedCategory) => {
+    setSelectedCategory(selectedCategory);
+    const filtered = recipes.filter((recipe) => recipe.category === selectedCategory);
+    setFilteredRecipes(filtered);
+  };
+
+  const handleCountryChange = (selectedCountry) => {
+    setSelectedCountry(selectedCountry);
+    const filtered = recipes.filter((recipe) => recipe.Country === selectedCountry);
+    setFilteredRecipes(filtered);
+  };
+
+  const handleSearchQueryName = (e) => {
+    e.preventDefault();
+    const filtered = recipes.filter( (recipe) =>
+      recipe.name.toLowerCase().includes(searchQueryName.toLowerCase()) );
+    setFilteredRecipes(filtered);
+  };
+
+  const handleIngredientSearch = (e) => {
+    e.preventDefault();
+  
+    const searchedIngredients = ingredientQuery.split(',').map((ingredient) => ingredient.trim().toLowerCase());
+
+    const filteredRecipes = recipes.filter((recipe) => {
+      return recipe.ingredients.some((ingredient) =>
+      searchedIngredients.some((searchedIngredient) =>
+        ingredient.name.toLowerCase().includes(searchedIngredient)
+      )
+    );
+});
+    setFilteredRecipes(filteredRecipes);
+  };
+  
   const topRecipes = recipes.slice().sort((a, b) => b.likes - a.likes).slice(0, 5);
 
   const [isClicked, setIsClicked] = useState(false);
@@ -55,25 +122,28 @@ function Home() {
                   <p>BE YOUR OWN CHEF</p>
               </div>
           </div>
-          <form className={Style.formsearch}>
-             <div className={Style.searchContainer}>
-               <textarea className={Style.txtareasearch} placeholder="what are we cooking today?..." rows="1" cols="50" style={{ resize: 'none' }}/>
-               <button className={Style.btnsearch} type="submit">
-               <svg xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" viewBox="0 0 24 24"><path fill="rgb(87, 86, 86)" d="m19.6 21l-6.3-6.3q-.75.6-1.725.95T9.5 16q-2.725 0-4.612-1.888T3 9.5q0-2.725 1.888-4.612T9.5 3q2.725 0 4.612 1.888T16 9.5q0 1.1-.35 2.075T14.7 13.3l6.3 6.3l-1.4 1.4ZM9.5 14q1.875 0 3.188-1.313T14 9.5q0-1.875-1.313-3.188T9.5 5Q7.625 5 6.312 6.313T5 9.5q0 1.875 1.313 3.188T9.5 14Z"/></svg>
-               </button>
-             </div>
-          </form>
+          
           <p className={Style.toprecipes}>TOP RECIPES</p>
           <div className={Style.divtoprecipes}>
                 {topRecipes.map((recipe) => (
                  <TopRecipeCard
-                   key={recipe.id}
+                   key={recipe._id}
                    recipe={recipe}
                   //  onLike={handleLike}
                  />
                 ))}
           </div>
           <p className={Style.sharedRecipes}>Recipes shared by fellow cooks:</p>
+          <form className={Style.formsearch} onSubmit={handleSearchQueryName}>
+            <div className={Style.searchContainer}>
+              <textarea className={Style.txtareasearch} placeholder="what are we cooking today?..." rows="1" cols="50" style={{ resize: "none" }} value={searchQueryName} onChange={(e) => setSearchQueryName(e.target.value)}/>
+              <button className={Style.btnsearch} type="submit">
+                 <svg xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" viewBox="0 0 24 24">
+                     <path fill="rgb(87, 86, 86)" d="m19.6 21l-6.3-6.3q-.75.6-1.725.95T9.5 16q-2.725 0-4.612-1.888T3 9.5q0-2.725 1.888-4.612T9.5 3q2.725 0 4.612 1.888T16 9.5q0 1.1-.35 2.075T14.7 13.3l6.3 6.3l-1.4 1.4ZM9.5 14q1.875 0 3.188-1.313T14 9.5q0-1.875-1.313-3.188T9.5 5Q7.625 5 6.312 6.313T5 9.5q0 1.875 1.313 3.188T9.5 14Z"/>
+                 </svg>
+               </button>
+            </div>
+          </form>
   <div className={Style.filters}>
     <div className={Style.Category}>
       <form>
@@ -83,6 +153,8 @@ function Home() {
           title="Category"
           className={`${Style.dropdown} ${isClicked ? Style.clicked : ""}`}
           onClick={handleDropdownClick}
+          onChange={(e) => handleCategoryChange(e.target.value)}
+          value={selectedCategory}
         >
           <option className={Style.options} id="category" value="Category" selected hidden >
             Category
@@ -122,6 +194,8 @@ function Home() {
           title="Country"
           className={`${Style.dropdown} ${isClicked ? Style.clicked : ""}`}
           onClick={handleDropdownClick}
+          onChange={(e) => handleCountryChange(e.target.value)}
+          value={selectedCountry}
         >
           <option className={Style.options} value="Category" hidden>
             Country
@@ -134,15 +208,16 @@ function Home() {
         </select>
       </form>
     </div>
-    <textarea className={Style.txtareaing} placeholder="Search for multiple ingredients separated by ‘,’" rows="1" cols="50" style={{ resize: 'none' }}/>
-    <button className={Style.searchfilter}>Search</button>
+    <textarea className={Style.txtareaing} placeholder="Search for multiple ingredients separated by ‘,’" rows="1" cols="50" style={{ resize: 'none' }} value={ingredientQuery} onChange={(e) => setIngredientQuery(e.target.value)}/>
+    <button className={Style.searchfilter} onClick={handleIngredientSearch} >Search</button>
     </div>
           <div className={Style.divrecipes}>
-                {recipes.map((recipe) => (
+                {filteredRecipes.map((recipe) => (
                  <RecipeCard
-                   key={recipe.id}
+                   key={recipe._id}
                    recipe={recipe}
-                  //  onLike={handleLike}
+                   onLike={handleLike}
+                   onUnLike={handleUnlike}
                  />
                 ))}
           </div>

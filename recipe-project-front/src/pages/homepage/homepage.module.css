@@ -3,7 +3,7 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    margin-bottom: 50px;
+    margin-bottom: 8%;
 }
 .backgroundP{
     position: relative;
@@ -81,13 +81,15 @@
     right:35.5%;
     background-color: transparent;
     border: none;
+    cursor: pointer;
 }
 .toprecipes{
     font-size: 50px;
     font-family: var(--titleFont);
     color: var(--MainColor);
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 6%;
+    margin-top: 8%;
 }
 .sharedRecipes{
     font-size: 40px;
