@@ -33,7 +33,7 @@ function Home() {
     setIsClicked(true);    
   }
   const countryContext = require.context(
-    "../../assets/images/",
+    "../../assets/Images/",
     false,
     /\.(png)$/ // Specify the file extension you want to include
   );

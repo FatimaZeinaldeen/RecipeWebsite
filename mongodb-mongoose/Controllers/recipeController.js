@@ -23,7 +23,7 @@ export const addRecipe = async (req, res) => {
       console.log(recipe);
       recipe.user = id;
       await recipe.save();
-      res.status(201).json({ message: "Recipe successfully added", recipe });
+      res.status(201).json( recipe );
     }
     
   } catch (error) {
