@@ -48,7 +48,7 @@ export const login = async (req, res) => {
         },
         { new: true }
       );
-      return res.status(200).json({ message: "Login successful" });
+      return res.status(200).json({ user });
     } else {
       return res.status(401).json("Wrong password");
     }

@@ -1,81 +1,123 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import Button from "../../Components/Button";
-import Textboxx from "../../Components/Textbox2";
-import styles from "./login.module.css"; 
-import b3 from "../../assets/photos/b3.png";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import styles from "./login.module.css";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
+const Login = () => {
+  const navigate = useNavigate();
+  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("");
 
-const userSvg = (
-  <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24">
-    <path fill="#ffa101" d="M12 6c1.654 0 3 1.346 3 3s-1.346 3-3 3s-3-1.346-3-3s1.346-3 3-3m0-2C9.236 4 7 6.238 7 9s2.236 5 5 5s5-2.238 5-5s-2.236-5-5-5zm0 13c2.021 0 3.301.771 3.783 1.445c-.683.26-1.969.555-3.783.555c-1.984 0-3.206-.305-3.818-.542C8.641 17.743 9.959 17 12 17m0-2c-3.75 0-6 2-6 4c0 1 2.25 2 6 2c3.518 0 6-1 6-2c0-2-2.354-4-6-4z"/>
-  </svg>
-);
-
-
-
-function Login() {
-  
-  const [password, setPassword] = useState('');
-  
-  const [firstName, setFirstName] = useState('');
-  const [lastName, setLastName] = useState('');
-  const [email, setEmail] = useState('');
-  
-  const handlePasswordChange = (e) => {
-    setPassword(e.target.value);
+  const login = async () => {
+    try{
+      const data = {
+      email: email,
+      password: password,
+    };
+    const response = await axios.post(
+      "http://localhost:3000/User/login",
+      data,
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    console.log(response);
+    navigate(`/`);
+    }catch (error) {
+      console.error(error);
+    }
     
   };
-
-
-
-  
-  const handleEmailChange = (e) => {
-    setEmail(e.target.value);
+  const handleLogin = () => {
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    const passRegex = /^.{8,}$/;
+    if (!emailRegex.test(email) && !passRegex.test(password)) {
+      document.getElementById("error").style.display = "block";
+    } else {
+      login();
+    }
   };
-
-  const isFormValid = () => {
-    return (
-      firstName !== '' &&
-      lastName !== '' &&
-      email !== '' &&
-      password !== ''
-    );
-  };
-  
   return (
     <div className={styles.container}>
-        <img alt="backgroudPic" src={b3} className={styles.bgPic}></img>
-        <div className={styles.header}>
-           <div className={styles.text}>Welcome Back!</div>
-           <div className={styles.underline}></div>
-        </div>
-        <div className={styles.inputs}>
-           <div className={styles.inputemail}>
-           <svg xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" viewBox="0 0 24 24">
-              <path fill="#ffa101" d="M22 5.5H9c-1.1 0-2 .9-2 2v9a2 2 0 0 0 2 2h13c1.11 0 2-.89 2-2v-9a2 2 0 0 0-2-2m0 11H9V9.17l6.5 3.33L22 9.17v7.33m-6.5-5.69L9 7.5h13l-6.5 3.31"/>
-           </svg>
-             <Textboxx type="email" placeholder="Email" value={email} onChange={handleEmailChange} />
-           </div>
-           <div className={styles.inputpassword}>
-             <svg xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" viewBox="0 0 24 24">
-               <path fill="#ffa101" d="M12 17a2 2 0 0 1-2-2c0-1.11.89-2 2-2a2 2 0 0 1 2 2a2 2 0 0 1-2 2m6 3V10H6v10h12m0-12a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V10c0-1.11.89-2 2-2h1V6a5 5 0 0 1 5-5a5 5 0 0 1 5 5v2h1m-6-5a3 3 0 0 0-3 3v2h6V6a3 3 0 0 0-3-3Z"/>
+      <h1 className={styles.header}>Welcome Back!</h1>
+      <div className={styles.form}>
+        {/* email */}
+        <div className={styles.subflex}>
+          <div>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              className={styles.icons}
+            >
+              <path
+                fill="#ffa101"
+                d="M2 6a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6zm3.519 0L12 11.671L18.481 6H5.52zM20 7.329l-7.341 6.424a1 1 0 0 1-1.318 0L4 7.329V18h16V7.329z"
+              />
             </svg>
-             <Textboxx type="password" placeholder="Password" value={password} onChange={handlePasswordChange} />
-             <div className={styles.forgotpass}>
-              <p className={styles.Linkforgotpass}><Link to="/">Forgot password?</Link></p>
-            </div>
-           </div>
-           <div className={styles.login}>
-             <Link to="/nopage">
-               <Button text="Login" disabled={!isFormValid()} />
-             </Link>
-            </div>
-            <div className={styles['Sign up']}>
-              Don't have an account? <Link to="/register">Sign up</Link>
-            </div>
+          </div>
+          <div className={styles.textbox}>
+            <input
+              type="text"
+              onChange={(e) => setEmail(e.target.value)}
+              className={styles.Textboxx}
+              placeholder="Email"
+            />
+          </div>
         </div>
+        {/* password */}
+        <div className={styles.subflex}>
+          <div>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="1em"
+              height="1em"
+              viewBox="0 0 24 24"
+              className={styles.icons}
+            >
+              <animate fill="freeze" />
+              <path
+                fill="#ffa101"
+                d="M12 17a2 2 0 0 1-2-2c0-1.11.89-2 2-2a2 2 0 0 1 2 2a2 2 0 0 1-2 2m6 3V10H6v10h12m0-12a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V10c0-1.11.89-2 2-2h1V6a5 5 0 0 1 5-5a5 5 0 0 1 5 5v2h1m-6-5a3 3 0 0 0-3 3v2h6V6a3 3 0 0 0-3-3Z"
+              />
+            </svg>
+          </div>
+          <div>
+            <input
+              type="text"
+              onChange={(e) => setPassword(e.target.value)}
+              className={styles.Textboxx}
+              placeholder="Password"
+            />
+          </div>
+        </div>
+        {/* forgot password */}
+        <div className={styles.forgotpass} onClick={() => navigate("/forgot")}>
+          <div>Forgot password?</div>
+        </div>
+        {/* error */}
+        <div className={styles.error} id="error" hidden>
+          <p>*Invalid email or password</p>
+        </div>
+        {/* login buttun */}
+        <div className={styles.login}>
+          <button className={styles.button} onClick={handleLogin}>
+            Login
+          </button>
+        </div>
+        {/* sign up */}
+        <div className={styles.subflex}>
+          <p className={styles.signup}>Don't have an account? </p>
+          <Link to="/register" className={styles.signuplink}>
+            Sign up
+          </Link>
+        </div>
+      </div>
     </div>
   );
-}
+};
 
 export default Login;

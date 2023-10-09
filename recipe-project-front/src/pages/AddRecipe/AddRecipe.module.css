@@ -136,3 +136,6 @@
     outline-color: var(--secondaryColor);
     caret-color: var(--secondaryColor);
 }
+@media screen {
+    
+}
