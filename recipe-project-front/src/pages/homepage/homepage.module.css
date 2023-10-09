@@ -11,7 +11,6 @@
     text-align: center;
 }
 .backgroundP img{
-    background-image: url(../../assets/photos/bg.png);
     background-size: cover;
     background-position: center;
     width: 100%;
@@ -19,6 +18,7 @@
     margin-left: -10px;
     filter: blur(0.1px);
     height: 665px;
+    animation: slideAndBounce1 4s;
 }
 
 .p1{
@@ -30,6 +30,7 @@
     color: #153040;
     text-shadow: 1px 1px 4px var(--MainColor);
     font-weight: lighter;
+    /* animation: dropAndBounce 2s ; */
 }
 .p2{
     position: absolute;
@@ -176,6 +177,40 @@
 .options{
     color:var(--MainColor75);
     background-color: #F5F5F5;
+}
+@keyframes dropAndBounce {
+    0% {
+        transform: translateY(-100%);
+        animation-timing-function: ease-out;
+    }
+    25% {
+        transform: translateY(0);
+        animation-timing-function: ease-in;
+    }
+    50% {
+        transform: translateY(-30px);
+        animation-timing-function: ease-out;
+    }
+    75% {
+        transform: translateY(-10);
+        animation-timing-function: ease-in;
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+@keyframes slideAndBounce1 {
+    0% {
+        transform: translateX(50%);
+        animation-timing-function: ease-out;
+    }
+    50% {
+        transform: translateX(0);
+        animation-timing-function: ease-in;
+    }
+    100% {
+        transform: translateX(0);
+    }
 }
 @media (max-width: 768px) {
     .backgroundP img{
