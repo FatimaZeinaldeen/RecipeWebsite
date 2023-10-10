@@ -12,7 +12,7 @@ const recipeSchema= new Schema({
     },
     category: {
         type: String,
-        enum:["Lunch","Breakfast","Dinner","Dessert","Snack","Drinks","Vegan","Salad"]
+        enum:["Lunch","Breakfast","Dinner","Dessert","Snack","Drinks","Vegan","Salad","slices","pieces"]
     },
     user: {
         type: String,
@@ -34,7 +34,7 @@ const recipeSchema= new Schema({
     },
     likes: {
         type: Number,
-        default: null
+        default: 0
     },
     photo:String,
     chef_note:{
