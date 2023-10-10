@@ -32,7 +32,7 @@ const Login = () => {
   };
   const handleLogin = () => {
     const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-    const passRegex = /^.{8,}$/;
+    const passRegex = /^.{8,}$/ ;
     if (!emailRegex.test(email) && !passRegex.test(password)) {
       document.getElementById("error").style.display = "block";
     } else {
