@@ -48,4 +48,9 @@
 .Linkforgotpass{
     color: var(--secondaryColor);
 }
+.signup{
+font-family: var(--headerFont2);
+color: var(--primarycolor);
+top: 40%;
 
+}

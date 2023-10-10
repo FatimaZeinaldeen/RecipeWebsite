@@ -70,7 +70,7 @@ function Login() {
                <Button text="Login" disabled={!isFormValid()} />
              </Link>
             </div>
-            <div className={styles['Sign up']}>
+            <div className={styles.signup}>
               Don't have an account? <Link to="/register">Sign up</Link>
             </div>
         </div>
