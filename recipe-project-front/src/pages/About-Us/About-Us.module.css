@@ -16,6 +16,7 @@
     font-weight: bold;
     color: var(--MainColor);
     line-height: 2;
+    animation: shadow1 2s infinite alternate;
 }
 .h2peoplesthought{
     color: var(--MainColor);
@@ -33,6 +34,7 @@
     font-weight:500;
     margin-left: 10%;
     margin-bottom: 10px;
+    animation: shadow2 2s infinite alternate;
 }
 .Punderfeedback{
     font-family: var(--headerFont1);
@@ -40,4 +42,22 @@
     font-size: 25px;
     color: var(--MainColor75);
     margin-bottom: 5%;
+    animation: shadow1 2s infinite alternate;
+}
+
+@keyframes shadow1 {
+    0% {
+        text-shadow: none;
+    }
+    100% {
+        text-shadow: 3px 3px 5px var(--secondaryColor);
+    }
+}
+@keyframes shadow2 {
+    0% {
+        text-shadow: none;
+    }
+    100% {
+        text-shadow: 2px 2px 3px var(--MainColor);
+    }
 }

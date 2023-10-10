@@ -2,19 +2,20 @@ import React , { useState,useEffect } from "react";
 import RecipeCard from "../../Components/RecipeCard/RecipeCard.js";
 import TopRecipeCard from "../../Components/TopRecipeCard/topRecipeCard.js";
 import Style from "./homepage.module.css";
-import bg from "../../assets/photos/bg.png";
+// import bg from "../../assets/photos/bg.png";
 import axios from 'axios';
+import Hero from '../../Components/hero';
 
 function Home() {
-
+ 
   const [recipes, setRecipes] = useState([]);
   const [filteredRecipes, setFilteredRecipes] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("");
   const [selectedCountry, setSelectedCountry] = useState("");
   const [searchQueryName, setSearchQueryName] = useState("");
   const [ingredientQuery, setIngredientQuery] = useState('');
-
-
+  
+  
  useEffect(() => {
     axios.get("http://localhost:3000/Recipe/all-recipes").then((response) => {
       setRecipes(response.data);
@@ -107,9 +108,8 @@ function Home() {
     )
   })
   return (
-      
       <div>
-          <div className={Style.backgroundP}>
+          {/* <div className={Style.backgroundP}>
               <img src={bg}  alt="bgPhoto" ></img>
               <p className={Style.p1}>Bringing the World to Your Table</p>
               <p className={Style.p2}>Explore a World of Culinary Delights with Food Lovers. Share Your Culinary Adventures on Our  Platform... </p>
@@ -117,14 +117,18 @@ function Home() {
               <svg xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em" viewBox="0 0 16 16"><path fill="#ffa101" fill-rule="evenodd" d="M14.207 1.707L13.5 1l-6 6l-6-6l-.707.707l6.353 6.354h.708l6.353-6.354zm0 6L13.5 7l-6 6l-6-6l-.707.707l6.353 6.354h.708l6.353-6.354z" clip-rule="evenodd"/></svg>
                   <p>BE YOUR OWN CHEF</p>
               </div>
+          </div> */}
+          <div className={Style.herodiv}>
+          <Hero />
           </div>
+         
+          
           <p className={Style.toprecipes}>TOP RECIPES</p>
           <div className={Style.divtoprecipes}>
                 {topRecipes.map((recipe) => (
                  <TopRecipeCard
                    key={recipe._id}
                    recipe={recipe}
-                  //  onLike={handleLike}
                  />
                 ))}
           </div>
