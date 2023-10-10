@@ -10,11 +10,24 @@ import Label from "../../Components/Label";
 import Dropdown from "../../Components/Dropdown";
 import { useState } from "react";
 import Ingredient from "../../Components/Ingredient";
-import axios from 'axios';
-import { useParams } from 'react-router-dom';
+import axios from "axios";
+import { useParams } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
+
 const AddRecipe = () => {
+  const navigate = useNavigate();
   const prepTime = ["min", "hour"];
-  const measurments = ["cup/s", "tsp", "tbsp", "L", "mL", "gr", "Kg","pieces","slices"];
+  const measurments = [
+    "cup/s",
+    "tsp",
+    "tbsp",
+    "L",
+    "mL",
+    "gr",
+    "Kg",
+    "pieces",
+    "slices",
+  ];
   const [instruction, setInstruction] = useState("");
   const [instructionsList, setInstructionsList] = useState([]);
   const [name, setName] = useState(""); //
@@ -30,12 +43,14 @@ const AddRecipe = () => {
   const [ingredientlist, setIngredientList] = useState([]);
   const [errorArray, setErrorArray] = useState([]);
 
-  const { id } = useParams(); 
-    
+  const { id } = useParams();
+
   //validating and posting
   const validate = () => {
     setErrorArray([]);
-
+    if (unit === "") {
+      setUnit("min");
+    }
     if (
       name !== "" &&
       time !== "" &&
@@ -80,40 +95,44 @@ const AddRecipe = () => {
     }
   };
   //post a recipe
-  const postRecipe=async ()=>{
-    if(unit===""){
-    setTime("min");
-  }
-    try{
-    const data={
-      name:name,
-      category:category,
-      user: id,
-      Country: country,
-      prep_time: {
-        time: parseFloat(time), 
-        unit:unit,
-      },
-      serving: parseInt(serving),
-      chef_note: notes,
-      instructions: instructionsList,
-      ingredients: ingredientlist,
+  const postRecipe = async () => {
+    try {
+        const data = {
+        name: name,
+        category: category,
+        user: id,
+        Country: country,
+        prep_time: {
+          time: parseFloat(time),
+          unit: unit,
+        },
+        serving: parseInt(serving),
+        chef_note: notes,
+        instructions: instructionsList,
+        ingredients: ingredientlist,
+      };
+      const jsonData = JSON.stringify(data);
+      console.log(jsonData);
+      const response = await axios.post(
+        `http://localhost:3000/Recipe/add-recipe/${id}`,
+        data,
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      const recipeId=response.data._id;
+      navigate(`/recipe/${recipeId}`);
+    } catch (error) {
+      console.error("Error posting recipe data:", error);
     }
-    const jsonData=JSON.stringify(data);
-    console.log(jsonData)
-    const response = await axios.post(`http://localhost:3000/Recipe/add-recipe/${id}`, jsonData);
-    console.log('Recipe data posted successfully:', response.data);
-  } catch (error) {
-    console.error('Error posting recipe data:', error);
-  }
-  }
+  };
   //adding instruction
   const addInstruction = () => {
     if (instruction.trim() !== "") {
       setInstructionsList([...instructionsList, instruction]);
-      if(instructionsList.length !== 0){
-        document.getElementById("Instructions").hidden=false;
-      }
+      document.getElementById("instructions").hidden = false;
       setInstruction("");
     }
   };
@@ -154,122 +173,136 @@ const AddRecipe = () => {
   };
 
   return (
-    <div className={styles.Container}>
-      <h1 className={styles.h1}>Let’s make a culinary masterpiece</h1>
-      {/* Form */}
-      <div className={styles.mainForm}>
-        <div className={styles.form}>
-          <div className={styles.leftForm}>
-            {/* Recipe name */}
-            <div className={styles.subForms}>
-              <Label text="Recipe Name:" />
-              <Textbox onChange={(e) => setName(e.target.value)} />
-            </div>
-            {/* prep time */}
-            <div className={styles.subForms}>
-              <Label text="Preparation Time:" />
-              <NumBox onChange={(e) => setTime(e.target.value)} />
-              <Dropdown
-                elements={prepTime}
-                onSelect={(e) => setUnit(e.target.value)}
-              />
-            </div>
-            {/* countries */}
-            <div className={styles.subForms}>
-              <Countries onSelect={handleCountrySelect} />
-            </div>
-            {/* category */}
-            <div className={styles.subForms}>
-              <Category onSelect={handleCategorySelect} />
-            </div>
-            {/* Serving */}
-            <div className={styles.subForms}>
-              <Label text="Serving:" />
-              <NumBox onChange={(e) => setServing(e.target.value)} />
-              <p className={styles.IndexedLabel}>/Recipe</p>
-            </div>
-            {/* Ingredients */}
-            <div className={styles.subForms}>
-              <Label text="Ingredient:" />
-              <Textbox
-                value={ingname}
-                onChange={(e) => {
-                  setIngName(e.target.value);
-                }}
-              />
-              <Label text="Measurment:" />
-              <NumBox
-                value={ingmeasure}
-                onChange={(e) => {
-                  setMeasure(parseFloat(e.target.value));
-                }}
-              />
-              <Dropdown
-                elements={measurments}
-                onSelect={(e) => setIngUnit(e.target.value)}
-              />
-              <Button text="Add" onClick={addIngredient} />
-            </div>
-            <div className={styles.Ingredients} id="Instructions" hidden>
-              {ingredientlist.map((ing) => {
-                return (
-                  <Ingredient
-                    key={ing.name}
-                    text={ing.measurement+ ing.unit + " " + ing.name}
-                    onClick={() => removeIngredient(ing.name)}
+    <body className={styles.background}>
+      <div className={styles.Container}>
+        <h1 className={styles.h1}>Let’s make a culinary masterpiece</h1>
+        {/* Form */}
+        <div className={styles.mainForm}>
+          <div className={styles.form}>
+            <div className={styles.leftForm}>
+              {/* Recipe name */}
+              <div className={styles.subForms}>
+                <Label text="Recipe Name:" />
+                <Textbox onChange={(e) => setName(e.target.value)} />
+              </div>
+              {/* chef notes */}
+              <div className={styles.subForms}>
+                <div className={styles.centerButtons}>
+                  <Label text="Chef's Notes:" />
+                  <input
+                    type="text"
+                    value={notes}
+                    onChange={(e) => setNotes(e.target.value)}
+                    className={styles.Textbox}
+                    placeholder="*Optional"
                   />
-                );
-              })}
+                </div>
+              </div>
+              {/* countries and category */}
+              <div className={styles.subForms}>
+                <div className={styles.Countries}>
+                  <Countries onSelect={handleCountrySelect} />
+                </div>
+                <div>
+                  <Category onSelect={handleCategorySelect} />
+                </div>
+              </div>
+              {/* prep time */}
+              <div className={styles.subForms}>
+                <Label text="Preparation Time:" />
+                <NumBox onChange={(e) => setTime(e.target.value)} />
+                <Dropdown
+                  elements={prepTime}
+                  onSelect={(e) => setUnit(e.target.value)}
+                />
+              </div>
+              {/* Serving */}
+              <div className={styles.subForms}>
+                <Label text="Serving:" />
+                <NumBox onChange={(e) => setServing(e.target.value)} />
+                <p className={styles.IndexedLabel}>/Recipe</p>
+              </div>
             </div>
-            {/* chef notes */}
-            <div className={styles.subForms}>
-              <Label text="Chef's Notes:" />
-              <Textbox onChange={(e) => setNotes(e.target.value)} />
-            </div>
-          </div>
-          {/* Instructions */}
-          <div className={styles.rightForm}>
-            <div className={styles.subForms}>
-              <Label text="Instructions:" />
-              <Textbox
-                value={instruction}
-                onChange={(e) => setInstruction(e.target.value)}
-              />
-              <Button text="Add" onClick={addInstruction} />
-            </div>
-            <div>
-              <ul id="instructions" className={styles.Textarea}>
-                <br />
-                {instructionsList.map((item) => {
-                  return <li>{item}</li>;
+            {/* Instructions */}
+            <div className={styles.rightForm}>
+              <div className={styles.subForms}>
+                <Label text="Instructions:" />
+                <Textbox
+                  value={instruction}
+                  onChange={(e) => setInstruction(e.target.value)}
+                />
+                <Button text="Add" onClick={addInstruction} />
+              </div>
+              <div>
+                <ul id="instructions" className={styles.Textarea} hidden>
+                  <br />
+                  {instructionsList.map((item) => {
+                    return <li>{item}</li>;
+                  })}
+                </ul>
+              </div>
+              {/* Ingredients */}
+              <div className={styles.subForms}>
+                <div className={styles.label}>
+                  <Label text="Ingredient:" />
+                </div>
+                <Textbox
+                  value={ingname}
+                  onChange={(e) => {
+                    setIngName(e.target.value);
+                  }}
+                />
+                <Label text="Measurment:" />
+                <NumBox
+                  value={ingmeasure}
+                  onChange={(e) => {
+                    setMeasure(parseFloat(e.target.value));
+                  }}
+                />
+                <Dropdown
+                  elements={measurments}
+                  onSelect={(e) => setIngUnit(e.target.value)}
+                />
+                <Button text="Add" onClick={addIngredient} />
+              </div>
+              <div className={styles.Ingredients}>
+                {ingredientlist.map((ing) => {
+                  return (
+                    <Ingredient
+                      key={ing.name}
+                      text={ing.measurement + ing.unit + " " + ing.name}
+                      onClick={() => removeIngredient(ing.name)}
+                    />
+                  );
                 })}
-              </ul>
+              </div>
             </div>
           </div>
-        </div>
-        {/* error message */}
-        <h4 className={styles.error} hidden id="errors">
-          
-          *Some fields are missing:
-          <p>{errorArray.map((error, index) => {
-            return " "+(index+1) + "-" + error + " ";
-          })}</p>
-        </h4>
-        {/* submit or cancel */}
-        <div className={styles.buttonsForm}>
-          <div className={styles.centerButtons}>
-            <div>
-              <Button text="Share your Recipe!" onClick={validate} />
-            </div>
-            <div>
-              <Link to="/" className={styles.CancelButton}>
-                Cancel
-              </Link>
+          {/* error message */}
+          <h4 className={styles.error} hidden id="errors">
+            *Some fields are missing:
+            <p>
+              {errorArray.map((error, index) => {
+                return " " + (index + 1) + "-" + error + " ";
+              })}
+            </p>
+          </h4>
+          {/* submit or cancel */}
+          <div className={styles.buttonsForm}>
+            <div className={styles.centerButtons}>
+              <div>
+                <Button text="Share your Recipe!" onClick={validate} />
+              </div>
+              <div>
+                <Link to="/" className={styles.CancelButton}>
+                  Cancel
+                </Link>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </body>
   );
 };
 

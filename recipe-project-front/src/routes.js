@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./pages/homepage";
 import About from "./pages/About-Us";
 import Login from "./pages/loginpage";
+import Forgot from "./pages/loginpage/forgot";
 import Layout from "./pages/layout";
 import NoPage from "./pages/nopage";
 import RecipeInfo from "./pages/recipeinfo";
@@ -18,6 +19,7 @@ const appRoutes = () => {
           <Route path="/loginpage" element={<Login />} />
           <Route path="/Register" element={<Register />} />
           <Route path="/recipe/:id" element={<RecipeInfo />} />
+          <Route path="/forgot" element={<Forgot />} />
           <Route path="Recipe/add-recipe/:id" element={<AddRecipe />} />
           <Route element={<NoPage />} />
         </Route>
