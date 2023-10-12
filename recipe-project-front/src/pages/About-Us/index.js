@@ -22,15 +22,15 @@ function About() {
   const handleFeedbackSubmit = (newFeedback) => {
     const newFeedbackItem = {
       id: feedbackData1.length + 1,
-      userPhoto: 'user.jpg',//mne5dn mn l database
-      userName: 'User',
+      userPhoto: 'user.jpg',
+      userName: 'User', //hon lzm est5dm l  id li bl useContext la jib l name mn l database
       feedbackContent: newFeedback,
     };
 
     setFeedbackData1([...feedbackData1, newFeedbackItem]);
   };
-  //b3d lzm hay l array nfwtn 3l feedback database (addFeedback Controller)
-  //yali ha t5d l id lal user mn l url yali 3eml login(fa nhna behaje ll id mn l url la n2dr njib l usename wl photo mn l user model)
+   
+  
   return (
     <div>
         <h2 className={Style.h2aboutUs}>About Us:</h2>

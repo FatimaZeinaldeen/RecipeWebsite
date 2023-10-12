@@ -118,7 +118,7 @@ function Home() {
                   <p>BE YOUR OWN CHEF</p>
               </div>
           </div> */}
-          <div className={Style.herodiv}>
+          <div className={Style.divhero}>
           <Hero />
           </div>
          
