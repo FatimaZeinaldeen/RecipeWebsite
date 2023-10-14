@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import styles from "./FeedbackForm.module.css";
+import axios from 'axios';
 
 function FeedbackForm({ onFeedbackSubmit }) {
   const [feedback, setFeedback] = useState(''); //setFeedback is the setter function that allows you to update the feedback state. SO when the user types something into an input field, you can call setFeedback(newValue) to update the feedback state with the new value
@@ -11,11 +12,20 @@ function FeedbackForm({ onFeedbackSubmit }) {
 
   const handleSubmit = (event) => {
     event.preventDefault(); // By default, when a form is submitted, the browser will try to reload the page or navigate to a new URL, So calling event.preventDefault() stops this default behavior from happening
-    if(feedback!==''){
-      onFeedbackSubmit(feedback);
+    if (feedback.trim() !== '') {
+      axios.post('http://localhost:3000/About-Us/add-feedback/:id', { //hon l :id bdo ykoon li bl useContext
+        newfeedback: feedback,
+      })
+        .then((response) => {
+          onFeedbackSubmit(feedback);
+          setFeedback('');
+        })
+        .catch((error) => {
+          console.error('Error submitting feedback:', error);
+        });
     }
-    setFeedback('');
   };
+
 
   return (
   <form className={styles.formsendfeedback} onSubmit={handleSubmit}>

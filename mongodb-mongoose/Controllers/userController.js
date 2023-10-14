@@ -18,6 +18,7 @@ export const registerUser = async (req, res) => {
       await user.save();
     } else {
       const user = new User(req.body);
+      console.log(user);
       await user.save();
     }
     res.status(201).json({ message: "successfully added!" });
