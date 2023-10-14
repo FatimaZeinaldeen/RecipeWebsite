@@ -127,7 +127,7 @@ function Register() {
         </Link>
       </div>
       <div className={styles['login-link']}>
-        Already have an account? <Link to="/loginpage">Log in</Link>
+        Already have an account? <Link to="/login">Log in</Link>
       </div>
     </div>
   );

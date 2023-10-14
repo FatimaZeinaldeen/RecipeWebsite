@@ -15,12 +15,12 @@ const appRoutes = () => {
       <Routes>
         <Route element={<Layout />}>
           <Route exact path="/" element={<Home />} />
-          <Route path="/About-Us/getAllfeedbacks" element={<About />} />
-          <Route path="/loginpage" element={<Login />} />
-          <Route path="/Register" element={<Register />} />
+          <Route path="/about-us" element={<About />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
           <Route path="/recipe/:id" element={<RecipeInfo />} />
           <Route path="/forgot" element={<Forgot />} />
-          <Route path="Recipe/add-recipe/:id" element={<AddRecipe />} />
+          <Route path="add-recipe/:id" element={<AddRecipe />} />
           <Route element={<NoPage />} />
         </Route>
       </Routes>
