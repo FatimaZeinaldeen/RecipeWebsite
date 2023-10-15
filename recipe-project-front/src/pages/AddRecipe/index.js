@@ -47,8 +47,6 @@ const AddRecipe = () => {
   const userId = localStorage.getItem('userId');
   //check user if admin 
   useEffect(()=>{
-    console.log(userId);
-    console.log(id);
     if(userId !== id){
       navigate("/no-page");
     }
