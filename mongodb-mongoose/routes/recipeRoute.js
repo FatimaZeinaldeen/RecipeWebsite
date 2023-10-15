@@ -25,7 +25,7 @@ recipeRouter.get("/all-recipes", getAllRecipes);
 recipeRouter.get("/get-recipe/:id", getRecipe);
 recipeRouter.get("/getrecipebyIngredient", getRecipeByIngredients);
 recipeRouter.post("/add-review/:id", addReview);
-recipeRouter.post("/add-recipe/:id", verifyAdmin,upload.single("userPhoto"), addRecipe); //for Admin
+recipeRouter.post("/add-recipe/:id", upload.single("userPhoto"), addRecipe); //for Admin
 recipeRouter.put("/update-recipe/:id", verifyAdmin,upload.single("userPhoto"), updateRecipe); //for Admin
 recipeRouter.delete("/delete-recipe/:id", verifyAdmin, deleteRecipe); //for Admin
 recipeRouter.post('/like-recipe/:recipeId', async (req, res) => {

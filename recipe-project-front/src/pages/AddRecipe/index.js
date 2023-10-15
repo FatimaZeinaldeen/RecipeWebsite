@@ -108,7 +108,7 @@ const AddRecipe = () => {
       const data = {
         name: name,
         category: category,
-        user: id,
+        user: id.toString(),
         Country: country,
         prep_time: {
           time: parseFloat(time),
@@ -130,7 +130,7 @@ const AddRecipe = () => {
           },
         }
       );
-      const recipeId = Types.ObjectId(response.data._id);
+      const recipeId =new Types.ObjectId(response.data._id);
       navigate(`/recipe/${recipeId}`);
     } catch (error) {
       console.error("Error posting recipe data:", error);
