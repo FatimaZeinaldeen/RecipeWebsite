@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./pages/homepage";
 import About from "./pages/About-Us";
@@ -9,8 +9,18 @@ import NoPage from "./pages/nopage";
 import RecipeInfo from "./pages/recipeInfo";
 import Register from "./pages/Register";
 import AddRecipe from "./pages/AddRecipe";
-const appRoutes = () => {
+import UserInfo from "./pages/UserInfo";
+import UserIDContext from "./Context/UserIDContext.js";
+import { useEffect } from "react";
+const AppRoutes = () => {
+  
+  const [userId, setUserId] = useState("");
+
+  useEffect(()=>{
+    console.log(userId);
+  },[userId]);
   return (
+    <UserIDContext.Provider value={{ userId, setUserId }}>
     <Router>
       <Routes>
         <Route element={<Layout />}>
@@ -21,10 +31,12 @@ const appRoutes = () => {
           <Route path="/recipe/:id" element={<RecipeInfo />} />
           <Route path="/forgot" element={<Forgot />} />
           <Route path="add-recipe/:id" element={<AddRecipe />} />
+          <Route path="user/:id" element={<UserInfo />} />
           <Route element={<NoPage />} />
         </Route>
       </Routes>
     </Router>
+      </UserIDContext.Provider>
   );
 };
-export default appRoutes;
+export default AppRoutes;

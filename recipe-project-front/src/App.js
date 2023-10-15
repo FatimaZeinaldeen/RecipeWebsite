@@ -1,13 +1,8 @@
-import React from 'react';
-import appRoutes from "./routes.js";
+import AppRoutes from "./routes.js";
 import "./App.css";
 
 function App() {
-  return (
-    <div className="App">
-      {appRoutes()}
-    </div>
-  );
+  return <div className="App">{AppRoutes()}</div>;
 }
 
 export default App;
