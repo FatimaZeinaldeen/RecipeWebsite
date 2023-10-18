@@ -58,7 +58,6 @@ const Login = () => {
                 d="M2 6a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6zm3.519 0L12 11.671L18.481 6H5.52zM20 7.329l-7.341 6.424a1 1 0 0 1-1.318 0L4 7.329V18h16V7.329z"
               />
             </svg>
-<<<<<<< HEAD
              <Textboxx type="password" placeholder="Password" value={password} onChange={handlePasswordChange} />
              <div className={styles.forgotpass}>
               <p className={styles.Linkforgotpass}><Link to="/">Forgot password?</Link></p>
@@ -72,7 +71,6 @@ const Login = () => {
             <div className={styles.signup}>
               Don't have an account? <Link to="/register">Sign up</Link>
             </div>
-=======
           </div>
           <div className={styles.textbox}>
             <input
@@ -82,7 +80,6 @@ const Login = () => {
               placeholder="Email"
             />
           </div>
->>>>>>> d580e57701f57416574da090a5cc7db6666f0389
         </div>
         {/* password */}
         <div className={styles.subflex}>

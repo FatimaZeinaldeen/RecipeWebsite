@@ -101,70 +101,9 @@
     text-decoration: underline;
     cursor: pointer;
 }
-<<<<<<< HEAD
 .signup{
 font-family: var(--headerFont2);
 color: var(--primarycolor);
 top: 40%;
 
 }
-=======
-.button:active{
-    background-color: #ffa101c1;
-}
-.signup{
-   color: var(--mainColor75);
-}
-.signuplink{
-    color: var(--secondaryColor);
-    margin-bottom:5px;
-    font-family: var(--textFont);
-    font-weight: lighter;
-}
-.signuplink:hover{
-    text-shadow: 1px 1px 3px var(--secondaryColor);
-}
-@keyframes dropAndBounce {
-    0% {
-        transform: translateY(-100%);
-        animation-timing-function: ease-out;
-    }
-    25% {
-        transform: translateY(0);
-        animation-timing-function: ease-in;
-    }
-    50% {
-        transform: translateY(-30px);
-        animation-timing-function: ease-out;
-    }
-    75% {
-        transform: translateY(-10);
-        animation-timing-function: ease-in;
-    }
-    100% {
-        transform: translateY(0);
-    }
-}
-@keyframes slideAndBounce1 {
-    0% {
-        transform: translateX(50%);
-        animation-timing-function: ease-out;
-    }
-    50% {
-        transform: translateX(0);
-        animation-timing-function: ease-in;
-    }
-    100% {
-        transform: translateX(0);
-    }
-}
-.h1{
-    margin-top: 25%;
-    margin-bottom: 25%;
-    font-family: var(--headerFont1);
-    color: var(--secondaryColor);
-    font-weight: lighter;
-    font-size: 40px;
-    animation: dropAndBounce 2s;
-}
->>>>>>> d580e57701f57416574da090a5cc7db6666f0389
