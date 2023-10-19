@@ -1,0 +1,16 @@
+/* src/components/recipeinfo.module.css */
+
+.recipeInfo {
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f8f8f8;
+  }
+  
+  h2 {
+    font-size: 24px;
+    font-weight: bold;
+  }
+  
+  /* Add styles for other elements as needed */
+  

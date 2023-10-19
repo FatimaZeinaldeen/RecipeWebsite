@@ -97,7 +97,7 @@ function Home() {
     setIsClicked(true);    
   }
   const countryContext = require.context(
-    "../../assets/images/",
+    "../../assets/Images/",
     false,
     /\.(png)$/ // Specify the file extension you want to include
   );
@@ -118,7 +118,7 @@ function Home() {
                   <p>BE YOUR OWN CHEF</p>
               </div>
           </div> */}
-          <div className={Style.herodiv}>
+          <div className={Style.divhero}>
           <Hero />
           </div>
          

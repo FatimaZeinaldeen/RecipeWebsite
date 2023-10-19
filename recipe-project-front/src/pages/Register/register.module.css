@@ -1,18 +1,16 @@
 .container {
-  /* ... (other styles) */
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-}
-
-/* Add a class to style the container for first name and last name inputs */
-.name-inputs {
-  display: flex;
-  justify-content: space-between;
+  background-image: url(../../assets/photos/b3.png);
+  background-size: cover;
+  background-position: center;
   width: 100%;
-  margin-bottom: 40px; /* Add spacing between the name inputs and the next input */
+  height: 700px;
+  margin-top: -20px;
 }
+<<<<<<< HEAD
 .names{
   display: flex;
 }
@@ -25,21 +23,137 @@
 
 
 /* .fname, */
-.lname {
-  /* Your existing styles for the input group */
-  width: 48%; /* Set the width of each input group */
+=======
+.text{
+  font-family: var(--headerFont3);
+    color: var(--secondaryColor);
+    font-size: 45px;
+    font-weight: lighter;
+    margin-top: 15%;
+    margin-bottom: 6%;
+    animation: dropAndBounce 2s ;
 }
-
-.input-group {
-  /* Your existing styles for the input group */
+.allinputs{
+  width: 70%;
   display: flex;
-  align-items: center;
+  margin-bottom: 1%;
+  margin-top: 3%;
 }
-.password,
-.passwordcheck {
-  /* Your existing styles for the input group */
-  width: 48%; /* Set the width of each input group */
-  margin-bottom: 10px; /* Add some margin to separate input groups */
+.firstlastGenderCountry{
+  width: 50%;
+  animation: slideAndBounce1 2s;
 }
-
-/* Rest of your existing styles */
+.emailpassPasscheck{
+  width: 50%;
+  animation: slideAndBounce2 2s;
+}
+.fname{
+  width: 80%;
+}
+>>>>>>> ffaa48e328dcce8b08d780683cfc17fb95e517f4
+.lname {
+  width: 80%;
+}
+.firstname,.lastname,.email,.password,.passwordcheck{
+    background-color: var(--graycolor);
+    border: 1px solid var(--secondaryColor);
+    border-radius: 5px;
+    width: 85%;
+    height:30px;
+    margin-left:10px;
+    padding:5px;
+    color:var(--mainColor);
+    margin-bottom: 10%;
+}
+.lname{
+  margin-left: 15px;
+}
+.GenderCountry{
+  display: flex;
+  margin-bottom: 2%;
+}
+.genderSelection{
+  width: 50%;
+}
+.genderSelection label{
+  display: block;
+  margin-bottom: 10px;
+}
+.countries{
+  width: 50%;
+  margin-top: 3%;
+}
+.submitcontainer{
+  margin-bottom: 2%;
+}
+.button{
+  background-color: var(--secondaryColor);
+  color:white;
+  border:1px solid var(--secondaryColor);
+  border-radius: 20px;
+  width:100px;
+  padding:10px;
+  font-family: var(--textFont);
+  font-weight: 550;
+  font-size: large;
+  cursor: pointer;
+}
+.haveacc{
+  font-family: var(--textFont);
+  color: var(--mainColor);
+}
+.loginlink{
+  color: var(--secondaryColor);
+  font-family: var(--textFont);
+  font-weight: lighter;
+}
+.loginlink:hover{
+  text-shadow: 1px 1px 3px var(--secondaryColor);
+}
+@keyframes dropAndBounce {
+  0% {
+      transform: translateY(-100%);
+      animation-timing-function: ease-out;
+  }
+  25% {
+      transform: translateY(0);
+      animation-timing-function: ease-in;
+  }
+  50% {
+      transform: translateY(-30px);
+      animation-timing-function: ease-out;
+  }
+  75% {
+      transform: translateY(-10);
+      animation-timing-function: ease-in;
+  }
+  100% {
+      transform: translateY(0);
+  }
+}
+@keyframes slideAndBounce1 {
+  0% {
+      transform: translateX(-50%);
+      animation-timing-function: ease-out;
+  }
+  50% {
+      transform: translateX(0);
+      animation-timing-function: ease-in;
+  }
+  100% {
+      transform: translateX(0);
+  }
+}
+@keyframes slideAndBounce2 {
+  0% {
+      transform: translateX(50%);
+      animation-timing-function: ease-out;
+  }
+  50% {
+      transform: translateX(0);
+      animation-timing-function: ease-in;
+  }
+  100% {
+      transform: translateX(0);
+  }
+}

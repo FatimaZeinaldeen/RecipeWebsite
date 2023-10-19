@@ -59,12 +59,12 @@ function Navbar() {
               Home
             </Link>
             <Link
-              to="/About-Us/getAllfeedbacks"
+              to="/about-us"
               className={`${styles.navLink} ${isActive("/About-Us/getAllfeedbacks")}`}
             >
               About
             </Link>
-            <Link to="/loginpage " className={styles.loginLink}>
+            <Link to="/login " className={styles.loginLink}>
               <div className={styles.loginIcon}>{LoginIcon} </div>
               <div>Login</div>
             </Link>

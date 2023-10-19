@@ -18,6 +18,7 @@ export const registerUser = async (req, res) => {
       await user.save();
     } else {
       const user = new User(req.body);
+      console.log(user);
       await user.save();
     }
     res.status(201).json({ message: "successfully added!" });
@@ -74,7 +75,7 @@ export const getUser = async (req, res) => {
 //updateAdminProfile
 export const updateProfile = async (req, res) => {
   const { id } = req.params;
-
+  let updatedUser;
   try {
     if (req.file) {
       const result = await cloudinary.uploader.upload(req.file.buffer);
@@ -84,7 +85,7 @@ export const updateProfile = async (req, res) => {
         { new: true }
       );
     } else {
-      const updatedUser = await User.findByIdAndUpdate(id, req.body, {
+      updatedUser = await User.findByIdAndUpdate(id, req.body, {
         new: true,
       });
     }

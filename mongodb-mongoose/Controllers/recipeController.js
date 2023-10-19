@@ -30,7 +30,17 @@ export const addRecipe = async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 };
-
+//get recipe
+export const getRecipes = async (req, res) => {
+  try {
+    const {id}= req.params;
+    const recipes = await Recipe.find({"user":id});
+    const recipeArray = recipes.map((recipe) => recipe.toObject());
+    res.status(200).json(recipeArray);
+  } catch (error) {
+    return res.status(500).json({ error: error.message });
+  }
+};
 //getAllRecipes
 export const getAllRecipes = async (req, res) => {
   try {

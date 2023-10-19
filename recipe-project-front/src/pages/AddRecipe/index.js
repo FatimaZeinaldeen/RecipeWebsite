@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
+
+
 import styles from "./AddRecipe.module.css";
 import Countries from "../../Components/CountryDropDown";
 import Category from "../../Components/categoryDropdown";
 import Button from "../../Components/Button";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import Textbox from "../../Components/Textbox";
 import NumBox from "../../Components/NumBox";
 import Label from "../../Components/Label";
@@ -11,8 +13,8 @@ import Dropdown from "../../Components/Dropdown";
 import { useState } from "react";
 import Ingredient from "../../Components/Ingredient";
 import axios from "axios";
-import { useParams } from "react-router-dom";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
+import { Types } from "mongoose";
 
 const AddRecipe = () => {
   const navigate = useNavigate();
@@ -44,63 +46,71 @@ const AddRecipe = () => {
   const [errorArray, setErrorArray] = useState([]);
 
   const { id } = useParams();
-
+  const userId = localStorage.getItem('userId');
+  //check user if admin 
+  useEffect(()=>{
+    if(userId !== id.toString()){
+      navigate("/no-page");
+    }
+  });
   //validating and posting
   const validate = () => {
     setErrorArray([]);
     if (unit === "") {
       setUnit("min");
     }
-    if (
-      name !== "" &&
-      time !== "" &&
-      unit !== "" &&
-      country !== "" &&
-      category !== "" &&
-      serving !== 0 &&
-      ingredientlist.length !== 0 &&
-      instructionsList.length !== 0
-    ) {
-      document.getElementById("errors").hidden = true;
-      postRecipe();
-    } else {
-      const errors = [];
-      if (name === "") {
-        errors.push("Recipe Name");
-      }
-      if (time === "") {
-        errors.push("Preparation time");
-      }
-      if (unit === "") {
-        errors.push("Preparation time unit");
-      }
-      if (country === "") {
-        errors.push("Country");
-      }
-      if (category === "") {
-        errors.push("Category");
-      }
-      if (serving === 0) {
-        errors.push("Serving");
-      }
-      if (ingredientlist.length === 0) {
-        errors.push("Ingredient");
-      }
-      if (instructionsList.length === 0) {
-        errors.push("Instructions");
-      }
+    
+      if (
+        name !== "" &&
+        time !== "" &&
+        unit !== "" &&
+        country !== "" &&
+        category !== "" &&
+        serving !== 0 &&
+        ingredientlist.length !== 0 &&
+        instructionsList.length !== 0
+      ) {
+        document.getElementById("errors").hidden = true;
+        postRecipe();
+      } else {
+        const errors = [];
+        if (name === "") {
+          errors.push("Recipe Name");
+        }
+        if (time === "") {
+          errors.push("Preparation time");
+        }
+        if (unit === "") {
+          errors.push("Preparation time unit");
+        }
+        if (country === "") {
+          errors.push("Country");
+        }
+        if (category === "") {
+          errors.push("Category");
+        }
+        if (serving === 0) {
+          errors.push("Serving");
+        }
+        if (ingredientlist.length === 0) {
+          errors.push("Ingredient");
+        }
+        if (instructionsList.length === 0) {
+          errors.push("Instructions");
+        }
 
-      setErrorArray(errors);
-      document.getElementById("errors").hidden = false;
-    }
+        setErrorArray(errors);
+        document.getElementById("errors").hidden = false;
+      }
+   
   };
   //post a recipe
   const postRecipe = async () => {
     try {
-        const data = {
+      const data = {
         name: name,
         category: category,
-        user: id,
+        user: id.toString(),
         Country: country,
         prep_time: {
           time: parseFloat(time),
@@ -122,7 +132,7 @@ const AddRecipe = () => {
           },
         }
       );
-      const recipeId=response.data._id;
+      const recipeId =new Types.ObjectId(response.data._id);
       navigate(`/recipe/${recipeId}`);
     } catch (error) {
       console.error("Error posting recipe data:", error);

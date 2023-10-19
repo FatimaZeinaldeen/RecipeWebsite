@@ -31,15 +31,10 @@ const userSchema = new Schema ({
         type: String,
         required: true,
     },
-    rate: {
-        type: Number,
-        default: null,
-    },
     biography: {
         type: String,
         default: null,
-    },
-    userPhoto: String
+    }
     
 },{
     timestamps: true

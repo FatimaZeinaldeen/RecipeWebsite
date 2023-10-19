@@ -6,6 +6,7 @@ import {
   updateRecipe,
   deleteRecipe,
   addReview,
+  getRecipes,
   getRecipeByIngredients
 } from "../Controllers/recipeController.js";
 import cloudinary from "cloudinary";
@@ -22,6 +23,7 @@ recipeRouter.get("/", (req, res) => {
   res.status(404).json({ error: "Page not found" });
 });
 recipeRouter.get("/all-recipes", getAllRecipes);
+recipeRouter.get("/user/:id",getRecipes);
 recipeRouter.get("/get-recipe/:id", getRecipe);
 recipeRouter.get("/getrecipebyIngredient", getRecipeByIngredients);
 recipeRouter.post("/add-review/:id", addReview);

@@ -21,7 +21,7 @@ userRouter.get("/", (req, res) => {
 userRouter.post("/register", upload.single("userPhoto"), registerUser);
 userRouter.post("/Login", login);
 userRouter.post("/Logout/:id", verifyAdmin, userLogout);
-userRouter.get("/profile/:id", verifyAdmin, getUser);
+userRouter.get("/profile/:id", getUser);
 userRouter.delete("/delete-account/:id", deleteAccount);
 userRouter.put(
   "/profile/update-profile/:id",
