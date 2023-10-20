@@ -1,4 +1,4 @@
-import React, { useState,useContext } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import styles from "./login.module.css";
 import { useNavigate } from "react-router-dom";
@@ -6,7 +6,6 @@ import axios from "axios";
 import UserIDContext from "../../Context/UserIDContext";
 // This is the right code
 const Login = () => {
-  const { userId,setUserId } = useContext(UserIDContext);
   const navigate = useNavigate();
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
@@ -45,7 +44,7 @@ const Login = () => {
   };
   const handleLogin = () => {
     const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-    const passRegex = /^.{8,}$/ ;
+    const passRegex = /^.{8,}$/;
     if (!emailRegex.test(email) && !passRegex.test(password)) {
       document.getElementById("error").style.display = "block";
     } else {
@@ -53,7 +52,6 @@ const Login = () => {
     }
   };
   return (
-    <UserIDContext.Provider value={{ userId, setUserId }} >
     <div className={styles.container}>
       <h1 className={styles.header}>Welcome Back!</h1>
       <div className={styles.form}>
@@ -131,7 +129,6 @@ const Login = () => {
         </div>
       </div>
     </div>
-    </UserIDContext.Provider>
   );
 };
 

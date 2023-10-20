@@ -1,0 +1,164 @@
+.recipeInfo {
+  display: flex; /* Use flexbox to create a two-column layout */
+  justify-content: space-between; /* Space between columns */
+  padding: 20px; /* Add padding for spacing */
+  background-image: url(../../assets/photos/recipeinfo.png);
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+  height: 700px;
+  margin-top: -20px;
+}
+
+.leftColumn {
+  width: 50%; /* Left column takes 50% of the available width */
+  margin-left: 10px;
+  font-size: 35px;
+}
+
+.rightColumn {
+  width: 50%; /* Right column takes 50% of the available width */
+  font-size: 35px;
+}
+.like{
+  
+  font-size: 30px;
+}
+.time{
+  font-size: 30px;
+}
+/* You can add more styling as needed */
+h2 {
+  font-size: 24px;
+}
+
+h3 {
+  font-size: 20px;
+}
+
+ul, ol {
+  list-style-type: disc; /* Use bullet points for lists */
+}
+
+/* Add more styling based on your design requirements */
+.title {
+  font-family: var(--titleFont);
+  color: var(--MainColor);
+  font-size: 45px;
+  margin-left: 8%;
+}
+
+.maintitle {
+  font-family: var(--mango);
+  color: var(--MainColor); /* Removed the space before the semicolon */
+  font-size:55px;
+}
+
+.phrase{
+  font-family: var(--headerFont3);
+  color: #FFA101;
+  font-size: 30px;
+}
+.origin{
+  padding-right: 10%;
+  font-family: var(--textFont);
+  color: #31525B;
+}
+.likes{
+  padding-right: 10%;
+  font-family: var(--textFont);
+  color: #31525B;
+  padding-left: 10%;
+}
+.timee{
+  padding-right: 10%;
+  padding-left: 10%;
+  font-family: var(--textFont);
+  color: #31525B;
+}
+.ingredient-box {
+  background: transparent; /* Set the background to transparent */
+  position: relative; /* Position relative to allow absolute positioning */
+}
+
+/* Style the colored bottom of the box */
+.ingredient-box::after {
+  content: "";
+  display: block;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 70%;
+  height: 0.1px; /* Adjust the height as needed */
+  background-color: #FFA101; /* Set the bottom color to #FFA101 */
+}
+
+.serving {
+  font-family: var(--mango);
+  font-weight: lighter;
+  font-size: 25px;
+  color: #FFA101;
+}
+.servingContent{
+  font-family: var(--mango);
+  font-weight: lighter;
+  font-size: 25px;
+  color: var(--MainColor);
+}
+.half{
+  margin-top:15%;
+  position:sticky;
+}
+.photo {
+  padding-right: 0%;
+  position: relative;
+  width: 550px !important;
+  height: 500px !important;
+  
+
+}
+.measurement {
+   color: #4f5c77;
+  padding-right: 5px;
+  font-size: 30px;
+  font-weight: lighter ;}
+.ingname{
+color:var(--MainColor);
+font-size: var(--textFont);
+font-weight: 100;
+font-size: smaller;
+margin-right: 20%;
+}
+.unit {
+  /* Add specific styles for units here */
+  color: #4f5c77; /* Change the color to your preference */
+  padding-left: 200px;
+  font-size: 20px;
+}
+.instructionsList{
+  color: #31525B;
+  font-size: var(--textFont);
+  font-weight: 100;
+  
+}
+
+.NoteTitle{
+  color:#FFA101;
+  font-family: var(--mango);
+  margin-bottom: 0%;
+  font-size: 30px;
+}
+.NoteContent{
+  color:#31525B ;
+  font-family: var(--textFont);
+  font-size: 20px;
+  margin-top: 0% ;
+}
+
+.chefNoteContainer {
+  background-color: #7b98a0; /* Set your desired background color */
+  border-radius: 10px; /* Adjust the value to control the roundness of the corners */
+  padding: 10px; /* Add padding for better spacing */
+  margin-top: 20px; /* Adjust margin as needed */
+}
+

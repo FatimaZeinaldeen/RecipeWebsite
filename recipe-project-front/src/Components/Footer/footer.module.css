@@ -18,20 +18,27 @@
   height: 25px;
   bottom: 0px;
 
-  transition: background-color 0.4s ease-in-out;
+  transition: background-color 0.4s ease-in-oust;
+}
+.x{
+  margin-right: 10%;
+  
+}
+.insta{
+  margin-left: 10%;
+  margin-right: 10%;
+}
+.about{
+  margin-right: 0;
 }
 .footlist {
   list-style: none;
   padding: 10px;
   margin: 20px;
   display: flex;
+ 
 }
-.footLeft {
-  display: flex;
-  align-items: center;
-  order: 0; /* Change the order to 1 to move it to the beginning */
-  justify-content: space-between;
-}
+
 .websiteName {
   font-size: 23px;
   font-family: var(--headerFont3);
