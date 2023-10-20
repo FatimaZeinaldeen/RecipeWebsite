@@ -13,7 +13,7 @@
 .backgroundP img{
     background-size: cover;
     background-position: center;
-    width: 100%;
+    width: 1000PX;
     margin-top: -20px;
     margin-left: -10px;
     filter: blur(0.1px);
