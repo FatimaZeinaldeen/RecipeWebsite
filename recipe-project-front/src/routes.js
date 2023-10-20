@@ -32,7 +32,7 @@ const AppRoutes = () => {
           <Route path="/forgot" element={<Forgot />} />
           <Route path="add-recipe/:id" element={<AddRecipe />} />
           <Route path="user/:id" element={<UserInfo />} />
-          <Route element={<NoPage />} />
+          <Route path="/*" element={<NoPage />} />
         </Route>
       </Routes>
     </Router>

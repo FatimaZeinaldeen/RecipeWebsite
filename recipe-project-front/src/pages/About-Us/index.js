@@ -7,7 +7,12 @@ import axios from 'axios';
 function About() {
   const [feedbackData, setFeedbackData] = useState([]);
   const [feedbackData1, setFeedbackData1] = useState([]);
-
+  const userId=localStorage.getItem("userId");
+  const [name,setName]=useState("")
+  const getUser=async()=>{
+    const user = await axios.get(`http://localhost:3000/User/profile/${userId}`);
+    setName(user.data.fullname);
+  }
   useEffect(() => {
     axios.get('http://localhost:3000/About-Us/getAllfeedbacks') 
       .then((response) => {
@@ -16,14 +21,15 @@ function About() {
       .catch((error) => {
         console.error('Error fetching feedback data:', error);
       });
-  }, []);
+      getUser();
+  });
 
 
   const handleFeedbackSubmit = (newFeedback) => {
     const newFeedbackItem = {
       id: feedbackData1.length + 1,
       userPhoto: 'user.jpg',
-      userName: 'User', //hon lzm est5dm l  id li bl useContext la jib l name mn l database
+      userName: name, //hon lzm est5dm l  id li bl useContext la jib l name mn l database
       feedbackContent: newFeedback,
     };
 

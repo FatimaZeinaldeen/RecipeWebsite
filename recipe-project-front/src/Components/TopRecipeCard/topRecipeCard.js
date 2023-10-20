@@ -2,9 +2,9 @@ import React from 'react';
 import Style from './topRecipeCard.module.css'; 
 import recipePhoto from "../../assets/photos/PastaPesto.jpg";
 
-const TopRecipeCard = ({ recipe ,onLike,likes}) => {
+const TopRecipeCard = ({ recipe ,onLike,likes,onClick}) => {
   return (
-    <div className={Style.recipecard}>
+    <div className={Style.recipecard} onClick={onClick}>
       <div className={Style.recipeimagecontainer}>
          <img src={recipePhoto} alt="recipeimg" className={Style.recipeimage} />
       </div>

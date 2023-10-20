@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Style from './recipeCard.module.css'; 
 import recipePhoto from "../../assets/photos/PastaPesto.jpg";
 
-const RecipeCard = ({ recipe ,onLike,onUnLike }) => {  
+const RecipeCard = ({ recipe ,onLike,onUnLike,onClick }) => {  
   
   const [isLiked, setIsLiked] = useState(false);
 
@@ -23,7 +23,7 @@ const RecipeCard = ({ recipe ,onLike,onUnLike }) => {
   };
   
   return (
-    <div className={Style.recipecard}>
+    <div className={Style.recipecard} onClick={onClick}>
       <div className={Style.recipeimagecontainer}>
          <img src={recipePhoto} alt="recipeimg" className={Style.recipeimage} />
          <div className={Style.likeicon} onClick={handleLikeClick}>

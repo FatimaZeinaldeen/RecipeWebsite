@@ -25,8 +25,17 @@ const Login = () => {
         },
       }
     );
-    console.log(response);
-    navigate(`/`);
+    console.log(response.data.user._id)
+    if (response.data && response.data.user._id) {
+      const id =response.data.user._id;
+      const userIdString =id.toString();
+      console.log(userIdString);
+      localStorage.setItem('userId', userIdString); 
+      navigate(`/user/${id}`);
+    } else {
+      console.error("User ID is not present in the response data.");
+    }
+    
     }catch (error) {
       console.error(error);
     }

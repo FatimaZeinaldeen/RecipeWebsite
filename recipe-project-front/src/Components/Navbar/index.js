@@ -1,6 +1,9 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styles from "./navbar.module.css";
 import { Link, useLocation } from "react-router-dom";
+import { useState } from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 const LoginIcon = (
   <svg
     xmlns="http://www.w3.org/2000/svg"
@@ -15,6 +18,30 @@ const LoginIcon = (
   </svg>
 );
 function Navbar() {
+  const navigate=useNavigate();
+  
+      
+  const [name, setName] = useState("Login");
+  const [islogged, setIsLogged] = useState(false);
+  const user = localStorage.getItem("userId");
+  useEffect(() => {
+    const fetchUser = async () => {
+      try {
+        if (user !== null) {
+          setIsLogged(true);
+          const response = await axios.get(
+            `http://localhost:3000/User/profile/${user}`
+          );
+          const username = response.data.fullName.split(" ")[0];
+          setName(username);
+        }
+      } catch (error) {
+        console.error("Error fetching user:", error);
+      }
+    };
+    fetchUser();
+    
+  }, [user,islogged]);
   const location = useLocation();
 
   const isActive = (pathname) => {
@@ -29,7 +56,6 @@ function Navbar() {
             width="6em"
             height="4em"
             viewBox="0 0 80 72"
-            
           >
             <path
               fill="#FFF"
@@ -60,14 +86,21 @@ function Navbar() {
             </Link>
             <Link
               to="/about-us"
-              className={`${styles.navLink} ${isActive("/About-Us/getAllfeedbacks")}`}
+              className={`${styles.navLink} ${isActive(
+                "/About-Us/getAllfeedbacks"
+              )}`}
             >
               About
             </Link>
-            <Link to="/login " className={styles.loginLink}>
-              <div className={styles.loginIcon}>{LoginIcon} </div>
-              <div>Login</div>
-            </Link>
+            {!islogged? (<Link onClick={()=>navigate("/login")} to="/login" className={styles.loginLink} id="Profile">
+        <div className={styles.loginIcon}>{LoginIcon} </div>
+        <div>Login</div>
+      </Link>):(<Link onClick={()=>navigate(`/user/${user}`)} to={`/user/${user}`} className={styles.loginLink} id="Login">
+        <div className={styles.loginIcon}>{LoginIcon} </div>
+        <div>{name}</div>
+      </Link>)}
+            
+      
           </ul>
         </ul>
       </div>
