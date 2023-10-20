@@ -108,7 +108,7 @@ const UserInfo = () => {
         </div>
         <div className={styles.recipes}>
           {recipeArray.map((recipe) => {
-            return <RecipeCard key={recipe.id} recipe={recipe} />;
+            return <RecipeCard key={recipe.id} recipe={recipe} onClick={()=>navigate(`/recipe/${recipe._id}`)}/>;
           })}
         </div>
       </div>

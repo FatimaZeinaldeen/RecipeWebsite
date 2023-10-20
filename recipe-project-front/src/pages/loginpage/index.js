@@ -33,7 +33,7 @@ const Login = () => {
       console.log(userIdString);
       localStorage.setItem('userId', userIdString); 
       setUserId(userIdString);
-      navigate(`/`);
+      navigate(`/user/${id}`);
     } else {
       console.error("User ID is not present in the response data.");
     }
