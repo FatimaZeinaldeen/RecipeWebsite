@@ -14,7 +14,13 @@
   width: 50%; /* Right column takes 50% of the available width */
   font-size: 35px;
 }
-
+.like{
+  
+  font-size: 30px;
+}
+.time{
+  font-size: 30px;
+}
 /* You can add more styling as needed */
 h2 {
   font-size: 24px;
@@ -37,7 +43,7 @@ ul, ol {
 }
 
 .maintitle {
-  font-family: var(--headerFont3);
+  font-family: var(--mango);
   color: var(--MainColor); /* Removed the space before the semicolon */
   font-size:55px;
 }
@@ -115,7 +121,7 @@ color:var(--MainColor);
 font-size: var(--textFont);
 font-weight: 100;
 font-size: smaller;
-margin-right: 0%;
+margin-right: 20%;
 }
 .unit {
   /* Add specific styles for units here */
@@ -142,3 +148,11 @@ margin-right: 0%;
   font-size: 20px;
   margin-top: 0% ;
 }
+
+.chefNoteContainer {
+  background-color: #7b98a0; /* Set your desired background color */
+  border-radius: 10px; /* Adjust the value to control the roundness of the corners */
+  padding: 10px; /* Add padding for better spacing */
+  margin-top: 20px; /* Adjust margin as needed */
+}
+

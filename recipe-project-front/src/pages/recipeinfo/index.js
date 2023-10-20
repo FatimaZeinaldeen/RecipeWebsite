@@ -66,7 +66,7 @@ const RecipeInfo = ({ recipeId }) => {
   );
 };
 
-const recipeId = "6520527ee21d62a70cda0016"; // Replace with the actual recipe ID
+const recipeId = "652057ef5ab2fc582b62b7e1"; // Replace with the actual recipe ID
 
 ReactDOM.render(
   <React.StrictMode>
