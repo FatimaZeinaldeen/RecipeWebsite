@@ -5,9 +5,9 @@ import Style from "./homepage.module.css";
 // import bg from "../../assets/photos/bg.png";
 import axios from 'axios';
 import Hero from '../../Components/hero';
-
+import {useNavigate} from "react-router-dom"
 function Home() {
- 
+  const navigate=useNavigate()
   const [recipes, setRecipes] = useState([]);
   const [filteredRecipes, setFilteredRecipes] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("");
@@ -129,6 +129,7 @@ function Home() {
                  <TopRecipeCard
                    key={recipe._id}
                    recipe={recipe}
+                   onClick={()=>{navigate(`/recipe/${recipe._id}`)}}
                  />
                 ))}
           </div>
@@ -210,6 +211,7 @@ function Home() {
                    recipe={recipe}
                    onLike={handleLike}
                    onUnLike={handleUnlike}
+                   onClick={()=>{navigate(`/recipe/${recipe._id}`)}}
                  />
                 ))}
           </div>
