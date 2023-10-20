@@ -1,16 +1,36 @@
-/* src/components/recipeinfo.module.css */
-
 .recipeInfo {
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background-color: #f8f8f8;
+    display: flex; /* Use flexbox to create a two-column layout */
+    justify-content: space-between; /* Space between columns */
+    padding: 20px; /* Add padding for spacing */
   }
   
+  .leftColumn {
+    width: 50%; /* Left column takes 50% of the available width */
+  }
+  
+  .rightColumn {
+    width: 50%; /* Right column takes 50% of the available width */
+  }
+  
+  /* You can add more styling as needed */
   h2 {
     font-size: 24px;
-    font-weight: bold;
   }
   
-  /* Add styles for other elements as needed */
+  h3 {
+    font-size: 20px;
+  }
   
+  ul, ol {
+    list-style-type: disc; /* Use bullet points for lists */
+  }
+  
+  /* Add more styling based on your design requirements */
+  .title{
+    font-family: var(--titleFont);
+    color: var(--MainColor);
+  }
+  .hand{
+    font-family: var (--headerFont3);
+    font-weight: lighter;
+  }

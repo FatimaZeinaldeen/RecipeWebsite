@@ -1,50 +1,78 @@
-import React from 'react';
+import React, { useEffect, useState } from "react";
+import ReactDOM from "react-dom";
+import axios from "axios";
+import FeedbackForm from '../../Components/FeedbackForm/FeedbackForm.js';
+import FeedbackDisplay from '../../Components/FeedbackDisplay/FeedbackDisplay.js';
+import Recipe from "../../Components/recipe/info.js";
 
-function RecipeInfo() {
+const RecipeInfo = ({ recipeId }) => {
+  const [recipe, setRecipe] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const [feedbackData, setFeedbackData] = useState([]);
+  const [feedbackData1, setFeedbackData1] = useState([]);
+
+  useEffect(() => {
+    const fetchRecipe = async () => {
+      try {
+        const response = await axios.get(`http://localhost:3000/recipe/get-recipe/${recipeId}`);
+        setRecipe(response.data);
+        setIsLoading(false);
+      } catch (error) {
+        console.error("Error fetching recipe:", error);
+        setIsLoading(false);
+      }
+    };
+
+    fetchRecipe();
+
+    // Fetch feedback data
+    axios.get('http://localhost:3000/About-Us/getAllfeedbacks')
+      .then((response) => {
+        setFeedbackData(response.data);
+      })
+      .catch((error) => {
+        console.error('Error fetching feedback data:', error);
+      });
+  }, [recipeId]);
+
+  const handleFeedbackSubmit = (newFeedback) => {
+    const newFeedbackItem = {
+      id: feedbackData1.length + 1,
+      userPhoto: 'user.jpg',
+      userName: 'User', // Replace with the user name from your context or database
+      feedbackContent: newFeedback,
+    };
+
+    setFeedbackData1([...feedbackData1, newFeedbackItem]);
+  };
+
   return (
     <div>
-      <div
-        style={{
-          position: 'relative',
-          width: '100%',
-          height: 0,
-          paddingTop: '56.2225%',
-          paddingBottom: 0,
-          boxShadow: '0 2px 8px 0 rgba(63,69,81,0.16)',
-          marginTop: '1.6em',
-          marginBottom: '0.9em',
-          overflow: 'hidden',
-          borderRadius: '8px',
-          willChange: 'transform',
-        }}
-      >
-        <iframe
-          loading="lazy"
-          style={{
-            position: 'absolute',
-            width: '100%',
-            height: '100%',
-            top: 0,
-            left: 0,
-            border: 'none',
-            padding: 0,
-            margin: 0,
-          }}
-          src="https://www.canva.com/design/DAFw2VXaQoA/watch?embed"
-          allowFullScreen
-          allow="fullscreen"
-          title="Embedded Canva Design"
-        ></iframe>
-      </div>
-      <a
-        href="https://www.canva.com/design/DAFw2VXaQoA/watch?utm_content=DAFw2VXaQoA&utm_campaign=designshare&utm_medium=embeds&utm_source=link"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        the world to your table by Daniella Wahab
-      </a>
+      {isLoading ? (
+        <div className="loading-spinner">
+          <p>Loading...</p>
+        </div>
+      ) : (
+        <div>
+          <Recipe recipe={recipe} />
+          <FeedbackDisplay
+            feedbackData={feedbackData}
+            feedbackData1={feedbackData1}
+          />
+          <FeedbackForm onFeedbackSubmit={handleFeedbackSubmit} />
+        </div>
+      )}
     </div>
   );
-}
+};
+
+const recipeId = "6520527ee21d62a70cda0016"; // Replace with the actual recipe ID
+
+ReactDOM.render(
+  <React.StrictMode>
+    <RecipeInfo recipeId={recipeId} />
+  </React.StrictMode>,
+  document.getElementById("root")
+);
 
 export default RecipeInfo;

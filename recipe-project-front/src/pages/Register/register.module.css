@@ -10,20 +10,6 @@
   height: 700px;
   margin-top: -20px;
 }
-<<<<<<< HEAD
-.names{
-  display: flex;
-}
-
-/* Style for the input groups */
-.input-group {
-  flex: 1;
-  margin-right: 10px; /* Add some space between first name and last name inputs */
-}
-
-
-/* .fname, */
-=======
 .text{
   font-family: var(--headerFont3);
     color: var(--secondaryColor);
@@ -50,7 +36,6 @@
 .fname{
   width: 80%;
 }
->>>>>>> ffaa48e328dcce8b08d780683cfc17fb95e517f4
 .lname {
   width: 80%;
 }

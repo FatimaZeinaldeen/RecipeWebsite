@@ -1,6 +1,4 @@
 import React, { useEffect } from "react";
-
-
 import styles from "./AddRecipe.module.css";
 import Countries from "../../Components/CountryDropDown";
 import Category from "../../Components/categoryDropdown";
