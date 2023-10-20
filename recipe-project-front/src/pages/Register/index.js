@@ -4,7 +4,7 @@ import Countries from "../../Components/CountryDropDown";
 import styles from "./register.module.css";
 import axios from "axios";
 import { useNavigate } from 'react-router-dom';
-
+// This is the right code
 // Define the SVG constants
 const emailSvg = (
   <svg xmlns="http://www.w3.org/2000/svg" width="2em" height="1.5em" viewBox="0 0 24 24">

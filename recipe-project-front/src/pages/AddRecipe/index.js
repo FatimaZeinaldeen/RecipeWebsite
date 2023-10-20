@@ -13,7 +13,7 @@ import Ingredient from "../../Components/Ingredient";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { Types } from "mongoose";
-
+// This is the right code
 const AddRecipe = () => {
   const navigate = useNavigate();
   const prepTime = ["min", "hour"];
