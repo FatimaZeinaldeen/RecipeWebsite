@@ -5,7 +5,7 @@ import About from "./pages/About-Us";
 import Login from "./pages/loginpage";
 import Forgot from "./pages/loginpage/forgot";
 import Layout from "./pages/layout";
-import NoPage from "./pages/nopage";
+import NoPage from "./pages/NoPage";
 import RecipeInfo from "./pages/recipeinfo";
 import Register from "./pages/Register";
 import AddRecipe from "./pages/AddRecipe";
