@@ -18,6 +18,7 @@
     top: 0%;
     transition: background-color 0.4s ease-in-out;
   }
+ 
   .navbar.scrolled{
     background-color: #FFA101;
     opacity: 0.98;
@@ -73,6 +74,7 @@
   }
   .navItem{
     display:flex;
+    flex-direction: row;
     justify-content: center;
     align-items: center;
   }

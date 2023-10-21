@@ -9,14 +9,15 @@
  
   margin-top: -20px;
 }
-.svg {
-  display: inline-block;
-  vertical-align: middle;
-  cursor: pointer;
-}
+
 .info{
 margin-bottom: 10px;
 
+}
+.row{
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 
@@ -38,6 +39,9 @@ margin-bottom: 10px;
 }
 .time{
   font-size: 30px;
+  display: flex;
+  flex-direction: row;
+
 }
 /* You can add more styling as needed */
 h2 {
@@ -68,28 +72,19 @@ ul, ol {
 }
 
 .phrase{
-  font-family: var(--headerFont3);
+  font-family: var(--headerFont1);
   color: #FFA101;
-  font-size: 40px;
+  font-size: 50px;
 }
-.origin{
-  padding-right: 15%;
-  font-family: var(--textFont);
-  color: #31525B;
-  
-}
-.likes{
-  padding-right: 10%;
-  font-family: var(--textFont);
-  color: #31525B;
-  padding-left: 10%;
- 
-}
-.timee{
+
+.details{
   padding-right: 10%;
   padding-left: 10%;
   font-family: var(--textFont);
   color: #31525B;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 
@@ -141,24 +136,19 @@ margin-top: 15px;
 .info{
   bottom:0%;
 }
-.svg {
-  display: inline-block;
-
-  cursor: pointer;
- padding-right: 0px;
-}
 ul {
   display: flex;
   flex-direction: column;
 }
 .ingredientbox {
   display: flex;
+  justify-content: flex-start;
   align-items: center;
-  
-  
+  border-bottom: 1px solid var(--secondayColor);
 }
 .measurement {
    color: #4f5c77;
+   margin-right: 5px;
   padding-right: 5px;
   font-size: 30px;
   font-weight: lighter ;
@@ -168,7 +158,6 @@ color:var(--MainColor);
 font-family: var(--textFont);
 font-weight: 100;
 font-size: smaller;
-margin-right: 30%;
 padding-right: 0px;
 
 }
@@ -176,8 +165,8 @@ padding-right: 0px;
   /* Add specific styles for units here */
   color: #4f5c77; /* Change the color to your preference */
   vertical-align: middle;
-  margin-right : 10%;
   font-size: 20px;
+  margin-right: 10px;
   
 }
 .instructionsList{
@@ -190,13 +179,9 @@ padding-right: 0px;
 }
 .instructionItem{
   display: flex;
-  align-items: center;
+  align-items: flex-start;
+  justify-content: flex-start;
   margin-bottom: 10px;
-}
-.svg2{
-  display: inline-block;
-  vertical-align: middle;
-  cursor: pointer;
 }
 
 .NoteTitle{
