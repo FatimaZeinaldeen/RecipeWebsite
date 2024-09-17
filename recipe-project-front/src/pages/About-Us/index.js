@@ -14,15 +14,22 @@ function About() {
     setName(user.data.fullname);
   }
   useEffect(() => {
-    axios.get('http://localhost:3000/About-Us/getAllfeedbacks') 
-      .then((response) => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get('http://localhost:3000/About-Us/getAllfeedbacks');
         setFeedbackData(response.data);
-      })
-      .catch((error) => {
+      } catch (error) {
         console.error('Error fetching feedback data:', error);
-      });
+        // Optionally: Display an error message to users
+      }
+    };
+  
+    fetchData();
+  
+    if (userId) {
       getUser();
-  });
+    }
+  }, [userId]);
 
 
   const handleFeedbackSubmit = (newFeedback) => {
@@ -54,4 +61,4 @@ function About() {
   )
 }
 
-export default About
+export default About;

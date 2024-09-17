@@ -1,5 +1,6 @@
 import express from "express";
-import { addFeedback, getAllfeedbacks } from "../Controllers/feedbackController.js";
+import { addFeedback} from "../Controllers/feedbackController.js";
+import {getAllfeedbacks} from "../Controllers/feedbackController.js";
 import { verifyAdmin } from "../middleware/verifyAdmin.js";
 
 const aboutRouter = express.Router();
