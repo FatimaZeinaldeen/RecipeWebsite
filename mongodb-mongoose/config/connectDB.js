@@ -1,8 +1,8 @@
 import mongoose from "mongoose";
 
-const connectdb = async ('mongodb+srv://FatimaZeinaldeen:FatimaKassemZeinaldeen@cluster0.pxrudjw.mongodb.net/RecipeDB.recipes') => {
+const connectdb = async (dbURL) => {
   try {
-    await mongoose.connect('mongodb+srv://FatimaZeinaldeen:FatimaKassemZeinaldeen@cluster0.pxrudjw.mongodb.net/RecipeDB.recipes').then(
+    await mongoose.connect(dbURL).then(
       () => console.log("connected successfully..."),
       (err) => console.log("connection error", err)
     );
