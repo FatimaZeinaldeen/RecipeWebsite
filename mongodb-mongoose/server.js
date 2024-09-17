@@ -17,7 +17,7 @@ app.use(cors({
 
 app.use(express.json());
 
-connectdb(process.env.MONGODB_URI);
+connectdb("mongodb+srv://FatimaZeinaldeen:FatimaKassemZeinaldeen@cluster0.pxrudjw.mongodb.net/RecipeDB");
 app.get("/", (req, res) => {
   res.send("Hello World!");
 });
