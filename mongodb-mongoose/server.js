@@ -7,7 +7,7 @@ import recipeRouter from "./routes/recipeRoute.js";
 import userRouter from "./routes/userRoute.js";
 import dotenv from "dotenv";
 dotenv.config();
-
+const MONGO_URI = "mongodb+srv://FatimaZeinaldeen:FatimaKassemZeinaldeen@cluster0.pxrudjw.mongodb.net/RecipeDB";
 const Port = process.env.PORT || 3000;
 const app = express();
 app.use(cors({
@@ -17,7 +17,7 @@ app.use(cors({
 
 app.use(express.json());
 
-connectdb("mongodb+srv://FatimaZeinaldeen:FatimaKassemZeinaldeen@cluster0.pxrudjw.mongodb.net/RecipeDB");
+connectdb(MONGO_URI);
 app.get("/", (req, res) => {
   res.send("Hello World!");
 });
