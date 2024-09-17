@@ -1,5 +1,4 @@
 import mongoose from "mongoose";
-
 const connectdb = async (dbURL) => {
   try {
     await mongoose.connect(dbURL).then(
